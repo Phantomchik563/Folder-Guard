@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace Folder_Guard
 {
-    public partial class Form1 : Form
+    public partial class FormUnCode : Form
     {
-        public Form1()
+        public FormUnCode()
         {
             InitializeComponent();
             
