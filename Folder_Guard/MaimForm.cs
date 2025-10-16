@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace Folder_Guard
 {
-    public partial class Form1 : Form
+    public partial class MaimForm : Form
     {
-        public Form1()
+        public MaimForm()
         {
             InitializeComponent();
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
         }
     }
 }
