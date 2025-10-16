@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FileManager;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,7 @@ namespace Folder_Guard
         public Form1()
         {
             InitializeComponent();
+            
         }
     }
 }

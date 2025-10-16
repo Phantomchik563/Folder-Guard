@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace FileManager
 {
-    public class Class1
+    public static class Zip
     {
+        
     }
 }
