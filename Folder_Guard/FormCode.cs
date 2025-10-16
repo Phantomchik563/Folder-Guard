@@ -10,24 +10,14 @@ using System.Windows.Forms;
 
 namespace Folder_Guard
 {
-    public partial class MaimForm : Form
+    public partial class FormCode : Form
     {
-        public MaimForm()
+        public FormCode()
         {
             InitializeComponent();
         }
 
-        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
 
         }
