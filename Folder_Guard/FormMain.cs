@@ -42,12 +42,13 @@ namespace Folder_Guard
 
         private void button3_Click(object sender, EventArgs e) //Открывается форма для дешифровки
         {
-            FormUnCode b = new FormUnCode();
-            b.ShowDialog();
+            
 
         }
 
-        private void button2_Click(object sender, EventArgs e) //Открывается проводник и выбирается файл .sf или папка
+
+
+        private void buttonFile_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog fileDialog = new OpenFileDialog())
             {
@@ -60,35 +61,99 @@ namespace Folder_Guard
                 if (fileDialog.ShowDialog() == DialogResult.OK)
                 {
                     string selectedPath = fileDialog.FileName;
+                    string selectedFolder = "";
+                    string selectedFile = "";
 
-                    // Если выбрана папка
+                    // Определяем, что было выбрано - папка или файл
                     if (Directory.Exists(selectedPath))
                     {
-                        // Обновляем Label с путем к папке
-                        label1.Text = $"Выбранная папка: {selectedPath}";
+                        // Выбрана папка
+                        selectedFolder = selectedPath;
+                        labelFileCount.Text = $"Выбранная папка: {selectedFolder}";
 
-                        // Получаем список файлов .sf в выбранной папке
-                        string[] sfFiles = Directory.GetFiles(selectedPath, "*.sf");
-                        label2.Text = $"Найдено файлов .sf: {sfFiles.Length}";
+                        // Активируем кнопку шифрования
+                        buttonCode.Enabled = true;
+                        buttonUnCode.Enabled = false;
+
+                        // Передаем папку в файловый блок для шифрования
+                        SetEncryptionFolder(selectedFolder);
                     }
-                    // Если выбран файл .sf
                     else if (File.Exists(selectedPath) && Path.GetExtension(selectedPath).ToLower() == ".sf")
                     {
-                        // Обновляем Label с путем к файлу
-                        label1.Text = $"Выбранный файл: {Path.GetFileName(selectedPath)}";
-                        label2.Text = $"Полный путь: {selectedPath}";
+                        // Выбран файл .sf
+                        selectedFile = selectedPath;
+                        labelFileCount.Text = $"Выбранный файл: {Path.GetFileName(selectedFile)}";
+
+                        // Активируем кнопку дешифрования
+                        buttonCode.Enabled = false;
+                        buttonUnCode.Enabled = true;
+
+                        // Передаем файл в блок дешифровки
+                        SetDecryptionFile(selectedFile);
                     }
-                    // Если путь к папке (когда файл не существует, но папка существует)
                     else if (Directory.Exists(Path.GetDirectoryName(selectedPath)))
                     {
-                        string folderPath = Path.GetDirectoryName(selectedPath);
-                        label1.Text = $"Выбранная папка: {folderPath}";
+                        // Выбрана папка через диалог
+                        selectedFolder = Path.GetDirectoryName(selectedPath);
+                        labelFileCount.Text = $"Выбранная папка: {selectedFolder}";
 
-                        string[] sfFiles = Directory.GetFiles(folderPath, "*.sf");
-                        label2.Text = $"Найдено файлов .sf: {sfFiles.Length}";
+                        // Активируем кнопку шифрования
+                        buttonCode.Enabled = true;
+                        buttonUnCode.Enabled = false;
+
+                        // Передаем папку в файловый блок для шифрования
+                        SetEncryptionFolder(selectedFolder);
                     }
                 }
             }
+        }
+
+        // Метод для передачи папки в блок шифрования
+        private void SetEncryptionFolder(string folderPath)
+        {
+            // Здесь реализуйте логику передачи папки в ваш файловый блок
+            // Например:
+            // encryptionProcessor.SetWorkingFolder(folderPath);
+            // или сохраните в переменную класса:
+            // this.selectedEncryptionFolder = folderPath;
+
+            MessageBox.Show($"Папка для шифрования: {folderPath}", "Информация",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        // Метод для передачи файла в блок дешифровки
+        private void SetDecryptionFile(string filePath)
+        {
+            // Здесь реализуйте логику передачи файла в блок дешифровки
+            // Например:
+            // decryptionProcessor.SetDecryptionFile(filePath);
+            // или сохраните в переменную класса:
+            // this.selectedDecryptionFile = filePath;
+
+            MessageBox.Show($"Файл для дешифровки: {filePath}", "Информация",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void buttonCode_Click(object sender, EventArgs e)
+        {
+            FormCode a = new FormCode();
+            a.ShowDialog();
+        }
+
+        private void buttonUnCode_Click(object sender, EventArgs e)
+        {
+            FormUnCode b = new FormUnCode();
+            b.ShowDialog();
+        }
+
+        private void labelSelectedFile_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBoxFiles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
