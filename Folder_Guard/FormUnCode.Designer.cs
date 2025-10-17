@@ -42,9 +42,9 @@
             this.label1.Image = global::Folder_Guard.Properties.Resources.dark_square;
             this.label1.Location = new System.Drawing.Point(114, 105);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(259, 23);
+            this.label1.Size = new System.Drawing.Size(267, 23);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Введите код для дешифровки";
+            this.label1.Text = "Введите код для расшифровки";
             // 
             // button2
             // 
@@ -58,6 +58,7 @@
             this.button2.TabIndex = 4;
             this.button2.Text = "Ввести";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // textBox1
             // 
@@ -66,7 +67,7 @@
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 5;
             // 
-            // Formuncode
+            // FormUnCode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -77,7 +78,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Formuncode";
+            this.Name = "FormUnCode";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FolderGuard";
             this.ResumeLayout(false);

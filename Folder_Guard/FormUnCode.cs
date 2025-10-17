@@ -1,12 +1,4 @@
-﻿using FileManager;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
 
 namespace Folder_Guard
@@ -16,7 +8,18 @@ namespace Folder_Guard
         public FormUnCode()
         {
             InitializeComponent();
-            
+
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.StartPosition = FormStartPosition.CenterParent;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // Внутренние элементы формы
     }
 }

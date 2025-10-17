@@ -1,4 +1,6 @@
-﻿namespace Folder_Guard
+﻿using System;
+
+namespace Folder_Guard
 {
     partial class FormCode
     {
@@ -84,6 +86,11 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
         }
 
         #endregion
