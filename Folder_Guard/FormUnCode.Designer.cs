@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUnCode));
             this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.buttonEnterUnCode = new System.Windows.Forms.Button();
+            this.textBoxUnCode = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -40,32 +40,33 @@
             this.label1.Font = new System.Drawing.Font("Niagara Solid", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label1.Image = global::Folder_Guard.Properties.Resources.dark_square;
-            this.label1.Location = new System.Drawing.Point(114, 105);
+            this.label1.Location = new System.Drawing.Point(91, 103);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(267, 23);
             this.label1.TabIndex = 1;
             this.label1.Text = "Введите код для расшифровки";
             // 
-            // button2
+            // buttonEnterUnCode
             // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Niagara Solid", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Image = global::Folder_Guard.Properties.Resources.dark_background_image;
-            this.button2.Location = new System.Drawing.Point(261, 146);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(97, 46);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Ввести";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.buttonEnterUnCode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonEnterUnCode.Font = new System.Drawing.Font("Niagara Solid", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEnterUnCode.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonEnterUnCode.Image = global::Folder_Guard.Properties.Resources.dark_background_image;
+            this.buttonEnterUnCode.Location = new System.Drawing.Point(261, 146);
+            this.buttonEnterUnCode.Name = "buttonEnterUnCode";
+            this.buttonEnterUnCode.Size = new System.Drawing.Size(97, 46);
+            this.buttonEnterUnCode.TabIndex = 4;
+            this.buttonEnterUnCode.Text = "Ввести";
+            this.buttonEnterUnCode.UseVisualStyleBackColor = true;
+            this.buttonEnterUnCode.Click += new System.EventHandler(this.button2_Click);
             // 
-            // textBox1
+            // textBoxUnCode
             // 
-            this.textBox1.Location = new System.Drawing.Point(118, 163);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 5;
+            this.textBoxUnCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxUnCode.Location = new System.Drawing.Point(119, 155);
+            this.textBoxUnCode.Name = "textBoxUnCode";
+            this.textBoxUnCode.Size = new System.Drawing.Size(100, 29);
+            this.textBoxUnCode.TabIndex = 5;
             // 
             // FormUnCode
             // 
@@ -73,8 +74,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Folder_Guard.Properties.Resources.dark_square;
             this.ClientSize = new System.Drawing.Size(462, 294);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.textBoxUnCode);
+            this.Controls.Add(this.buttonEnterUnCode);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -89,7 +90,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button buttonEnterUnCode;
+        private System.Windows.Forms.TextBox textBoxUnCode;
     }
 }

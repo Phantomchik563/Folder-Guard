@@ -1,6 +1,6 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Folder_Guard
@@ -9,6 +9,9 @@ namespace Folder_Guard
     {
         private Timer fadeTimer;
         private Control[] uiElements;
+
+        // Выбранный файл
+        private string selectedFilePath = "";
 
         public FormMain()
         {
@@ -20,57 +23,45 @@ namespace Folder_Guard
                 buttonCreateStorage,
                 buttonAddStorage,
                 buttonCode,
-                buttonUnCode,
                 buttonDelStorage,
-                listBoxStorage,
-                panelFiles
+                panelFiles,
+                treeViewProvodnik
             };
 
-            // Скрываем элементы до появления
             foreach (var c in uiElements)
                 c.Visible = false;
 
             this.Opacity = 0;
             this.Load += FormMain_Load;
 
-            // Привязываем события только здесь, чтобы не было двойного вызова
-            buttonCode.Click -= buttonCode_Click;
+            // Подключаем кнопки
             buttonCode.Click += buttonCode_Click;
-
-            buttonUnCode.Click -= buttonUnCode_Click;
-            buttonUnCode.Click += buttonUnCode_Click;
-
-            buttonCreateStorage.Click -= buttonCreateStoragebutton_Click;
             buttonCreateStorage.Click += buttonCreateStoragebutton_Click;
 
-            buttonAddStorage.Click -= AddStorage_Click;
-            buttonAddStorage.Click += AddStorage_Click;
+            // Инициализируем TreeView
+            InitializeTreeView();
 
-            listBoxStorage.SelectedIndexChanged -= listBoxFiles_SelectedIndexChanged;
-            listBoxStorage.SelectedIndexChanged += listBoxFiles_SelectedIndexChanged;
+            // Кнопки развернуть/свернуть
+            InitializeExpandCollapseButtons();
         }
 
         private void FormMain_Load(object sender, EventArgs e)
         {
             fadeTimer = new Timer();
             fadeTimer.Interval = 20;
-
-            int steps = 30; // чуть быстрее, раньше было 50
+            int steps = 30;
             int currentStep = 0;
 
             fadeTimer.Tick += (s, ev) =>
             {
                 currentStep++;
                 float progress = currentStep / (float)steps;
-
-                // Мягкая ease-in-out кривая
                 float ease = (float)(progress < 0.5
                     ? 2 * progress * progress
                     : -1 + (4 - 2 * progress) * progress);
 
                 this.Opacity = ease;
 
-                // Делаем элементы видимыми, когда форма начинает появляться
                 foreach (var c in uiElements)
                     if (!c.Visible) c.Visible = true;
 
@@ -81,9 +72,9 @@ namespace Folder_Guard
             fadeTimer.Start();
         }
 
-
-
-        // Обработчики кнопок
+        // =========================
+        // Кнопка "Открыть хранилище"
+        // =========================
         private void buttonCode_Click(object sender, EventArgs e)
         {
             using (var form = new FormCode())
@@ -93,38 +84,126 @@ namespace Folder_Guard
             }
         }
 
-        private void buttonUnCode_Click(object sender, EventArgs e)
+        // =========================
+        // Создание хранилища
+        // =========================
+        private void buttonCreateStoragebutton_Click(object sender, EventArgs e)
         {
-            using (var form = new FormUnCode())
+            using (var form = new FormCreateStorage())
             {
                 form.StartPosition = FormStartPosition.CenterParent;
                 form.ShowDialog();
             }
         }
 
-        private void buttonCreateStoragebutton_Click(object sender, EventArgs e)
+        // =========================
+        // Инициализация TreeView
+        // =========================
+        private void InitializeTreeView()
         {
-            // Подсасываю функцию Вано
+            treeViewProvodnik.Nodes.Clear();
+
+            foreach (var drive in DriveInfo.GetDrives())
+            {
+                TreeNode driveNode = new TreeNode(drive.Name) { Tag = drive.RootDirectory.FullName };
+                driveNode.Nodes.Add("..."); // заглушка для раскрытия
+                treeViewProvodnik.Nodes.Add(driveNode);
+            }
+
+            // Динамическая подгрузка папок
+            treeViewProvodnik.BeforeExpand += TreeViewProvodnik_BeforeExpand;
+
+            // Клик по файлу
+            treeViewProvodnik.NodeMouseClick += TreeViewProvodnik_NodeMouseClick;
         }
 
-        private void AddStorage_Click(object sender, EventArgs e)
+        private void TreeViewProvodnik_BeforeExpand(object sender, TreeViewCancelEventArgs e)
         {
-            // Ваш код добавления хранилища
+            TreeNode node = e.Node;
+
+            if (node.Nodes.Count == 1 && node.Nodes[0].Text == "...")
+            {
+                node.Nodes.Clear();
+                string path = node.Tag.ToString();
+                try
+                {
+                    // Добавляем папки
+                    foreach (var dir in Directory.GetDirectories(path))
+                    {
+                        TreeNode dirNode = new TreeNode(Path.GetFileName(dir)) { Tag = dir };
+                        dirNode.Nodes.Add("..."); // заглушка
+                        node.Nodes.Add(dirNode);
+                    }
+
+                    // Добавляем файлы
+                    foreach (var file in Directory.GetFiles(path))
+                    {
+                        TreeNode fileNode = new TreeNode(Path.GetFileName(file)) { Tag = file };
+                        node.Nodes.Add(fileNode);
+                    }
+                }
+                catch { /* Игнорируем ошибки доступа */ }
+            }
         }
 
-        private void listBoxFiles_SelectedIndexChanged(object sender, EventArgs e)
+        private void TreeViewProvodnik_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            // Ваш код обработки выбора в listBox
+            TreeNode node = e.Node;
+            string path = node.Tag.ToString();
+
+            if (File.Exists(path))
+            {
+                selectedFilePath = path; //Путь файла для шифровки
+                MessageBox.Show("Выбран файл: " + selectedFilePath, "Файл выбран");
+            }
         }
 
-        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e) { }
-        private void label1_Click(object sender, EventArgs e) { }
-        private void label3_Click(object sender, EventArgs e) { }
-        private void labelSelectedFile_Click(object sender, EventArgs e) { }
-        private void button1_Click(object sender, EventArgs e) { }
-        private void button3_Click(object sender, EventArgs e) { }
-        private void buttonFile_Click(object sender, EventArgs e) { }
-        private void SetEncryptionFolder(string folderPath) { }
-        private void SetDecryptionFile(string filePath) { }
+        // =========================
+        // Кнопки "Развернуть все / Свернуть все"
+        // =========================
+        private void InitializeExpandCollapseButtons()
+        {
+            Button expandAllBtn = new Button
+            {
+                Text = "Развернуть все",
+                Width = 200,
+                Height = 50,
+                Top = 10,
+                Left = 10,
+                Font = new Font("Arial", 12, FontStyle.Bold)
+            };
+            expandAllBtn.Click += (s, e) => treeViewProvodnik.ExpandAll();
+            this.Controls.Add(expandAllBtn);
+
+            Button collapseAllBtn = new Button
+            {
+                Text = "Свернуть все",
+                Width = 200,
+                Height = 50,
+                Top = 70,
+                Left = 10,
+                Font = new Font("Arial", 12, FontStyle.Bold)
+            };
+            collapseAllBtn.Click += (s, e) => treeViewProvodnik.CollapseAll();
+            this.Controls.Add(collapseAllBtn);
+        }
+
+        private void buttonHelp_Click(object sender, EventArgs e)
+        {
+            using (var form = new FormHelp())
+            {
+                form.StartPosition = FormStartPosition.CenterParent;
+                form.ShowDialog();
+            }
+        }
+
+        private void buttonSetting_Click(object sender, EventArgs e)
+        {
+            using (var form = new FormSetting())
+            {
+                form.StartPosition = FormStartPosition.CenterParent;
+                form.ShowDialog();
+            }
+        }
     }
 }
