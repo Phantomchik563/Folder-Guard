@@ -9,13 +9,14 @@ namespace EncryptionModule
             //=============================== Обработка входных данных ===============================
             byte[] salt = Convert.FromBase64String(metaSalt);
             byte[] key; //Массив для ключа
-            const int keySize = 32; //Размер ключа 32 байта (256 бит)
             int iterations = int.Parse(metaIterations);
+            byte[] hmacKey;
 
-            //=============================== Создание ключа =========================================
+            //=============================== Создание ключей =========================================
             using (var pbkdf2 = new Rfc2898DeriveBytes(password, salt, iterations, HashAlgorithmName.SHA256))
             {
-                key = pbkdf2.GetBytes(32); //AES-256 ключ
+                key = pbkdf2.GetBytes(32); // AES-256 ключ
+                hmacKey = pbkdf2.GetBytes(32); // HMAC-ключ
             }
             //Rfc2898DeriveBytes - класс для реализации PBKDF2 
             //HashAlgorithmName.SHA256 - использование алгоритма SHA-256
@@ -37,11 +38,19 @@ namespace EncryptionModule
                     using (CryptoStream cryptoStream = new CryptoStream(fsOutput, aes.CreateEncryptor(), CryptoStreamMode.Write))
                     {
                         fsInput.CopyTo(cryptoStream); //Копирование содержимого файла в поток шифрования cryptoStream
-                    }       
+                    }
                 }
             }
+            //=========================== Добавляем HMAC =========================================
+            using (var hmac = new HMACSHA256(hmacKey))
+            using (FileStream fsEncrypted = new FileStream(outputPath, FileMode.Open, FileAccess.ReadWrite))
+            {
+                byte[] hash = hmac.ComputeHash(fsEncrypted); //Чтение файла
+                fsEncrypted.Seek(0, SeekOrigin.End); //Переход в конец файла
+                fsEncrypted.Write(hash, 0, hash.Length); //запись HMAC в конец файла
+            }
         }
-        public static string getSalt()
+        public static string GetSalt()
         {
             byte[] salt = new byte[16]; //Массив для хранения соли
             RandomNumberGenerator.Fill(salt); //Заполнение соли
