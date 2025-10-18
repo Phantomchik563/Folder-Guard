@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36603.0 d17.14
+VisualStudioVersion = 17.14.36603.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Folder_Guard", "Folder_Guard\Folder_Guard.csproj", "{BF1ECD5D-9A7C-4BF5-9BE9-919A824EDC53}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileManager", "FileManager\FileManager.csproj", "{40329078-C07A-4A4B-A5FD-EF7D4FFB21AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncryptionModule", "EncryptionModule\EncryptionModule.csproj", "{2D1EB669-7299-45AD-9B74-4799357B653F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{40329078-C07A-4A4B-A5FD-EF7D4FFB21AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40329078-C07A-4A4B-A5FD-EF7D4FFB21AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40329078-C07A-4A4B-A5FD-EF7D4FFB21AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D1EB669-7299-45AD-9B74-4799357B653F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D1EB669-7299-45AD-9B74-4799357B653F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D1EB669-7299-45AD-9B74-4799357B653F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D1EB669-7299-45AD-9B74-4799357B653F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
