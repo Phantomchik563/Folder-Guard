@@ -32,8 +32,9 @@ namespace Folder_Guard
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCode));
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.textBoxCode = new System.Windows.Forms.TextBox();
+            this.buttonAddStorage = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -42,45 +43,61 @@ namespace Folder_Guard
             this.label1.Font = new System.Drawing.Font("Niagara Solid", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label1.Image = global::Folder_Guard.Properties.Resources.dark_square;
-            this.label1.Location = new System.Drawing.Point(118, 62);
+            this.label1.Location = new System.Drawing.Point(12, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(238, 23);
+            this.label1.Size = new System.Drawing.Size(326, 23);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Введите код для шифровки";
+            this.label1.Text = "Введите код для открытия хранилища";
             // 
-            // textBox1
+            // textBoxCode
             // 
-            this.textBox1.Location = new System.Drawing.Point(122, 116);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 1;
+            this.textBoxCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxCode.Location = new System.Drawing.Point(16, 60);
+            this.textBoxCode.Name = "textBoxCode";
+            this.textBoxCode.Size = new System.Drawing.Size(321, 29);
+            this.textBoxCode.TabIndex = 1;
+            this.textBoxCode.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // button2
+            // buttonAddStorage
             // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Niagara Solid", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Image = global::Folder_Guard.Properties.Resources.dark_background_image;
-            this.button2.Location = new System.Drawing.Point(259, 99);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(97, 46);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Ввести";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.buttonAddStorage.BackColor = System.Drawing.Color.DimGray;
+            this.buttonAddStorage.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonAddStorage.Font = new System.Drawing.Font("Niagara Solid", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddStorage.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonAddStorage.Location = new System.Drawing.Point(16, 123);
+            this.buttonAddStorage.Name = "buttonAddStorage";
+            this.buttonAddStorage.Size = new System.Drawing.Size(101, 29);
+            this.buttonAddStorage.TabIndex = 15;
+            this.buttonAddStorage.Text = "Отмена";
+            this.buttonAddStorage.UseVisualStyleBackColor = false;
+            this.buttonAddStorage.Click += new System.EventHandler(this.buttonAddStorage_Click);
             // 
-            // Formcode
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.DimGray;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Niagara Solid", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button1.Location = new System.Drawing.Point(237, 123);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(101, 29);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "Ввести";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // FormCode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Folder_Guard.Properties.Resources.dark_square;
-            this.ClientSize = new System.Drawing.Size(462, 294);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(348, 177);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonAddStorage);
+            this.Controls.Add(this.textBoxCode);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Formcode";
+            this.Name = "FormCode";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FolderGuard";
             this.ResumeLayout(false);
@@ -96,7 +113,8 @@ namespace Folder_Guard
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBoxCode;
+        private System.Windows.Forms.Button buttonAddStorage;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -15,6 +15,16 @@ namespace Folder_Guard
             this.MinimizeBox = false;
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonAddStorage_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         // Если нужны кнопки внутри формы, обработчики подключаем как обычно
         // button2 оставляем для другой логики
     }
