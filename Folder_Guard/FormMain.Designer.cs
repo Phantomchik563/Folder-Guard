@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 
 namespace Folder_Guard
 {
@@ -30,19 +31,21 @@ namespace Folder_Guard
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.buttonCode = new System.Windows.Forms.Button();
             this.panelFiles = new System.Windows.Forms.Panel();
+            this.listViewStorage = new System.Windows.Forms.ListView();
             this.buttonUnCode = new System.Windows.Forms.Button();
             this.buttonCreateStorage = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.buttonDelStorage = new System.Windows.Forms.Button();
             this.buttonAddStorage = new System.Windows.Forms.Button();
             this.buttonHelp = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.treeViewProvodnik = new System.Windows.Forms.TreeView();
-            this.treeViewStorage = new System.Windows.Forms.TreeView();
             this.buttonSetting = new System.Windows.Forms.Button();
+            this.listViewStorageFiles = new System.Windows.Forms.ListView();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panelFiles.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,16 +66,29 @@ namespace Folder_Guard
             // panelFiles
             // 
             this.panelFiles.BackColor = System.Drawing.Color.Transparent;
+            this.panelFiles.Controls.Add(this.listViewStorage);
             this.panelFiles.Controls.Add(this.buttonUnCode);
             this.panelFiles.Controls.Add(this.buttonCreateStorage);
+            this.panelFiles.Controls.Add(this.label1);
             this.panelFiles.Controls.Add(this.buttonDelStorage);
             this.panelFiles.Controls.Add(this.buttonAddStorage);
             this.panelFiles.Controls.Add(this.buttonCode);
             this.panelFiles.Location = new System.Drawing.Point(10, 7);
             this.panelFiles.Margin = new System.Windows.Forms.Padding(2);
             this.panelFiles.Name = "panelFiles";
-            this.panelFiles.Size = new System.Drawing.Size(247, 617);
+            this.panelFiles.Size = new System.Drawing.Size(242, 617);
             this.panelFiles.TabIndex = 12;
+            // 
+            // listViewStorage
+            // 
+            this.listViewStorage.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.listViewStorage.ForeColor = System.Drawing.SystemColors.Window;
+            this.listViewStorage.HideSelection = false;
+            this.listViewStorage.Location = new System.Drawing.Point(6, 265);
+            this.listViewStorage.Name = "listViewStorage";
+            this.listViewStorage.Size = new System.Drawing.Size(216, 306);
+            this.listViewStorage.TabIndex = 19;
+            this.listViewStorage.UseCompatibleStateImageBehavior = false;
             // 
             // buttonUnCode
             // 
@@ -84,7 +100,7 @@ namespace Folder_Guard
             this.buttonUnCode.Name = "buttonUnCode";
             this.buttonUnCode.Size = new System.Drawing.Size(219, 29);
             this.buttonUnCode.TabIndex = 16;
-            this.buttonUnCode.Text = "Дешифровать";
+            this.buttonUnCode.Text = "Экспорт из хранилища";
             this.buttonUnCode.UseVisualStyleBackColor = false;
             // 
             // buttonCreateStorage
@@ -101,17 +117,29 @@ namespace Folder_Guard
             this.buttonCreateStorage.UseVisualStyleBackColor = false;
             this.buttonCreateStorage.Click += new System.EventHandler(this.buttonCreateStoragebutton_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.ForeColor = System.Drawing.Color.Transparent;
+            this.label1.Location = new System.Drawing.Point(1, 237);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(197, 25);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Список хранилищ:";
+            // 
             // buttonDelStorage
             // 
             this.buttonDelStorage.BackColor = System.Drawing.Color.DimGray;
             this.buttonDelStorage.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonDelStorage.Font = new System.Drawing.Font("Niagara Solid", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDelStorage.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonDelStorage.Location = new System.Drawing.Point(6, 197);
+            this.buttonDelStorage.Location = new System.Drawing.Point(6, 193);
             this.buttonDelStorage.Name = "buttonDelStorage";
-            this.buttonDelStorage.Size = new System.Drawing.Size(216, 29);
+            this.buttonDelStorage.Size = new System.Drawing.Size(219, 29);
             this.buttonDelStorage.TabIndex = 14;
-            this.buttonDelStorage.Text = "Удалить";
+            this.buttonDelStorage.Text = "Удалить файл";
             this.buttonDelStorage.UseVisualStyleBackColor = false;
             // 
             // buttonAddStorage
@@ -122,9 +150,9 @@ namespace Folder_Guard
             this.buttonAddStorage.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonAddStorage.Location = new System.Drawing.Point(6, 96);
             this.buttonAddStorage.Name = "buttonAddStorage";
-            this.buttonAddStorage.Size = new System.Drawing.Size(216, 29);
+            this.buttonAddStorage.Size = new System.Drawing.Size(219, 29);
             this.buttonAddStorage.TabIndex = 13;
-            this.buttonAddStorage.Text = "Зашифровать";
+            this.buttonAddStorage.Text = "Импорт  в хранилище";
             this.buttonAddStorage.UseVisualStyleBackColor = false;
             this.buttonAddStorage.Click += new System.EventHandler(this.AddStorage_Click);
             // 
@@ -142,47 +170,17 @@ namespace Folder_Guard
             this.buttonHelp.UseVisualStyleBackColor = false;
             this.buttonHelp.Click += new System.EventHandler(this.buttonHelp_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(269, 60);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(197, 25);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "Список хранилищ:";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.ForeColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(579, 60);
+            this.label2.Location = new System.Drawing.Point(257, 64);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(173, 25);
+            this.label2.Size = new System.Drawing.Size(222, 25);
             this.label2.TabIndex = 19;
-            this.label2.Text = "Ваш проводник:";
-            // 
-            // treeViewProvodnik
-            // 
-            this.treeViewProvodnik.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.treeViewProvodnik.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.treeViewProvodnik.Location = new System.Drawing.Point(584, 103);
-            this.treeViewProvodnik.Name = "treeViewProvodnik";
-            this.treeViewProvodnik.Size = new System.Drawing.Size(277, 504);
-            this.treeViewProvodnik.TabIndex = 20;
-            // 
-            // treeViewStorage
-            // 
-            this.treeViewStorage.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.treeViewStorage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.treeViewStorage.Location = new System.Drawing.Point(274, 103);
-            this.treeViewStorage.Name = "treeViewStorage";
-            this.treeViewStorage.Size = new System.Drawing.Size(266, 504);
-            this.treeViewStorage.TabIndex = 21;
+            this.label2.Text = "Файлы в хранилище:";
             // 
             // buttonSetting
             // 
@@ -198,18 +196,30 @@ namespace Folder_Guard
             this.buttonSetting.UseVisualStyleBackColor = false;
             this.buttonSetting.Click += new System.EventHandler(this.buttonSetting_Click);
             // 
+            // listViewStorageFiles
+            // 
+            this.listViewStorageFiles.HideSelection = false;
+            this.listViewStorageFiles.Location = new System.Drawing.Point(262, 103);
+            this.listViewStorageFiles.Name = "listViewStorageFiles";
+            this.listViewStorageFiles.Size = new System.Drawing.Size(599, 475);
+            this.listViewStorageFiles.TabIndex = 20;
+            this.listViewStorageFiles.UseCompatibleStateImageBehavior = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.BackgroundImage = global::Folder_Guard.Properties.Resources.dark_square;
-            this.ClientSize = new System.Drawing.Size(901, 635);
+            this.ClientSize = new System.Drawing.Size(901, 587);
+            this.Controls.Add(this.listViewStorageFiles);
             this.Controls.Add(this.buttonSetting);
-            this.Controls.Add(this.treeViewStorage);
-            this.Controls.Add(this.treeViewProvodnik);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonHelp);
             this.Controls.Add(this.panelFiles);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
@@ -218,14 +228,35 @@ namespace Folder_Guard
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FolderGuard";
             this.panelFiles.ResumeLayout(false);
+            this.panelFiles.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
+        private void buttonSetting_Click(object sender, EventArgs e)
+        {
+            //Шаблон для подключения формы
+            using (var form = new FormSetting())
+            {
+                form.StartPosition = FormStartPosition.CenterParent;
+                form.ShowDialog();
+            }
+        }
+
+        private void buttonHelp_Click(object sender, EventArgs e)
+        {
+            //Шаблон для подключения формы
+            using (var form = new FormHelp())
+            {
+                form.StartPosition = FormStartPosition.CenterParent;
+                form.ShowDialog();
+            }
+        }
+
         private void AddStorage_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
         private void ButtonCreateStoragebutton_Click(object sender, EventArgs e)
@@ -248,9 +279,10 @@ namespace Folder_Guard
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonDelStorage;
-        private System.Windows.Forms.TreeView treeViewProvodnik;
-        private System.Windows.Forms.TreeView treeViewStorage;
         private System.Windows.Forms.Button buttonSetting;
+        private System.Windows.Forms.ListView listViewStorage;
+        private System.Windows.Forms.ListView listViewStorageFiles;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
