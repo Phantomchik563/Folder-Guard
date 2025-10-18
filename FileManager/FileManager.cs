@@ -13,7 +13,9 @@ namespace FileManager
     {
         private struct metaFile
         {
-            string salt = "jj";
+            string salt;
+            int iterationCount;
+
         }
         public static List<string> GetVaults() // Метод, возвращающий список хранилищ
         {
