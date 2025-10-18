@@ -57,11 +57,9 @@
             this.label5.ForeColor = System.Drawing.Color.Transparent;
             this.label5.Location = new System.Drawing.Point(12, 48);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(690, 100);
+            this.label5.Size = new System.Drawing.Size(914, 175);
             this.label5.TabIndex = 7;
-            this.label5.Text = "Нажмите на кнопку \"Зашифровать\" .\r\nВыберите хранилище, куда будет сохранён файл п" +
-    "осле шифровки.\r\nПодтвердите действие.\r\nВаш файл будет сохранён в выбранное ранее" +
-    " хранилище.";
+            this.label5.Text = resources.GetString("label5.Text");
             // 
             // label6
             // 
@@ -94,18 +92,16 @@
             this.label9.ForeColor = System.Drawing.Color.Transparent;
             this.label9.Location = new System.Drawing.Point(12, 318);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(660, 100);
+            this.label9.Size = new System.Drawing.Size(742, 200);
             this.label9.TabIndex = 11;
-            this.label9.Text = "Нажмите на кнопку \"Дешифровать\". \r\nВыберите папку, куда будет сохранён файл после" +
-    " дешифровки.\r\nПодтвердите действие.\r\nВаш файл будет сохранён в выбранную ранее п" +
-    "апку.";
+            this.label9.Text = resources.GetString("label9.Text");
             // 
             // FormHelp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Folder_Guard.Properties.Resources.dark_square;
-            this.ClientSize = new System.Drawing.Size(724, 481);
+            this.ClientSize = new System.Drawing.Size(931, 527);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label6);
