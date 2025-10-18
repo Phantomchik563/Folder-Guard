@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,11 +12,18 @@ namespace FileManager
 {
     public static class Vault
     {
-        private struct metaFile
+        struct MetaFile
         {
-            string salt;
-            int iterationCount;
+            public string salt;
+            public int iterationCount;
+            public string version;
 
+            public MetaFile(string salt, int iterationCount, string version) : this()
+            {
+                this.salt = salt;
+                this.iterationCount = iterationCount;
+                this.version = version;
+            }
         }
         public static List<string> GetVaults() // Метод, возвращающий список хранилищ
         {
@@ -30,7 +38,11 @@ namespace FileManager
 
             return vaults;
         }
-        public static int CreateVault(string vaultName, string vaultPassword) // Метод, создающий хранилище (Возвратные коды: 0 - всё ок; 1 - в названии недопустимые символы; 2 - такое имя уже есть в списке)
+        public static List<string> GetVaultFiles(string vault) // Метод, возвращающий список файлов в хранилище
+        {
+            return GetVaults();
+        }
+        public static int CreateVault(string vaultName, string vaultPassword, int iterationCount) // Метод, создающий хранилище (Возвратные коды: 0 - всё ок; 1 - в названии недопустимые символы; 2 - такое имя уже есть в списке)
         {
             char[] exeptionChars = {'\\', '|', '/', '?', '\'', '*', ':', '<', '>'}; // Список недопустимых символов
             foreach(char c in vaultName)
@@ -40,11 +52,17 @@ namespace FileManager
             List<string> vaults = GetVaults();
             if (vaults.Contains(vaultName)) return 2; // Проверка на повторяющиеся хранилища
 
-            
+            Directory.CreateDirectory(@"Vaults\" + vaultName); // Создание директории хранилища
 
-            Directory.CreateDirectory(@"Vaults\" + vaultName);
+            string ver = Assembly.GetExecutingAssembly().GetName().Version.ToString();
             string salt = EncryptionModule.Encryption.GetSalt();
-
+            MetaFile metaFile = new MetaFile(salt, iterationCount, ver);
+            using (BinaryWriter binWriter = new BinaryWriter(File.Open(@"Vaults\" + vaultName + @"\meta.dat", FileMode.OpenOrCreate)))
+            {
+                binWriter.Write(metaFile.salt);
+                binWriter.Write(metaFile.iterationCount);
+                binWriter.Write(metaFile.version);
+            }
 
             return 0;
         }
