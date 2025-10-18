@@ -53,7 +53,11 @@ namespace EncryptionModule
         public static string GetSalt()
         {
             byte[] salt = new byte[16]; //Массив для хранения соли
-            RandomNumberGenerator.Fill(salt); //Заполнение соли
+            using (var rng = RandomNumberGenerator.Create()) //Создание ГСЧ
+            {
+                rng.GetBytes(salt); //Заполнение соли
+            }
+
             return Convert.ToBase64String(salt); //Возвращает соль в виде строки
         }
     }
