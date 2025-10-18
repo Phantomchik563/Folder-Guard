@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FileManager;
+using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -16,7 +18,7 @@ namespace Folder_Guard
         public FormMain()
         {
             InitializeComponent();
-
+            Themes();
             // Список элементов, которые будут плавно появляться
             uiElements = new Control[]
             {
@@ -25,7 +27,7 @@ namespace Folder_Guard
                 buttonCode,
                 buttonDelStorage,
                 panelFiles,
-                treeViewProvodnik
+
             };
 
             foreach (var c in uiElements)
@@ -38,11 +40,7 @@ namespace Folder_Guard
             buttonCode.Click += buttonCode_Click;
             buttonCreateStorage.Click += buttonCreateStoragebutton_Click;
 
-            // Инициализируем TreeView
-            InitializeTreeView();
 
-            // Кнопки развернуть/свернуть
-            InitializeExpandCollapseButtons();
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -96,114 +94,59 @@ namespace Folder_Guard
             }
         }
 
+
+
         // =========================
-        // Инициализация TreeView
+        // Метод для обновления listViewStorage
         // =========================
-        private void InitializeTreeView()
+        public void UpdateListViewStorage(List<string> items)
         {
-            treeViewProvodnik.Nodes.Clear();
+            // Очищаем текущие элементы
+            listViewStorage.Items.Clear();
 
-            foreach (var drive in DriveInfo.GetDrives())
+            // Добавляем новые элементы
+            foreach (var item in items)
             {
-                TreeNode driveNode = new TreeNode(drive.Name) { Tag = drive.RootDirectory.FullName };
-                driveNode.Nodes.Add("..."); // заглушка для раскрытия
-                treeViewProvodnik.Nodes.Add(driveNode);
+                ListViewItem listItem = new ListViewItem(item);
+                listViewStorage.Items.Add(listItem);
             }
-
-            // Динамическая подгрузка папок
-            treeViewProvodnik.BeforeExpand += TreeViewProvodnik_BeforeExpand;
-
-            // Клик по файлу
-            treeViewProvodnik.NodeMouseClick += TreeViewProvodnik_NodeMouseClick;
         }
 
-        private void TreeViewProvodnik_BeforeExpand(object sender, TreeViewCancelEventArgs e)
-        {
-            TreeNode node = e.Node;
+        // =========================
+        // Пример вызова метода из другого модуля
+        // =========================
 
-            if (node.Nodes.Count == 1 && node.Nodes[0].Text == "...")
+
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            var vaults = FileManager.Vault.GetVaults();
+            UpdateListViewStorage(vaults);
+
+        }
+
+        void Themes()
+        {
+            switch (Properties.Settings.Default.Theme)
             {
-                node.Nodes.Clear();
-                string path = node.Tag.ToString();
-                try
-                {
-                    // Добавляем папки
-                    foreach (var dir in Directory.GetDirectories(path))
+                case 0: // Светлая тема
                     {
-                        TreeNode dirNode = new TreeNode(Path.GetFileName(dir)) { Tag = dir };
-                        dirNode.Nodes.Add("..."); // заглушка
-                        node.Nodes.Add(dirNode);
+
+                        break;
                     }
 
-                    // Добавляем файлы
-                    foreach (var file in Directory.GetFiles(path))
+                case 1: // Тёмная тема
                     {
-                        TreeNode fileNode = new TreeNode(Path.GetFileName(file)) { Tag = file };
-                        node.Nodes.Add(fileNode);
+
+                        break;
                     }
-                }
-                catch { /* Игнорируем ошибки доступа */ }
-            }
-        }
 
-        private void TreeViewProvodnik_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
-        {
-            TreeNode node = e.Node;
-            string path = node.Tag.ToString();
 
-            if (File.Exists(path))
-            {
-                selectedFilePath = path; //Путь файла для шифровки
-                MessageBox.Show("Выбран файл: " + selectedFilePath, "Файл выбран");
-            }
-        }
-
-        // =========================
-        // Кнопки "Развернуть все / Свернуть все"
-        // =========================
-        private void InitializeExpandCollapseButtons()
-        {
-            Button expandAllBtn = new Button
-            {
-                Text = "Развернуть все",
-                Width = 200,
-                Height = 50,
-                Top = 10,
-                Left = 10,
-                Font = new Font("Arial", 12, FontStyle.Bold)
-            };
-            expandAllBtn.Click += (s, e) => treeViewProvodnik.ExpandAll();
-            this.Controls.Add(expandAllBtn);
-
-            Button collapseAllBtn = new Button
-            {
-                Text = "Свернуть все",
-                Width = 200,
-                Height = 50,
-                Top = 70,
-                Left = 10,
-                Font = new Font("Arial", 12, FontStyle.Bold)
-            };
-            collapseAllBtn.Click += (s, e) => treeViewProvodnik.CollapseAll();
-            this.Controls.Add(collapseAllBtn);
-        }
-
-        private void buttonHelp_Click(object sender, EventArgs e)
-        {
-            using (var form = new FormHelp())
-            {
-                form.StartPosition = FormStartPosition.CenterParent;
-                form.ShowDialog();
-            }
-        }
-
-        private void buttonSetting_Click(object sender, EventArgs e)
-        {
-            using (var form = new FormSetting())
-            {
-                form.StartPosition = FormStartPosition.CenterParent;
-                form.ShowDialog();
             }
         }
     }
+
+
+
+
 }

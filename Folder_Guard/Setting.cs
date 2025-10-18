@@ -15,6 +15,24 @@ namespace Folder_Guard
         public FormSetting()
         {
             InitializeComponent();
+            comboBox1.SelectedIndex = Properties.Settings.Default.Theme;
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) // Триггер на выбор тем
+        {
+            switch (comboBox1.SelectedIndex)
+            {
+
+                case 0:
+                    Properties.Settings.Default.Theme = 0; //Светлая тема
+                    break;
+
+
+                case 1:
+                    Properties.Settings.Default.Theme = 1; //Тёмная тема
+                    break;
+            }
+            Properties.Settings.Default.Save();
         }
     }
 }

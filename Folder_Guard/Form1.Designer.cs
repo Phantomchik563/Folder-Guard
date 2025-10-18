@@ -120,7 +120,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormCreateStorage";
-            this.Text = "FoldetGuard";
+            this.Text = "FolderGuard";
             this.ResumeLayout(false);
             this.PerformLayout();
 
