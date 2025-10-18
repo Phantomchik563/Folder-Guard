@@ -44,5 +44,11 @@
     <Compile Include="FileManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EncryptionModule\EncryptionModule.csproj">
+      <Project>{2d1eb669-7299-45ad-9b74-4799357b653f}</Project>
+      <Name>EncryptionModule</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

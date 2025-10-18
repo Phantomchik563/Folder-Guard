@@ -11,7 +11,11 @@ namespace FileManager
 {
     public static class Vault
     {
-        public static List<string> getVaults() // Метод, возвращающий список хранилищ
+        private struct metaFile
+        {
+            string salt = "jj";
+        }
+        public static List<string> GetVaults() // Метод, возвращающий список хранилищ
         {
             List<string> vaults = new List<string>();
             if (Directory.Exists("Vaults") == false) Directory.CreateDirectory(@"Vaults\");
@@ -24,17 +28,21 @@ namespace FileManager
 
             return vaults;
         }
-        public static int createVault(string vaultName, string vaultPassword) // Метод, создающий хранилище (Возвратные коды: 0 - всё ок; 1 - в названии недопустимые символы; 2 - такое имя уже есть в списке)
+        public static int CreateVault(string vaultName, string vaultPassword) // Метод, создающий хранилище (Возвратные коды: 0 - всё ок; 1 - в названии недопустимые символы; 2 - такое имя уже есть в списке)
         {
             char[] exeptionChars = {'\\', '|', '/', '?', '\'', '*', ':', '<', '>'}; // Список недопустимых символов
             foreach(char c in vaultName)
             {
                 if (exeptionChars.Contains(c)) return 1; // Проверка на недопустимые символы
             }
-            List<string> vaults = getVaults();
+            List<string> vaults = GetVaults();
             if (vaults.Contains(vaultName)) return 2; // Проверка на повторяющиеся хранилища
 
-            //Позже реализую создание файлов...
+            
+
+            Directory.CreateDirectory(@"Vaults\" + vaultName);
+            string salt = EncryptionModule.Encryption.GetSalt();
+
 
             return 0;
         }
