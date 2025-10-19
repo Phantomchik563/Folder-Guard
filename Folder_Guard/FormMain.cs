@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Reflection.Emit;
 using System.Windows.Forms;
 
 namespace Folder_Guard
@@ -89,10 +90,10 @@ namespace Folder_Guard
         {
             using (var form = new FormCreateStorage())
             {
-                form.StartPosition = FormStartPosition.CenterParent;
-                form.ShowDialog();
+                form.ShowDialog(this); // 👈 Обязательно передаём "this" (главную форму)
             }
         }
+
 
 
 
@@ -131,6 +132,35 @@ namespace Folder_Guard
             {
                 case 0: // Светлая тема
                     {
+                        this.BackColor = Color.FromArgb(250, 250, 250);
+
+
+
+
+                        pictureBox1.BackColor = Color.FromArgb(245, 245, 245);
+                        buttonCreateStorage.BackColor = Color.FromArgb(255, 255, 255);
+                        buttonCreateStorage.ForeColor = Color.FromArgb(33, 33, 33);
+                        buttonCode.BackColor = Color.FromArgb(255, 255, 255);
+                        buttonCode.ForeColor = Color.FromArgb(33, 33, 33);
+                        buttonAddStorage.BackColor = Color.FromArgb(255, 255, 255);
+                        buttonAddStorage.ForeColor = Color.FromArgb(33, 33, 33);
+                        buttonUnCode.BackColor = Color.FromArgb(255, 255, 255);
+                        buttonUnCode.ForeColor = Color.FromArgb(33, 33, 33);
+                        buttonDelStorage.BackColor = Color.FromArgb(255, 255, 255);
+                        buttonDelStorage.ForeColor = Color.FromArgb(33, 33, 33);
+                        buttonSetting.BackColor = Color.FromArgb(255, 255, 255);
+                        buttonSetting.ForeColor = Color.FromArgb(33, 33, 33);
+                        buttonHelp.BackColor = Color.FromArgb(255, 255, 255);
+                        buttonHelp.ForeColor = Color.FromArgb(33, 33, 33);
+                        listViewStorage.BackColor = Color.FromArgb(255, 255, 255);
+                        listViewStorage.ForeColor = Color.FromArgb(33, 33, 33);
+                        listViewStorageFiles.BackColor = Color.FromArgb(255, 255, 255);
+                        listViewStorageFiles.ForeColor = Color.FromArgb(33, 33, 33);
+                        label1.BackColor = Color.FromArgb(245, 245, 245);
+                        label1.ForeColor = Color.FromArgb(33, 33, 33);
+                        label2.BackColor = Color.FromArgb(255, 255, 255);
+                        label2.ForeColor = Color.FromArgb(33, 33, 33);
+                        panelFiles.BackColor = Color.FromArgb(245, 245, 245);
 
                         break;
                     }
@@ -143,6 +173,21 @@ namespace Folder_Guard
 
 
             }
+        }
+
+        private void FormMain_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelFiles_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void buttonTest_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
