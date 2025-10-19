@@ -45,7 +45,11 @@ namespace FileManager
             foreach (string file in vaultFiles)
             {
                 string[] fileParts = file.Split('.');
-                if (fileParts[fileParts.Length - 1] == ".sf") files.Add(file);
+                if (fileParts[fileParts.Length - 1] == "sf")
+                {
+                    string[] filePathParts = file.Split('\\');
+                    files.Add(filePathParts[filePathParts.Length - 1]);
+                }
             }
             return files;
         }

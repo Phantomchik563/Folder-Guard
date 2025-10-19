@@ -188,7 +188,8 @@ namespace Folder_Guard
 
         private void buttonTest_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < FileManager.Vault.GetVaultFiles("Пенис").Count(); i++)
+            int cnt = FileManager.Vault.GetVaultFiles("Пенис").Count();
+            for (int i = 0; i < cnt; i++)
             {
                 listViewStorageFiles.Items.Add(FileManager.Vault.GetVaultFiles("Пенис")[i]);
                 
