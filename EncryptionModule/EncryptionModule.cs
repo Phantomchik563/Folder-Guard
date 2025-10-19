@@ -6,7 +6,7 @@ namespace EncryptionModule
 {
     public class Encryption
     {
-        public int EncryptFile(string inputPath, string outputPath, string metaSalt, string metaIterations, string password)
+        public static int EncryptFile(string inputPath, string outputPath, string metaSalt, string metaIterations, string password)
         {
             try
             {

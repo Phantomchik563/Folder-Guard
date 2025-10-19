@@ -190,14 +190,7 @@ namespace Folder_Guard
 
         private void buttonTest_Click(object sender, EventArgs e)
         {
-            int cnt = FileManager.Vault.GetVaultFiles("Пенис").Count();
-            for (int i = 0; i < cnt; i++)
-            {
-                listViewStorageFiles.Items.Add(FileManager.Vault.GetVaultFiles("Пенис")[i]);
-                
-            }
-            UpdateListViewStorage(FileManager.Vault.GetVaults());
-
+            EncryptionModule.Encryption.EncryptFile(@"Vaults\Пенис\test.txt", @"Vaults\Пенис\test.sf", EncryptionModule.Encryption.GetSalt(), "10000", "123");
         }
     }
 

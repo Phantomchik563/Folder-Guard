@@ -148,6 +148,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EncryptionModule\EncryptionModule.csproj">
+      <Project>{2d1eb669-7299-45ad-9b74-4799357b653f}</Project>
+      <Name>EncryptionModule</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FileManager\FileManager.csproj">
       <Project>{40329078-c07a-4a4b-a5fd-ef7d4ffb21ab}</Project>
       <Name>FileManager</Name>

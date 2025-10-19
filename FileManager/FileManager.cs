@@ -16,12 +16,13 @@ namespace FileManager
         {
             public string salt;
             public int iterationCount;
+            public string hmac;
             public string version;
-
-            public MetaFile(string salt, int iterationCount, string version) : this()
+            public MetaFile(string salt, int iterationCount, string version, string hmac) : this()
             {
                 this.salt = salt;
                 this.iterationCount = iterationCount;
+                this.hmac = hmac;
                 this.version = version;
             }
         }
@@ -40,6 +41,7 @@ namespace FileManager
         }
         public static List<string> GetVaultFiles(string vault) // Метод, возвращающий список файлов в хранилище
         {
+
             List<string> files = new List<string>();
             string[] vaultFiles = Directory.GetFiles(@"Vaults\" + vault);
             foreach (string file in vaultFiles)
@@ -67,11 +69,13 @@ namespace FileManager
 
             string ver = Assembly.GetExecutingAssembly().GetName().Version.ToString();
             string salt = EncryptionModule.Encryption.GetSalt();
-            MetaFile metaFile = new MetaFile(salt, iterationCount, ver);
+            //string hmac = EncryptionModule.Encryption.GetHmac(salt, iterationCount, vaultPassword);
+            MetaFile metaFile = new MetaFile(salt, iterationCount, "hmac", ver);
             using (BinaryWriter binWriter = new BinaryWriter(File.Open(@"Vaults\\" + vaultName + @"\\meta.dat", FileMode.OpenOrCreate)))
             {
                 binWriter.Write(metaFile.salt);
                 binWriter.Write(metaFile.iterationCount);
+                binWriter.Write(metaFile.hmac);
                 binWriter.Write(metaFile.version);
             }
 
