@@ -73,6 +73,89 @@ namespace EncryptionModule
                 return 3; //Неизвестная ошибка
             }
         }
+        public static int Decode(string metaSalt, string inputPath, string outputPath, int metaIterations, string password)
+        {
+            try
+            {
+                byte[] salt = Convert.FromBase64String(metaSalt);
+                byte[] key;
+                int iterations = metaIterations;
+                byte[] hmacKey;
+
+
+                using (var pbkdf2 = new Rfc2898DeriveBytes(password, salt, iterations, HashAlgorithmName.SHA256))
+                {
+                    key = pbkdf2.GetBytes(32); // AES-256 ключ
+                    hmacKey = pbkdf2.GetBytes(32); // HMAC-ключ
+                }
+
+
+                byte[] fileBytes = File.ReadAllBytes(inputPath);
+                byte[] storedHmac = new byte[32];
+                if (fileBytes.Length < 48) //Проверка длины файла: IV, имя, HMAC
+                    return 5; // Файл поврежден
+                Array.Copy(fileBytes, fileBytes.Length - 32, storedHmac, 0, 32);
+
+
+                byte[] encryptedData = new byte[fileBytes.Length - 32];
+                Array.Copy(fileBytes, 0, encryptedData, 0, encryptedData.Length);
+
+
+                using (var hmac = new HMACSHA256(hmacKey))
+                {
+                    byte[] computedHmac = hmac.ComputeHash(encryptedData);
+                    for (int i = 0; i < storedHmac.Length; i++)
+                        if (storedHmac[i] != computedHmac[i]) return 1; //HMAC не совпал
+                }
+
+
+                using (MemoryStream ms = new MemoryStream(encryptedData))
+                {
+                    int nameLength = ms.ReadByte(); //Считать lдлину имени файла
+                    if (nameLength <= 0 || nameLength > 255)
+                        return 5; // Ошибка структуры файла
+                    byte[] nameBytes = new byte[nameLength];
+                    ms.Read(nameBytes, 0, nameLength); //Считать имя файла
+                    string originalFileName = System.Text.Encoding.UTF8.GetString(nameBytes); //Хранит имя файла
+
+
+                    byte[] iv = new byte[16];
+                    ms.Read(iv, 0, iv.Length); //Считать IV
+
+
+                    using (Aes aes = Aes.Create())
+                    {
+                        aes.KeySize = 256;
+                        aes.Key = key;
+                        aes.IV = iv;
+                        aes.Mode = CipherMode.CBC;
+                        aes.Padding = PaddingMode.PKCS7;
+
+
+                        using (CryptoStream cryptoStream = new CryptoStream(ms, aes.CreateDecryptor(), CryptoStreamMode.Read))
+                        using (FileStream fsOutput = new FileStream(Path.Combine(outputPath, originalFileName), FileMode.Create, FileAccess.Write))
+                        {
+                            cryptoStream.CopyTo(fsOutput);
+                        }
+                    }
+                }
+                
+
+                return 0; //Файл расшифрован
+            }
+            catch (IOException)
+            {
+                return 2; //Ошибка чтения/записи
+            }
+            catch (CryptographicException)
+            {
+                return 3; //Ошибка дешифрования файла
+            }
+            catch (Exception)
+            {
+                return 4; //Неизвестная ошибка
+            }
+        }
         public static string GetSalt()
         {
             byte[] salt = new byte[16];
