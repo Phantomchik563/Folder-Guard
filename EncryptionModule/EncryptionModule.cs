@@ -6,19 +6,19 @@ namespace EncryptionModule
 {
     public class Encryption
     {
-        public static int EncryptFile(string inputPath, string outputPath, string metaSalt, string metaIterations, string password)
+        public int EncryptFile(string inputPath, string outputPath, string metaSalt, int metaIterations, string password)
         {
             try
             {
-                //=============================== Обработка входных данных ===============================
+
                 byte[] salt = Convert.FromBase64String(metaSalt);
-                byte[] key; //Массив для ключа
-                int iterations = int.Parse(metaIterations);
+                byte[] key;
+                int iterations = metaIterations;
                 byte[] hmacKey;
                 string fileName = Path.GetFileName(inputPath);
                 byte[] fileNameBytes = System.Text.Encoding.UTF8.GetBytes(fileName);
 
-                //=============================== Создание ключей =========================================
+
                 using (var pbkdf2 = new Rfc2898DeriveBytes(password, salt, iterations, HashAlgorithmName.SHA256))
                 {
                     key = pbkdf2.GetBytes(32); // AES-256 ключ
@@ -27,7 +27,7 @@ namespace EncryptionModule
                 //Rfc2898DeriveBytes - класс для реализации PBKDF2 
                 //HashAlgorithmName.SHA256 - использование алгоритма SHA-256
 
-                //=============================== Создание AES-объекта ===================================
+
                 using (Aes aes = Aes.Create()) //aes - переменная типа Aes
                 {
                     aes.KeySize = 256;
@@ -36,7 +36,7 @@ namespace EncryptionModule
                     aes.Mode = CipherMode.CBC; //Режим шифрования (В CBC каждый блок зависит от предыдущего)
                     aes.Padding = PaddingMode.PKCS7; //Увеличение размера блока до 16 байт
 
-                    //=========================== Шифрование =============================================
+
                     using (FileStream fsInput = new FileStream(inputPath, FileMode.Open, FileAccess.Read))
                     using (FileStream fsOutput = new FileStream(outputPath, FileMode.Create, FileAccess.Write))
                     {
@@ -46,11 +46,11 @@ namespace EncryptionModule
                         using (CryptoStream cryptoStream = new CryptoStream(fsOutput, aes.CreateEncryptor(), CryptoStreamMode.Write))
                         {
                             fsInput.CopyTo(cryptoStream); //Копирование содержимого файла в поток шифрования cryptoStream
-                            cryptoStream.FlushFinalBlock(); //Закрытие потока
+                            cryptoStream.FlushFinalBlock();
                         }
                     }
                 }
-                //=========================== Добавление HMAC =========================================
+
                 using (var hmac = new HMACSHA256(hmacKey))
                 using (FileStream fsEncrypted = new FileStream(outputPath, FileMode.Open, FileAccess.ReadWrite))
                 {
@@ -75,13 +75,30 @@ namespace EncryptionModule
         }
         public static string GetSalt()
         {
-            byte[] salt = new byte[16]; //Массив для хранения соли
-            using (var rng = RandomNumberGenerator.Create()) //Создание ГСЧ
+            byte[] salt = new byte[16];
+            using (var rng = RandomNumberGenerator.Create())
             {
-                rng.GetBytes(salt); //Заполнение соли
+                rng.GetBytes(salt);
+            }
+            return Convert.ToBase64String(salt);
+        }
+        public static string GetHmac(string metaSalt, int metaIterations, string password)
+        {
+            byte[] salt = Convert.FromBase64String(metaSalt);
+            int iterations = metaIterations;
+            byte[] hmacKey;
+            byte[] hash;
+
+            using (var pbkdf2 = new Rfc2898DeriveBytes(password, salt, iterations, HashAlgorithmName.SHA256))
+            {
+                hmacKey = pbkdf2.GetBytes(32); // HMAC-ключ
             }
 
-            return Convert.ToBase64String(salt); //Возвращает соль в виде строки
+            using (var hmac = new HMACSHA256(hmacKey))
+            {
+                hash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+            }
+            return Convert.ToBase64String(hash);
         }
     }
 }
