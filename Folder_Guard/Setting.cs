@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Reflection.Emit;
@@ -13,16 +14,24 @@ namespace Folder_Guard
 {
     public partial class FormSetting : Form
     {
+        int ThemeSetting = Properties.Settings.Default.Theme;
+        int Iterations = Properties.Settings.Default.Iteration;
         public FormSetting()
         {
             InitializeComponent();
             Themes();
-            
+            button2.Enabled = false;
+            textBox1.Text = Properties.Settings.Default.Iteration.ToString();
+
             comboBox1.SelectedIndex = Properties.Settings.Default.Theme;
+
         }
+
+
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) // Триггер на выбор тем
         {
+
             switch (comboBox1.SelectedIndex)
             {
 
@@ -36,7 +45,10 @@ namespace Folder_Guard
                     break;
             }
             Properties.Settings.Default.Save();
+           
         }
+           
+
 
         void Themes()
         {
@@ -44,6 +56,7 @@ namespace Folder_Guard
             {
                 case 0: // Светлая тема
                     {
+                        
                         this.BackColor = Color.FromArgb(255, 255, 255);
                         label1.BackColor = Color.FromArgb(245, 245, 245);
                         label1.ForeColor = Color.FromArgb(33, 33, 33);
@@ -53,8 +66,7 @@ namespace Folder_Guard
                         label3.ForeColor = Color.FromArgb(33, 33, 33);
                         textBox1.BackColor = Color.FromArgb(255, 255, 255);
                         textBox1.ForeColor = Color.FromArgb(33, 33, 33);
-                        button1.BackColor = Color.FromArgb(255, 255, 255);
-                        button1.ForeColor = Color.FromArgb(33, 33, 33);
+                 
                         comboBox1.BackColor = Color.FromArgb(255, 255, 255);
                         comboBox1.ForeColor = Color.FromArgb(33, 33, 33);
                         pictureBox1.BackColor = Color.FromArgb(245, 245, 245);
@@ -65,8 +77,9 @@ namespace Folder_Guard
 
                 case 1: // Тёмная тема (40, 40, 40) (33, 33, 33)
                     {
+                        
                         this.BackColor = Color.FromArgb(33, 33, 33);
-                        label1.BackColor = Color.FromArgb(33, 33, 33);
+                        label1.BackColor = Color.FromArgb(40, 40, 40);
                         label1.ForeColor = Color.FromArgb(255, 255, 255);
                         label2.BackColor = Color.FromArgb(33, 33, 33);
                         label2.ForeColor = Color.FromArgb(255, 255, 255);
@@ -74,25 +87,63 @@ namespace Folder_Guard
                         label3.ForeColor = Color.FromArgb(255, 255, 255);
                         textBox1.BackColor = Color.FromArgb(40, 40, 40);
                         textBox1.ForeColor = Color.FromArgb(255, 255, 255);
-                        button1.BackColor = Color.FromArgb(40, 40, 40);
-                        button1.ForeColor = Color.FromArgb(255, 255, 255);
+                        
                         comboBox1.BackColor = Color.FromArgb(40, 40, 40);
                         comboBox1.ForeColor = Color.FromArgb(255, 255, 255);
                         pictureBox1.BackColor = Color.FromArgb(40, 40, 40);
 
-                        
+
 
                         break;
                     }
             }
+            
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        
+
+        private void button2_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.Iteration = int.Parse(textBox1.Text);
-            Properties.Settings.Default.Save();
+            var result = MessageBox.Show("Применить изменения?","Подтверждение",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
+
+            if (result == DialogResult.OK)
+            {
+                Application.Exit();
+                Application.Restart();
+
+            }
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
 
 
+            try
+            {
+                Properties.Settings.Default.Iteration = int.Parse(textBox1.Text);
+                Properties.Settings.Default.Save();
+            }
+            catch (Exception ex) { }
+
+
+
+            
+            
+
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.Iteration != Iterations || Properties.Settings.Default.Theme != ThemeSetting)
+            {
+                button2.Enabled = true;
+            }
+            else
+            {
+                button2.Enabled= false;
+            }
         }
     }
 }
