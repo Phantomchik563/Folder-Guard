@@ -28,12 +28,13 @@ namespace FileManager
         public static List<string> GetVaults() // Метод, возвращающий список хранилищ
         {
             List<string> vaults = new List<string>();
-            if (Directory.Exists("Vaults") == false) Directory.CreateDirectory(@"Vaults\");
+            if (Directory.Exists("Vaults") == false) Directory.CreateDirectory(@"Vaults");
 
-            string[] vaultFolders = Directory.GetDirectories(@"Vaults\");
+            string[] vaultFolders = Directory.GetDirectories(@"Vaults");
             foreach (string dir in vaultFolders)
             {
-                vaults.Add(dir);
+                string[] dirParts = dir.Split('\\');
+                vaults.Add(dirParts[dirParts.Length - 1]);
             }
 
             return vaults;
@@ -59,12 +60,12 @@ namespace FileManager
             List<string> vaults = GetVaults();
             if (vaults.Contains(vaultName)) return 2; // Проверка на повторяющиеся хранилища
 
-            Directory.CreateDirectory(@"Vaults\" + vaultName); // Создание директории хранилища
+            Directory.CreateDirectory(@"Vaults\\" + vaultName); // Создание директории хранилища
 
             string ver = Assembly.GetExecutingAssembly().GetName().Version.ToString();
             string salt = EncryptionModule.Encryption.GetSalt();
             MetaFile metaFile = new MetaFile(salt, iterationCount, ver);
-            using (BinaryWriter binWriter = new BinaryWriter(File.Open(@"Vaults\" + vaultName + @"\meta.dat", FileMode.OpenOrCreate)))
+            using (BinaryWriter binWriter = new BinaryWriter(File.Open(@"Vaults\\" + vaultName + @"\\meta.dat", FileMode.OpenOrCreate)))
             {
                 binWriter.Write(metaFile.salt);
                 binWriter.Write(metaFile.iterationCount);

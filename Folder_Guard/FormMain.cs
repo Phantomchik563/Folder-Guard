@@ -121,8 +121,8 @@ namespace Folder_Guard
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            var vaults = FileManager.Vault.GetVaults();
-            UpdateListViewStorage(vaults);
+            //var vaults = FileManager.Vault.GetVaults();
+            //UpdateListViewStorage(vaults);
 
         }
 
