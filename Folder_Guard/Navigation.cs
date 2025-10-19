@@ -67,7 +67,7 @@ namespace Folder_Guard
                         label5.ForeColor = Color.FromArgb(255, 255, 255);
                         label9.BackColor = Color.FromArgb(33, 33, 33);
                         label9.ForeColor = Color.FromArgb(255, 255, 255);
-                        label6.BackColor = Color.FromArgb(33, 33, 33);
+                        label6.BackColor = Color.FromArgb(40, 40, 40);
                         label6.ForeColor = Color.FromArgb(255, 255, 255);
                         pictureBox1.BackColor = Color.FromArgb(40, 40, 40);
                         pictureBox2.BackColor = Color.FromArgb(40, 40, 40);
