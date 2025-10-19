@@ -40,7 +40,14 @@ namespace FileManager
         }
         public static List<string> GetVaultFiles(string vault) // Метод, возвращающий список файлов в хранилище
         {
-            return GetVaults();
+            List<string> files = new List<string>();
+            string[] vaultFiles = Directory.GetDirectories(@"Vaults\" + vault);
+            foreach (string file in vaultFiles)
+            {
+                string[] fileParts = file.Split('.');
+                if (fileParts[fileParts.Length - 1] == ".sf") files.Add(file);
+            }
+            return files;
         }
         public static int CreateVault(string vaultName, string vaultPassword, int iterationCount) // Метод, создающий хранилище (Возвратные коды: 0 - всё ок; 1 - в названии недопустимые символы; 2 - такое имя уже есть в списке)
         {
@@ -66,5 +73,6 @@ namespace FileManager
 
             return 0;
         }
+
     }
 }
