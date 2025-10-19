@@ -69,7 +69,7 @@ namespace FileManager
 
             string ver = Assembly.GetExecutingAssembly().GetName().Version.ToString();
             string salt = EncryptionModule.Encryption.GetSalt();
-            //string hmac = EncryptionModule.Encryption.GetHmac(salt, iterationCount, vaultPassword);
+            string hmac = EncryptionModule.Encryption.GetHmac(salt, iterationCount, vaultPassword);
             MetaFile metaFile = new MetaFile(salt, iterationCount, "hmac", ver);
             using (BinaryWriter binWriter = new BinaryWriter(File.Open(@"Vaults\\" + vaultName + @"\\meta.dat", FileMode.OpenOrCreate)))
             {

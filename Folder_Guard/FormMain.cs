@@ -215,7 +215,7 @@ namespace Folder_Guard
 
         private void buttonTest_Click(object sender, EventArgs e)
         {
-            EncryptionModule.Encryption.EncryptFile(@"Vaults\Пенис\BPSR_1.0.350.exe", @"Vaults\Пенис\test.sf", EncryptionModule.Encryption.GetSalt(), "10000", "123");
+            //EncryptionModule.Encryption.EncryptFile(@"Vaults\Пенис\BPSR_1.0.350.exe", @"Vaults\Пенис\test.sf", EncryptionModule.Encryption.GetSalt(), "10000", "123");
         }
     }
 

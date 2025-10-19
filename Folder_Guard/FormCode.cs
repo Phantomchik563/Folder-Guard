@@ -49,9 +49,17 @@ namespace Folder_Guard
                         break;
                     }
 
-                case 1: // Тёмная тема
+                case 1: // Тёмная тема (40, 40, 40) (33, 33, 33)
                     {
-
+                        this.BackColor = Color.FromArgb(33, 33, 33);
+                        button1.BackColor = Color.FromArgb(40, 40, 40);
+                        button1.ForeColor = Color.FromArgb(255, 255, 255);
+                        buttonAddStorage.BackColor = Color.FromArgb(40, 40, 40);
+                        buttonAddStorage.ForeColor = Color.FromArgb(255, 255, 255);
+                        textBoxCode.BackColor = Color.FromArgb(33, 33, 33);
+                        textBoxCode.ForeColor = Color.FromArgb(255, 255, 255);
+                        label1.BackColor = Color.FromArgb(33, 33, 33);
+                        label1.ForeColor = Color.FromArgb(255, 255, 255);
                         break;
                     }
                     // Если нужны кнопки внутри формы, обработчики подключаем как обычно
