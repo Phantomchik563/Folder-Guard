@@ -142,6 +142,7 @@ namespace Folder_Guard
 
                         pictureBox1.BackColor = Color.FromArgb(245, 245, 245);
                         buttonCreateStorage.BackColor = Color.FromArgb(255, 255, 255);
+                        buttonCreateStorage.BackColor = Color.FromArgb(255, 255, 255);//Временная кнопка
                         buttonCreateStorage.ForeColor = Color.FromArgb(33, 33, 33);
                         buttonCode.BackColor = Color.FromArgb(255, 255, 255);
                         buttonCode.ForeColor = Color.FromArgb(33, 33, 33);
@@ -173,6 +174,7 @@ namespace Folder_Guard
                         this.BackColor = Color.FromArgb(33, 33, 33);
                         pictureBox1.BackColor = Color.FromArgb(40, 40, 40); ; //(40, 40, 40)
                         buttonCreateStorage.BackColor = Color.FromArgb(33, 33, 33);
+                        button1.BackColor = Color.FromArgb(255, 255, 255);//Временная кнопка
                         buttonCreateStorage.ForeColor = Color.FromArgb(255, 255, 255);
                         buttonCode.BackColor = Color.FromArgb(33, 33, 33);
                         buttonCode.ForeColor = Color.FromArgb(255, 255, 255);
@@ -216,6 +218,12 @@ namespace Folder_Guard
         private void buttonTest_Click(object sender, EventArgs e)
         {
             //EncryptionModule.Encryption.EncryptFile(@"Vaults\Пенис\BPSR_1.0.350.exe", @"Vaults\Пенис\test.sf", EncryptionModule.Encryption.GetSalt(), "10000", "123");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var vaults = FileManager.Vault.GetVaults();
+            UpdateListViewStorage(vaults);
         }
     }
 

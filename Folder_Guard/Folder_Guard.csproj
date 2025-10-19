@@ -157,5 +157,8 @@
       <Name>FileManager</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\png-klev-club-i1mb-p-krug-so-strelkoi-png-6.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

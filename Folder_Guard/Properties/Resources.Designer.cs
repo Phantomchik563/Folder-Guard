@@ -89,5 +89,15 @@ namespace Folder_Guard.Properties {
                 return ((System.Drawing.Icon)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap png_klev_club_i1mb_p_krug_so_strelkoi_png_6 {
+            get {
+                object obj = ResourceManager.GetObject("png_klev_club_i1mb_p_krug_so_strelkoi_png_6", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

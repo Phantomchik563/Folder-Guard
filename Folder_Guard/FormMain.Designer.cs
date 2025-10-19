@@ -46,6 +46,7 @@ namespace Folder_Guard
             this.listViewStorage = new System.Windows.Forms.ListView();
             this.label1 = new System.Windows.Forms.Label();
             this.panelFiles = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonTest = new System.Windows.Forms.Button();
             this.panelFiles.SuspendLayout();
@@ -213,6 +214,7 @@ namespace Folder_Guard
             // 
             this.panelFiles.BackColor = System.Drawing.Color.Transparent;
             this.panelFiles.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelFiles.Controls.Add(this.button1);
             this.panelFiles.Controls.Add(this.label1);
             this.panelFiles.Controls.Add(this.listViewStorage);
             this.panelFiles.Controls.Add(this.buttonUnCode);
@@ -226,6 +228,17 @@ namespace Folder_Guard
             this.panelFiles.Size = new System.Drawing.Size(287, 598);
             this.panelFiles.TabIndex = 12;
             this.panelFiles.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFiles_Paint);
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImage = global::Folder_Guard.Properties.Resources.png_klev_club_i1mb_p_krug_so_strelkoi_png_6;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Location = new System.Drawing.Point(256, 253);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(26, 26);
+            this.button1.TabIndex = 25;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox1
             // 
@@ -328,6 +341,7 @@ namespace Folder_Guard
         private Panel panelFiles;
         private PictureBox pictureBox1;
         private Button buttonTest;
+        private Button button1;
     }
 }
 
