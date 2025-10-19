@@ -51,7 +51,7 @@ namespace FileManager
         }
         public static int CreateVault(string vaultName, string vaultPassword, int iterationCount) // Метод, создающий хранилище (Возвратные коды: 0 - всё ок; 1 - в названии недопустимые символы; 2 - такое имя уже есть в списке)
         {
-            char[] exeptionChars = {'\\', '|', '/', '?', '\'', '*', ':', '<', '>'}; // Список недопустимых символов
+            char[] exeptionChars = {'\\', '|', '/', '?', '\'', '*', ':', '<', '>', '"'}; // Список недопустимых символов
             foreach(char c in vaultName)
             {
                 if (exeptionChars.Contains(c)) return 1; // Проверка на недопустимые символы
@@ -73,6 +73,11 @@ namespace FileManager
 
             return 0;
         }
+        public static int ImportToVault(string vaultName, string filePath, int iterationCount) // 
+        {
+            
 
+            return 0;
+        }
     }
 }
