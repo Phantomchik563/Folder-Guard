@@ -34,5 +34,17 @@ namespace Folder_Guard.Properties {
                 this["Theme"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Iteration {
+            get {
+                return ((int)(this["Iteration"]));
+            }
+            set {
+                this["Iteration"] = value;
+            }
+        }
     }
 }

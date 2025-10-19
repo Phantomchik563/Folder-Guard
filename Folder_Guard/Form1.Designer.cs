@@ -89,6 +89,7 @@
             this.button3.TabIndex = 14;
             this.button3.Text = "Отмена";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // buttonDelStorage
             // 
@@ -102,6 +103,7 @@
             this.buttonDelStorage.TabIndex = 15;
             this.buttonDelStorage.Text = "Ввести";
             this.buttonDelStorage.UseVisualStyleBackColor = false;
+            this.buttonDelStorage.Click += new System.EventHandler(this.buttonDelStorage_Click);
             // 
             // FormCreateStorage
             // 

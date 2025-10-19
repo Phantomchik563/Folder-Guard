@@ -181,7 +181,7 @@ namespace Folder_Guard
             this.listViewStorage.HideSelection = false;
             this.listViewStorage.Location = new System.Drawing.Point(6, 271);
             this.listViewStorage.Name = "listViewStorage";
-            this.listViewStorage.Size = new System.Drawing.Size(274, 364);
+            this.listViewStorage.Size = new System.Drawing.Size(274, 322);
             this.listViewStorage.TabIndex = 19;
             this.listViewStorage.UseCompatibleStateImageBehavior = false;
             // 
@@ -208,19 +208,19 @@ namespace Folder_Guard
             this.panelFiles.Controls.Add(this.buttonDelStorage);
             this.panelFiles.Controls.Add(this.buttonAddStorage);
             this.panelFiles.Controls.Add(this.buttonCode);
-            this.panelFiles.Location = new System.Drawing.Point(0, 0);
+            this.panelFiles.Location = new System.Drawing.Point(0, 39);
             this.panelFiles.Margin = new System.Windows.Forms.Padding(2);
             this.panelFiles.Name = "panelFiles";
-            this.panelFiles.Size = new System.Drawing.Size(287, 642);
+            this.panelFiles.Size = new System.Drawing.Size(287, 598);
             this.panelFiles.TabIndex = 12;
             this.panelFiles.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFiles_Paint);
             // 
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(286, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(616, 39);
+            this.pictureBox1.Size = new System.Drawing.Size(902, 39);
             this.pictureBox1.TabIndex = 23;
             this.pictureBox1.TabStop = false;
             // 
@@ -243,7 +243,7 @@ namespace Folder_Guard
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(901, 642);
+            this.ClientSize = new System.Drawing.Size(901, 640);
             this.Controls.Add(this.buttonTest);
             this.Controls.Add(this.listViewStorageFiles);
             this.Controls.Add(this.buttonSetting);

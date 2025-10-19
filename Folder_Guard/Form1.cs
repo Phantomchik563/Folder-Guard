@@ -66,6 +66,26 @@ namespace Folder_Guard
 
             }
         }
+
+        private void buttonDelStorage_Click(object sender, EventArgs e)
+        {
+            int results = FileManager.Vault.CreateVault(textBox1.Text, textBox2.Text, Properties.Settings.Default.Iteration); // Textbox1 - Название хранилища  Textbox2 - Пароль от хранилища  
+            switch (results)
+            {
+                case 1:
+                    MessageBox.Show("Недопустимые символы в названии хранилища");
+                    break;
+                case 2:
+                    MessageBox.Show("Хранилище с таким именем уже существует!");
+                    break;
+            }                                                                                                                 
+            this.Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 
 

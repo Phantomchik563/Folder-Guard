@@ -17,6 +17,7 @@ namespace Folder_Guard
         {
             InitializeComponent();
             Themes();
+            
             comboBox1.SelectedIndex = Properties.Settings.Default.Theme;
         }
 
@@ -70,5 +71,12 @@ namespace Folder_Guard
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Iteration = int.Parse(textBox1.Text);
+            Properties.Settings.Default.Save();
+
+
+        }
     }
 }
