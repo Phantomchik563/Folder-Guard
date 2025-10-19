@@ -86,7 +86,7 @@ namespace Folder_Guard
             switch (results)
             {
                 case 1:
-                    MessageBox.Show("Недопустимые символы в названии хранилища","Ошибка",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    MessageBox.Show("Недопустимые символы в названии хранилища!","Ошибка",MessageBoxButtons.OK,MessageBoxIcon.Error);
                     break;
                 case 2:
                     MessageBox.Show("Хранилище с таким именем уже существует!","Ошибка",MessageBoxButtons.OK,MessageBoxIcon.Error);

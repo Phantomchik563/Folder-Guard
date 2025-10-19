@@ -7,6 +7,7 @@ using System.Linq;
 using System.Reflection.Emit;
 using System.Windows.Forms;
 using static System.Net.WebRequestMethods;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 
 namespace Folder_Guard
 {
@@ -192,11 +193,11 @@ namespace Folder_Guard
                         listViewStorage.ForeColor = Color.FromArgb(255, 255, 255);
                         listViewStorageFiles.BackColor = Color.FromArgb(33, 33, 33);
                         listViewStorageFiles.ForeColor = Color.FromArgb(255, 255, 255);
-                        label1.BackColor = Color.FromArgb(40, 40, 40); 
+                        label1.BackColor = Color.FromArgb(40, 40, 40);
                         label1.ForeColor = Color.FromArgb(255, 255, 255);
                         label2.BackColor = Color.FromArgb(33, 33, 33);
                         label2.ForeColor = Color.FromArgb(255, 255, 255);
-                        panelFiles.BackColor = Color.FromArgb(40, 40, 40); 
+                        panelFiles.BackColor = Color.FromArgb(40, 40, 40);
 
                         break;
                     }
@@ -225,6 +226,22 @@ namespace Folder_Guard
             var vaults = FileManager.Vault.GetVaults();
             UpdateListViewStorage(vaults);
         }
+
+        //Коды ошибок ля модуля Encryption
+        //switch (Переменная)
+        //    {
+        //        case 1:
+        //            MessageBox.Show("Ошибка чтения или записи файла!","Ошибка",MessageBoxButtons.OK,MessageBoxIcon.Error);
+        //            break;
+        //        case 2:
+        //            MessageBox.Show("Ошибка шифрования.","Ошибка",MessageBoxButtons.OK,MessageBoxIcon.Error);
+        //            break;
+        //        case 3:
+        //            MessageBox.Show(" Неизвестная ошибка.","Ошибка",MessageBoxButtons.OK,MessageBoxIcon.Eror);
+        //            break;
+        //    }                                                                                                                 
+        //    this.Close();
+
     }
 
 
