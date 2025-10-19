@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Windows.Forms;
+using static System.Net.WebRequestMethods;
 
 namespace Folder_Guard
 {
@@ -21,6 +22,7 @@ namespace Folder_Guard
         {
             InitializeComponent();
             Themes();
+            UpdateListViewStorage(FileManager.Vault.GetVaults());
             // Список элементов, которые будут плавно появляться
             uiElements = new Control[]
             {
@@ -194,7 +196,7 @@ namespace Folder_Guard
                 listViewStorageFiles.Items.Add(FileManager.Vault.GetVaultFiles("Пенис")[i]);
                 
             }
-
+            UpdateListViewStorage(FileManager.Vault.GetVaults());
 
         }
     }

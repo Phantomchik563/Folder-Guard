@@ -94,6 +94,7 @@ namespace Folder_Guard
             // 
             // listViewStorageFiles
             // 
+            this.listViewStorageFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listViewStorageFiles.HideSelection = false;
             this.listViewStorageFiles.LabelWrap = false;
             this.listViewStorageFiles.Location = new System.Drawing.Point(311, 145);
@@ -101,6 +102,7 @@ namespace Folder_Guard
             this.listViewStorageFiles.Size = new System.Drawing.Size(578, 491);
             this.listViewStorageFiles.TabIndex = 20;
             this.listViewStorageFiles.UseCompatibleStateImageBehavior = false;
+            this.listViewStorageFiles.View = System.Windows.Forms.View.List;
             // 
             // timer1
             // 
