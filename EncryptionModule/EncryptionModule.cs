@@ -1,4 +1,6 @@
-﻿using System; using System.IO; using System.Security.Cryptography;
+﻿using System;
+using System.IO; 
+using System.Security.Cryptography;
 
 namespace EncryptionModule
 {
@@ -11,6 +13,8 @@ namespace EncryptionModule
             byte[] key; //Массив для ключа
             int iterations = int.Parse(metaIterations);
             byte[] hmacKey;
+            string fileName = Path.GetFileName(inputPath);
+            byte[] fileNameBytes = System.Text.Encoding.UTF8.GetBytes(fileName);
 
             //=============================== Создание ключей =========================================
             using (var pbkdf2 = new Rfc2898DeriveBytes(password, salt, iterations, HashAlgorithmName.SHA256))
@@ -30,10 +34,12 @@ namespace EncryptionModule
                 aes.Mode = CipherMode.CBC; //Режим шифрования (В CBC каждый блок зависит от предыдущего)
                 aes.Padding = PaddingMode.PKCS7; //Увеличение размера блока до 16 байт
 
-                //===========================Шифрование=============================================
+                //=========================== Шифрование =============================================
                 using (FileStream fsInput = new FileStream(inputPath, FileMode.Open, FileAccess.Read))
                 using (FileStream fsOutput = new FileStream(outputPath, FileMode.Create, FileAccess.Write))
                 {
+                    fsOutput.WriteByte((byte)fileNameBytes.Length); //1 байт для длины имени
+                    fsOutput.Write(fileNameBytes, 0, fileNameBytes.Length); //Имя файла
                     fsOutput.Write(aes.IV, 0, aes.IV.Length); //Ввод IV в начало файла
                     using (CryptoStream cryptoStream = new CryptoStream(fsOutput, aes.CreateEncryptor(), CryptoStreamMode.Write))
                     {
@@ -41,7 +47,7 @@ namespace EncryptionModule
                     }
                 }
             }
-            //=========================== Добавляем HMAC =========================================
+            //=========================== Добавление HMAC =========================================
             using (var hmac = new HMACSHA256(hmacKey))
             using (FileStream fsEncrypted = new FileStream(outputPath, FileMode.Open, FileAccess.ReadWrite))
             {
