@@ -66,7 +66,8 @@ namespace Folder_Guard
                         label3.ForeColor = Color.FromArgb(33, 33, 33);
                         textBox1.BackColor = Color.FromArgb(255, 255, 255);
                         textBox1.ForeColor = Color.FromArgb(33, 33, 33);
-                 
+                        button2.BackColor = Color.FromArgb(255, 255, 255);
+                        button2.ForeColor = Color.FromArgb(33, 33, 33);
                         comboBox1.BackColor = Color.FromArgb(255, 255, 255);
                         comboBox1.ForeColor = Color.FromArgb(33, 33, 33);
                         pictureBox1.BackColor = Color.FromArgb(245, 245, 245);
@@ -87,7 +88,8 @@ namespace Folder_Guard
                         label3.ForeColor = Color.FromArgb(255, 255, 255);
                         textBox1.BackColor = Color.FromArgb(40, 40, 40);
                         textBox1.ForeColor = Color.FromArgb(255, 255, 255);
-                        
+                        button2.BackColor = Color.FromArgb(33, 33, 33);
+                        button2.ForeColor = Color.FromArgb(255, 255, 255);
                         comboBox1.BackColor = Color.FromArgb(40, 40, 40);
                         comboBox1.ForeColor = Color.FromArgb(255, 255, 255);
                         pictureBox1.BackColor = Color.FromArgb(40, 40, 40);
