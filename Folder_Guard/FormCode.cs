@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Drawing;
+using System.Reflection.Emit;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Folder_Guard
 {
@@ -8,6 +11,7 @@ namespace Folder_Guard
         public FormCode()
         {
             InitializeComponent();
+            Themes();
 
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.StartPosition = FormStartPosition.CenterParent;
@@ -25,7 +29,35 @@ namespace Folder_Guard
             this.Close();
         }
 
-        // Если нужны кнопки внутри формы, обработчики подключаем как обычно
-        // button2 оставляем для другой логики
+        void Themes()
+        {
+            switch (Properties.Settings.Default.Theme)
+            {
+                case 0: // Светлая тема
+                    {
+                        this.BackColor = Color.FromArgb(250, 250, 250);
+                        button1.BackColor = Color.FromArgb(250, 250, 250);
+                        button1.ForeColor = Color.FromArgb(33, 33, 33);
+                        buttonAddStorage.BackColor = Color.FromArgb(255, 255, 255);
+                        buttonAddStorage.ForeColor = Color.FromArgb(33, 33, 33);
+                        textBoxCode.BackColor = Color.FromArgb(250, 250, 250);
+                        textBoxCode.ForeColor = Color.FromArgb(33, 33, 33);
+                        label1.BackColor = Color.FromArgb(250, 250, 250);
+                        label1.ForeColor = Color.FromArgb(33, 33, 33);
+
+
+                        break;
+                    }
+
+                case 1: // Тёмная тема
+                    {
+
+                        break;
+                    }
+                    // Если нужны кнопки внутри формы, обработчики подключаем как обычно
+                    // button2 оставляем для другой логики
+            }
+        }
     }
 }
+
