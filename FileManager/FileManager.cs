@@ -36,13 +36,12 @@ namespace FileManager
                 string[] dirParts = dir.Split('\\');
                 vaults.Add(dirParts[dirParts.Length - 1]);
             }
-
             return vaults;
         }
         public static List<string> GetVaultFiles(string vault) // Метод, возвращающий список файлов в хранилище
         {
             List<string> files = new List<string>();
-            string[] vaultFiles = Directory.GetDirectories(@"Vaults\" + vault);
+            string[] vaultFiles = Directory.GetFiles(@"Vaults\" + vault);
             foreach (string file in vaultFiles)
             {
                 string[] fileParts = file.Split('.');
