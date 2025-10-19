@@ -95,6 +95,7 @@ namespace Folder_Guard
             // listViewStorageFiles
             // 
             this.listViewStorageFiles.HideSelection = false;
+            this.listViewStorageFiles.LabelWrap = false;
             this.listViewStorageFiles.Location = new System.Drawing.Point(311, 145);
             this.listViewStorageFiles.Name = "listViewStorageFiles";
             this.listViewStorageFiles.Size = new System.Drawing.Size(578, 491);

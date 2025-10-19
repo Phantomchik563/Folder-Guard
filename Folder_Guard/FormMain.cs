@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Reflection.Emit;
 using System.Windows.Forms;
 
@@ -187,6 +188,12 @@ namespace Folder_Guard
 
         private void buttonTest_Click(object sender, EventArgs e)
         {
+            for (int i = 0; i < FileManager.Vault.GetVaultFiles("Пенис").Count(); i++)
+            {
+                listViewStorageFiles.Items.Add(FileManager.Vault.GetVaultFiles("Пенис")[i]);
+                
+            }
+
 
         }
     }
