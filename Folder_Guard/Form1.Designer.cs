@@ -80,7 +80,8 @@
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.DimGray;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Niagara Solid", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button3.Location = new System.Drawing.Point(17, 195);
@@ -94,7 +95,8 @@
             // buttonDelStorage
             // 
             this.buttonDelStorage.BackColor = System.Drawing.Color.DimGray;
-            this.buttonDelStorage.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonDelStorage.FlatAppearance.BorderSize = 0;
+            this.buttonDelStorage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDelStorage.Font = new System.Drawing.Font("Niagara Solid", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDelStorage.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonDelStorage.Location = new System.Drawing.Point(224, 194);

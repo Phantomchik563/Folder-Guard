@@ -46,6 +46,7 @@ namespace EncryptionModule
                         using (CryptoStream cryptoStream = new CryptoStream(fsOutput, aes.CreateEncryptor(), CryptoStreamMode.Write))
                         {
                             fsInput.CopyTo(cryptoStream); //Копирование содержимого файла в поток шифрования cryptoStream
+                            cryptoStream.FlushFinalBlock(); //Закрытие потока
                         }
                     }
                 }

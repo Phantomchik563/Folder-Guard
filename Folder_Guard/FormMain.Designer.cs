@@ -55,12 +55,13 @@ namespace Folder_Guard
             // buttonHelp
             // 
             this.buttonHelp.BackColor = System.Drawing.Color.DimGray;
-            this.buttonHelp.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonHelp.FlatAppearance.BorderSize = 0;
+            this.buttonHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonHelp.Font = new System.Drawing.Font("Niagara Solid", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonHelp.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonHelp.Location = new System.Drawing.Point(777, 6);
+            this.buttonHelp.Location = new System.Drawing.Point(788, 2);
             this.buttonHelp.Name = "buttonHelp";
-            this.buttonHelp.Size = new System.Drawing.Size(113, 29);
+            this.buttonHelp.Size = new System.Drawing.Size(113, 35);
             this.buttonHelp.TabIndex = 16;
             this.buttonHelp.Text = "Помощь";
             this.buttonHelp.UseVisualStyleBackColor = false;
@@ -81,12 +82,13 @@ namespace Folder_Guard
             // buttonSetting
             // 
             this.buttonSetting.BackColor = System.Drawing.Color.DimGray;
-            this.buttonSetting.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonSetting.FlatAppearance.BorderSize = 0;
+            this.buttonSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSetting.Font = new System.Drawing.Font("Niagara Solid", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSetting.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonSetting.Location = new System.Drawing.Point(645, 6);
+            this.buttonSetting.Location = new System.Drawing.Point(671, 2);
             this.buttonSetting.Name = "buttonSetting";
-            this.buttonSetting.Size = new System.Drawing.Size(113, 29);
+            this.buttonSetting.Size = new System.Drawing.Size(113, 35);
             this.buttonSetting.TabIndex = 22;
             this.buttonSetting.Text = "Настройки";
             this.buttonSetting.UseVisualStyleBackColor = false;
@@ -99,7 +101,7 @@ namespace Folder_Guard
             this.listViewStorageFiles.LabelWrap = false;
             this.listViewStorageFiles.Location = new System.Drawing.Point(311, 145);
             this.listViewStorageFiles.Name = "listViewStorageFiles";
-            this.listViewStorageFiles.Size = new System.Drawing.Size(578, 491);
+            this.listViewStorageFiles.Size = new System.Drawing.Size(568, 483);
             this.listViewStorageFiles.TabIndex = 20;
             this.listViewStorageFiles.UseCompatibleStateImageBehavior = false;
             this.listViewStorageFiles.View = System.Windows.Forms.View.List;
@@ -112,12 +114,13 @@ namespace Folder_Guard
             // buttonCode
             // 
             this.buttonCode.BackColor = System.Drawing.Color.DimGray;
-            this.buttonCode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonCode.FlatAppearance.BorderSize = 0;
+            this.buttonCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCode.Font = new System.Drawing.Font("Niagara Solid", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCode.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonCode.Location = new System.Drawing.Point(6, 53);
+            this.buttonCode.Location = new System.Drawing.Point(-1, 51);
             this.buttonCode.Name = "buttonCode";
-            this.buttonCode.Size = new System.Drawing.Size(274, 29);
+            this.buttonCode.Size = new System.Drawing.Size(287, 45);
             this.buttonCode.TabIndex = 1;
             this.buttonCode.Text = "Открыть хранилище";
             this.buttonCode.UseVisualStyleBackColor = false;
@@ -126,12 +129,13 @@ namespace Folder_Guard
             // buttonAddStorage
             // 
             this.buttonAddStorage.BackColor = System.Drawing.Color.DimGray;
-            this.buttonAddStorage.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonAddStorage.FlatAppearance.BorderSize = 0;
+            this.buttonAddStorage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddStorage.Font = new System.Drawing.Font("Niagara Solid", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAddStorage.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonAddStorage.Location = new System.Drawing.Point(6, 96);
+            this.buttonAddStorage.Location = new System.Drawing.Point(-1, 102);
             this.buttonAddStorage.Name = "buttonAddStorage";
-            this.buttonAddStorage.Size = new System.Drawing.Size(274, 29);
+            this.buttonAddStorage.Size = new System.Drawing.Size(287, 45);
             this.buttonAddStorage.TabIndex = 13;
             this.buttonAddStorage.Text = "Импорт  в хранилище";
             this.buttonAddStorage.UseVisualStyleBackColor = false;
@@ -140,12 +144,13 @@ namespace Folder_Guard
             // buttonDelStorage
             // 
             this.buttonDelStorage.BackColor = System.Drawing.Color.DimGray;
-            this.buttonDelStorage.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonDelStorage.FlatAppearance.BorderSize = 0;
+            this.buttonDelStorage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDelStorage.Font = new System.Drawing.Font("Niagara Solid", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDelStorage.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonDelStorage.Location = new System.Drawing.Point(6, 193);
+            this.buttonDelStorage.Location = new System.Drawing.Point(-1, 205);
             this.buttonDelStorage.Name = "buttonDelStorage";
-            this.buttonDelStorage.Size = new System.Drawing.Size(274, 29);
+            this.buttonDelStorage.Size = new System.Drawing.Size(287, 45);
             this.buttonDelStorage.TabIndex = 14;
             this.buttonDelStorage.Text = "Удалить файл";
             this.buttonDelStorage.UseVisualStyleBackColor = false;
@@ -153,12 +158,13 @@ namespace Folder_Guard
             // buttonCreateStorage
             // 
             this.buttonCreateStorage.BackColor = System.Drawing.Color.DimGray;
-            this.buttonCreateStorage.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonCreateStorage.FlatAppearance.BorderSize = 0;
+            this.buttonCreateStorage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCreateStorage.Font = new System.Drawing.Font("Niagara Solid", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCreateStorage.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonCreateStorage.Location = new System.Drawing.Point(6, 9);
+            this.buttonCreateStorage.Location = new System.Drawing.Point(-1, 0);
             this.buttonCreateStorage.Name = "buttonCreateStorage";
-            this.buttonCreateStorage.Size = new System.Drawing.Size(274, 29);
+            this.buttonCreateStorage.Size = new System.Drawing.Size(287, 45);
             this.buttonCreateStorage.TabIndex = 15;
             this.buttonCreateStorage.Text = "Создать хранилище";
             this.buttonCreateStorage.UseVisualStyleBackColor = false;
@@ -167,12 +173,13 @@ namespace Folder_Guard
             // buttonUnCode
             // 
             this.buttonUnCode.BackColor = System.Drawing.Color.DimGray;
-            this.buttonUnCode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonUnCode.FlatAppearance.BorderSize = 0;
+            this.buttonUnCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUnCode.Font = new System.Drawing.Font("Niagara Solid", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonUnCode.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonUnCode.Location = new System.Drawing.Point(6, 144);
+            this.buttonUnCode.Location = new System.Drawing.Point(-1, 153);
             this.buttonUnCode.Name = "buttonUnCode";
-            this.buttonUnCode.Size = new System.Drawing.Size(274, 29);
+            this.buttonUnCode.Size = new System.Drawing.Size(287, 45);
             this.buttonUnCode.TabIndex = 16;
             this.buttonUnCode.Text = "Экспорт из хранилища";
             this.buttonUnCode.UseVisualStyleBackColor = false;
@@ -180,13 +187,15 @@ namespace Folder_Guard
             // listViewStorage
             // 
             this.listViewStorage.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.listViewStorage.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listViewStorage.ForeColor = System.Drawing.SystemColors.Window;
             this.listViewStorage.HideSelection = false;
-            this.listViewStorage.Location = new System.Drawing.Point(6, 271);
+            this.listViewStorage.Location = new System.Drawing.Point(6, 282);
             this.listViewStorage.Name = "listViewStorage";
-            this.listViewStorage.Size = new System.Drawing.Size(274, 322);
+            this.listViewStorage.Size = new System.Drawing.Size(274, 306);
             this.listViewStorage.TabIndex = 19;
             this.listViewStorage.UseCompatibleStateImageBehavior = false;
+            this.listViewStorage.View = System.Windows.Forms.View.List;
             // 
             // label1
             // 
@@ -194,7 +203,7 @@ namespace Folder_Guard
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(3, 243);
+            this.label1.Location = new System.Drawing.Point(1, 254);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(200, 25);
             this.label1.TabIndex = 24;
@@ -233,7 +242,7 @@ namespace Folder_Guard
             this.buttonTest.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonTest.Font = new System.Drawing.Font("Niagara Solid", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonTest.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonTest.Location = new System.Drawing.Point(777, 65);
+            this.buttonTest.Location = new System.Drawing.Point(738, 56);
             this.buttonTest.Name = "buttonTest";
             this.buttonTest.Size = new System.Drawing.Size(112, 29);
             this.buttonTest.TabIndex = 25;

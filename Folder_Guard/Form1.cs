@@ -57,8 +57,21 @@ namespace Folder_Guard
                         break;
                     }
 
-                case 1: // Тёмная тема
+                case 1: // Тёмная тема (40, 40, 40) (33, 33, 33)
                     {
+                        this.BackColor = Color.FromArgb(33, 33, 33);
+                        button3.BackColor = Color.FromArgb(40, 40, 40);
+                        button3.ForeColor = Color.FromArgb(255, 255, 255);
+                        buttonDelStorage.BackColor = Color.FromArgb(40, 40, 40);
+                        buttonDelStorage.ForeColor = Color.FromArgb(255, 255, 255);
+                        textBox1.BackColor = Color.FromArgb(33, 33, 33);
+                        textBox1.ForeColor = Color.FromArgb(255, 255, 255);
+                        textBox2.BackColor = Color.FromArgb(33, 33, 33);
+                        textBox2.ForeColor = Color.FromArgb(255, 255, 255);
+                        label4.BackColor = Color.FromArgb(33, 33, 33);
+                        label4.ForeColor = Color.FromArgb(255, 255, 255);
+                        label3.BackColor = Color.FromArgb(33, 33, 33);
+                        label3.ForeColor = Color.FromArgb(255, 255, 255);
 
                         break;
                     }
