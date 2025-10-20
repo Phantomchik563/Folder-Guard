@@ -81,6 +81,23 @@ namespace FileManager
 
             return 0;
         }
+        public static int GetAccessToVault(string vaultName, string password) // Метод, разрешающий или запрещающий доступ к хранилищу
+        {
+            if (File.Exists(@"Vaults\\" + vaultName + @"\\meta.dat")) // Проверка на наличие метафайла
+            {
+                using (BinaryReader reader = new BinaryReader(File.Open(@"Vaults\\" + vaultName + @"\\meta.dat", FileMode.Open)))
+                {
+                    string salt = reader.ReadString();
+                    int iterationCount = reader.ReadInt32();
+                    string hmac = reader.ReadString();
+                    string version = reader.ReadString();
+                    string userHmac = EncryptionModule.Encryption.GetHmac(salt, iterationCount, password);
+                    if (userHmac == hmac) return 0; // Сравнение заданного и введенного пароля
+                    else return 1;
+                }
+            }
+            else return 2;
+        }
         public static int ImportToVault(string vaultName, string filePath, int iterationCount) // 
         {
             
