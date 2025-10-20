@@ -237,7 +237,7 @@ namespace Folder_Guard
         //            MessageBox.Show("Ошибка шифрования.","Ошибка",MessageBoxButtons.OK,MessageBoxIcon.Error);
         //            break;
         //        case 3:
-        //            MessageBox.Show(" Неизвестная ошибка.","Ошибка",MessageBoxButtons.OK,MessageBoxIcon.Eror);
+        //            MessageBox.Show("Неизвестная ошибка.","Ошибка",MessageBoxButtons.OK,MessageBoxIcon.Eror);
         //            break;
         //    }                                                                                                                 
         //    this.Close();
