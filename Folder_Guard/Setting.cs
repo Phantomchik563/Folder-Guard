@@ -66,7 +66,7 @@ namespace Folder_Guard
                         label3.ForeColor = Color.FromArgb(33, 33, 33);
                         textBox1.BackColor = Color.FromArgb(255, 255, 255);
                         textBox1.ForeColor = Color.FromArgb(33, 33, 33);
-                        button2.BackColor = Color.FromArgb(255, 255, 255);
+                        button2.BackColor = Color.FromArgb(245, 245, 245);
                         button2.ForeColor = Color.FromArgb(33, 33, 33);
                         comboBox1.BackColor = Color.FromArgb(255, 255, 255);
                         comboBox1.ForeColor = Color.FromArgb(33, 33, 33);
@@ -88,7 +88,7 @@ namespace Folder_Guard
                         label3.ForeColor = Color.FromArgb(255, 255, 255);
                         textBox1.BackColor = Color.FromArgb(40, 40, 40);
                         textBox1.ForeColor = Color.FromArgb(255, 255, 255);
-                        button2.BackColor = Color.FromArgb(33, 33, 33);
+                        button2.BackColor = Color.FromArgb(40, 40, 40);
                         button2.ForeColor = Color.FromArgb(255, 255, 255);
                         comboBox1.BackColor = Color.FromArgb(40, 40, 40);
                         comboBox1.ForeColor = Color.FromArgb(255, 255, 255);
@@ -106,7 +106,7 @@ namespace Folder_Guard
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show("Применить изменения?","Подтверждение",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
+            var result = MessageBox.Show("Применить изменения?","Подтверждение",MessageBoxButtons.OKCancel,MessageBoxIcon.Question);
 
             if (result == DialogResult.OK)
             {

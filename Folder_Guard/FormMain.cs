@@ -14,6 +14,7 @@ namespace Folder_Guard
 {
     public partial class FormMain : Form
     {
+        
         private Timer fadeTimer;
         private Control[] uiElements;
 
@@ -42,9 +43,7 @@ namespace Folder_Guard
             this.Opacity = 0;
             this.Load += FormMain_Load;
 
-            // Подключаем кнопки
-            buttonCode.Click += buttonCode_Click;
-            buttonCreateStorage.Click += buttonCreateStoragebutton_Click;
+            
 
 
         }
@@ -79,16 +78,23 @@ namespace Folder_Guard
         // =========================
         // Кнопка "Открыть хранилище"
         // =========================
+
+       
+        
+
+
         private void buttonCode_Click(object sender, EventArgs e)
         {
+            
             using (var form = new FormCode())
             {
                 if (listViewStorage.SelectedItems.Count > 0)
                 {
+                    
                     form.StartPosition = FormStartPosition.CenterParent;
                     var selectedItem = listViewStorage.SelectedItems[0];
                     form.SelectedItemName = selectedItem.Text;
-                    form.ShowDialog();
+                    DialogResult dialogResult = form.ShowDialog(this);
                 }
                 
 
@@ -133,8 +139,15 @@ namespace Folder_Guard
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //var vaults = FileManager.Vault.GetVaults();
-            //UpdateListViewStorage(vaults);
+            if (listViewStorage.SelectedItems.Count > 0)
+            {
+
+                buttonCode.Enabled = true;
+            }
+            else
+            {
+                buttonCode.Enabled = false;
+            }
 
         }
 

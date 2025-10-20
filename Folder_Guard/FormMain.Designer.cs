@@ -49,6 +49,7 @@ namespace Folder_Guard
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonTest = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panelFiles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -115,6 +116,7 @@ namespace Folder_Guard
             // buttonCode
             // 
             this.buttonCode.BackColor = System.Drawing.Color.DimGray;
+            this.buttonCode.Enabled = false;
             this.buttonCode.FlatAppearance.BorderSize = 0;
             this.buttonCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCode.Font = new System.Drawing.Font("Niagara Solid", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -138,7 +140,7 @@ namespace Folder_Guard
             this.buttonAddStorage.Name = "buttonAddStorage";
             this.buttonAddStorage.Size = new System.Drawing.Size(287, 45);
             this.buttonAddStorage.TabIndex = 13;
-            this.buttonAddStorage.Text = "Импорт  в хранилище";
+            this.buttonAddStorage.Text = "Добавить файл";
             this.buttonAddStorage.UseVisualStyleBackColor = false;
             this.buttonAddStorage.Click += new System.EventHandler(this.AddStorage_Click);
             // 
@@ -149,7 +151,7 @@ namespace Folder_Guard
             this.buttonDelStorage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDelStorage.Font = new System.Drawing.Font("Niagara Solid", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDelStorage.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonDelStorage.Location = new System.Drawing.Point(-1, 205);
+            this.buttonDelStorage.Location = new System.Drawing.Point(-1, 154);
             this.buttonDelStorage.Name = "buttonDelStorage";
             this.buttonDelStorage.Size = new System.Drawing.Size(287, 45);
             this.buttonDelStorage.TabIndex = 14;
@@ -178,11 +180,11 @@ namespace Folder_Guard
             this.buttonUnCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUnCode.Font = new System.Drawing.Font("Niagara Solid", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonUnCode.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonUnCode.Location = new System.Drawing.Point(-1, 153);
+            this.buttonUnCode.Location = new System.Drawing.Point(-1, 206);
             this.buttonUnCode.Name = "buttonUnCode";
             this.buttonUnCode.Size = new System.Drawing.Size(287, 45);
             this.buttonUnCode.TabIndex = 16;
-            this.buttonUnCode.Text = "Экспорт из хранилища";
+            this.buttonUnCode.Text = "Расшифровать файл";
             this.buttonUnCode.UseVisualStyleBackColor = false;
             // 
             // listViewStorage
@@ -193,7 +195,7 @@ namespace Folder_Guard
             this.listViewStorage.HideSelection = false;
             this.listViewStorage.Location = new System.Drawing.Point(6, 282);
             this.listViewStorage.Name = "listViewStorage";
-            this.listViewStorage.Size = new System.Drawing.Size(274, 306);
+            this.listViewStorage.Size = new System.Drawing.Size(274, 345);
             this.listViewStorage.TabIndex = 19;
             this.listViewStorage.UseCompatibleStateImageBehavior = false;
             this.listViewStorage.View = System.Windows.Forms.View.List;
@@ -222,10 +224,10 @@ namespace Folder_Guard
             this.panelFiles.Controls.Add(this.buttonDelStorage);
             this.panelFiles.Controls.Add(this.buttonAddStorage);
             this.panelFiles.Controls.Add(this.buttonCode);
-            this.panelFiles.Location = new System.Drawing.Point(0, 39);
+            this.panelFiles.Location = new System.Drawing.Point(0, 0);
             this.panelFiles.Margin = new System.Windows.Forms.Padding(2);
             this.panelFiles.Name = "panelFiles";
-            this.panelFiles.Size = new System.Drawing.Size(287, 598);
+            this.panelFiles.Size = new System.Drawing.Size(287, 637);
             this.panelFiles.TabIndex = 12;
             this.panelFiles.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFiles_Paint);
             // 
@@ -243,9 +245,9 @@ namespace Folder_Guard
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(286, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(902, 39);
+            this.pictureBox1.Size = new System.Drawing.Size(616, 39);
             this.pictureBox1.TabIndex = 23;
             this.pictureBox1.TabStop = false;
             // 
@@ -342,6 +344,7 @@ namespace Folder_Guard
         private PictureBox pictureBox1;
         private Button buttonTest;
         private Button button1;
+        private ToolTip toolTip1;
     }
 }
 
