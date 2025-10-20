@@ -7,6 +7,7 @@ using System.Linq;
 using System.Reflection.Emit;
 using System.Windows.Forms;
 using static System.Net.WebRequestMethods;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 
 namespace Folder_Guard
@@ -82,8 +83,15 @@ namespace Folder_Guard
         {
             using (var form = new FormCode())
             {
-                form.StartPosition = FormStartPosition.CenterParent;
-                form.ShowDialog();
+                if (listViewStorage.SelectedItems.Count > 0)
+                {
+                    form.StartPosition = FormStartPosition.CenterParent;
+                    var selectedItem = listViewStorage.SelectedItems[0];
+                    form.SelectedItemName = selectedItem.Text;
+                    form.ShowDialog();
+                }
+                
+
             }
         }
 

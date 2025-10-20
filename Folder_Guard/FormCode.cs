@@ -8,6 +8,7 @@ namespace Folder_Guard
 {
     public partial class FormCode : Form
     {
+        public string SelectedItemName { get; set; }
         public FormCode()
         {
             InitializeComponent();
@@ -66,6 +67,24 @@ namespace Folder_Guard
                     // button2 оставляем для другой логики
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int shifrovka = FileManager.Vault.GetAccessToVault(SelectedItemName, textBoxCode.Text);
+
+            switch (shifrovka)
+            {
+                case 1:
+                    MessageBox.Show("Неверный пароль!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+                case 2:
+                    MessageBox.Show("Отсутствие Metafile хранилища!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+                
+            }
+            this.Close();
+        }
+
     }
 }
 
