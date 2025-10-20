@@ -80,7 +80,7 @@ namespace Folder_Guard
                 case 2:
                     MessageBox.Show("Отсутствие Metafile хранилища!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
-                
+                case 0: MessageBox.Show("Хранилище открыто(временный мессаж бокс богдан удали потом)"); break;
             }
             this.Close();
         }

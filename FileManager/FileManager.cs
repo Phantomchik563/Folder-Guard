@@ -70,7 +70,7 @@ namespace FileManager
             string ver = Assembly.GetExecutingAssembly().GetName().Version.ToString();
             string salt = EncryptionModule.Encryption.GetSalt();
             string hmac = EncryptionModule.Encryption.GetHmac(salt, iterationCount, vaultPassword);
-            MetaFile metaFile = new MetaFile(salt, iterationCount, "hmac", ver);
+            MetaFile metaFile = new MetaFile(salt, iterationCount, hmac, ver);
             using (BinaryWriter binWriter = new BinaryWriter(File.Open(@"Vaults\\" + vaultName + @"\\meta.dat", FileMode.OpenOrCreate)))
             {
                 binWriter.Write(metaFile.salt);
@@ -89,8 +89,8 @@ namespace FileManager
                 {
                     string salt = reader.ReadString();
                     int iterationCount = reader.ReadInt32();
-                    string hmac = reader.ReadString();
                     string version = reader.ReadString();
+                    string hmac = reader.ReadString();
                     string userHmac = EncryptionModule.Encryption.GetHmac(salt, iterationCount, password);
                     if (userHmac == hmac) return 0; // Сравнение заданного и введенного пароля
                     else return 1;
