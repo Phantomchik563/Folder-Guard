@@ -78,6 +78,8 @@ namespace FileManager
                 binWriter.Write(metaFile.hmac);
                 binWriter.Write(metaFile.version);
             }
+            FileInfo fileInfo = new FileInfo(@"Vaults\\" + vaultName + @"\\meta.dat");
+            fileInfo.Attributes |= FileAttributes.Hidden;
 
             return 0;
         }
@@ -105,4 +107,5 @@ namespace FileManager
             return 0;
         }
     }
+    
 }
