@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -10,6 +11,7 @@ namespace Folder_Guard
         {
             InitializeComponent();
             Themes();
+            
             // Только крестик
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MinimizeBox = false;
@@ -22,6 +24,8 @@ namespace Folder_Guard
             // Убираем мигание главной формы
             this.ShowInTaskbar = false;
         }
+        private FormMain mainForm;
+       
 
         // Принудительное закрытие формы при клике на крестик
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -86,12 +90,14 @@ namespace Folder_Guard
             switch (results)
             {
                 case 1:
-                    MessageBox.Show("Недопустимые символы в названии хранилища!","Ошибка",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    MessageBox.Show("Недопустимые символы в названии хранилища!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
                 case 2:
-                    MessageBox.Show("Хранилище с таким именем уже существует!","Ошибка",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    MessageBox.Show("Хранилище с таким именем уже существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
-            }                                                                                                                 
+            }
+            var vaults = FileManager.Vault.GetVaults();
+           
             this.Close();
         }
 

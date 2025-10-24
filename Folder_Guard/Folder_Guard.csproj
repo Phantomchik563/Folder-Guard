@@ -160,5 +160,35 @@
   <ItemGroup>
     <None Include="Resources\png-klev-club-i1mb-p-krug-so-strelkoi-png-6.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\foni-papik-pro-6wv0-p-kartinki-papka-na-prozrachnom-fone-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_rename.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_delte.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_ecsport.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_import.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_add1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

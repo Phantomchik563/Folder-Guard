@@ -43,7 +43,7 @@ namespace Folder_Guard
             this.Opacity = 0;
             this.Load += FormMain_Load;
 
-            
+
 
 
         }
@@ -73,14 +73,25 @@ namespace Folder_Guard
             };
 
             fadeTimer.Start();
+
+            toolTip1.AutoPopDelay = 5000;   // Время отображения (мс)
+            toolTip1.InitialDelay = 500;    // Задержка перед показом
+            toolTip1.ReshowDelay = 200;     // Время между повторными показами
+            toolTip1.ShowAlways = true;     // Показывать даже если форма неактивна
+
+            toolTip1.SetToolTip(buttonCreateStorage, "Переименовать хранилище");
+            toolTip1.SetToolTip(button2, "Добавить хранилище");
+            toolTip1.SetToolTip(button3, "Удалить хранилище");
+            toolTip1.SetToolTip(button4, "Импортировать хранилище");
+            toolTip1.SetToolTip(button5, "Экспортировать хранилище");
         }
 
         // =========================
         // Кнопка "Открыть хранилище"
         // =========================
 
-       
-        
+
+
 
 
         private void buttonCode_Click(object sender, EventArgs e)
@@ -106,10 +117,7 @@ namespace Folder_Guard
         // =========================
         private void buttonCreateStoragebutton_Click(object sender, EventArgs e)
         {
-            using (var form = new FormCreateStorage())
-            {
-                form.ShowDialog(this); // 👈 Обязательно передаём "this" (главную форму)
-            }
+            
         }
 
 
@@ -151,6 +159,10 @@ namespace Folder_Guard
 
         }
 
+
+        
+
+
         void Themes()
         {
             switch (Properties.Settings.Default.Theme)
@@ -159,7 +171,7 @@ namespace Folder_Guard
                     {
                         this.BackColor = Color.FromArgb(250, 250, 250);
 
-
+                        
 
 
                         pictureBox1.BackColor = Color.FromArgb(245, 245, 245);
@@ -168,6 +180,17 @@ namespace Folder_Guard
                         buttonCreateStorage.ForeColor = Color.FromArgb(33, 33, 33);
                         buttonCode.BackColor = Color.FromArgb(255, 255, 255);
                         buttonCode.ForeColor = Color.FromArgb(33, 33, 33);
+
+
+                        button2.BackColor = Color.FromArgb(255, 255, 255);
+                        button2.ForeColor = Color.FromArgb(33, 33, 33);
+                        button3.BackColor = Color.FromArgb(255, 255, 255);
+                        button3.ForeColor = Color.FromArgb(33, 33, 33);
+                        button4.BackColor = Color.FromArgb(255, 255, 255);
+                        button4.ForeColor = Color.FromArgb(33, 33, 33);
+                        button5.BackColor = Color.FromArgb(255, 255, 255);
+                        button5.ForeColor = Color.FromArgb(33, 33, 33);
+
                         buttonAddStorage.BackColor = Color.FromArgb(255, 255, 255);
                         buttonAddStorage.ForeColor = Color.FromArgb(33, 33, 33);
                         buttonUnCode.BackColor = Color.FromArgb(255, 255, 255);
@@ -182,8 +205,7 @@ namespace Folder_Guard
                         listViewStorage.ForeColor = Color.FromArgb(33, 33, 33);
                         listViewStorageFiles.BackColor = Color.FromArgb(255, 255, 255);
                         listViewStorageFiles.ForeColor = Color.FromArgb(33, 33, 33);
-                        label1.BackColor = Color.FromArgb(245, 245, 245);
-                        label1.ForeColor = Color.FromArgb(33, 33, 33);
+                        
                         label2.BackColor = Color.FromArgb(255, 255, 255);
                         label2.ForeColor = Color.FromArgb(33, 33, 33);
                         panelFiles.BackColor = Color.FromArgb(240, 240, 240);
@@ -193,6 +215,8 @@ namespace Folder_Guard
 
                 case 1: // Тёмная тема
                     {
+                        
+
                         this.BackColor = Color.FromArgb(33, 33, 33);
                         pictureBox1.BackColor = Color.FromArgb(40, 40, 40); ; //(40, 40, 40)
                         buttonCreateStorage.BackColor = Color.FromArgb(33, 33, 33);
@@ -214,8 +238,15 @@ namespace Folder_Guard
                         listViewStorage.ForeColor = Color.FromArgb(255, 255, 255);
                         listViewStorageFiles.BackColor = Color.FromArgb(33, 33, 33);
                         listViewStorageFiles.ForeColor = Color.FromArgb(255, 255, 255);
-                        label1.BackColor = Color.FromArgb(40, 40, 40);
-                        label1.ForeColor = Color.FromArgb(255, 255, 255);
+                        button2.BackColor = Color.FromArgb(33, 33, 33);
+                        button2.ForeColor = Color.FromArgb(255, 255, 255);
+                        button3.BackColor = Color.FromArgb(33, 33, 33);
+                        button3.ForeColor = Color.FromArgb(255, 255, 255);
+                        button4.BackColor = Color.FromArgb(33, 33, 33);
+                        button4.ForeColor = Color.FromArgb(255, 255, 255);
+                        button5.BackColor = Color.FromArgb(33, 33, 33);
+                        button5.ForeColor = Color.FromArgb(255, 255, 255);
+
                         label2.BackColor = Color.FromArgb(33, 33, 33);
                         label2.ForeColor = Color.FromArgb(255, 255, 255);
                         panelFiles.BackColor = Color.FromArgb(40, 40, 40);
@@ -242,11 +273,25 @@ namespace Folder_Guard
             
         }
 
+        private void toolTip1_Popup(object sender, PopupEventArgs e)
+        {
+            
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            var vaults = FileManager.Vault.GetVaults();
-            UpdateListViewStorage(vaults);
+
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            using (var form = new FormCreateStorage())
+            {
+                form.ShowDialog(this); // 👈 Обязательно передаём "this" (главную форму)
+            }
+        }
+
+
 
         //Коды ошибок ля модуля Encryption
         //switch (Переменная)
