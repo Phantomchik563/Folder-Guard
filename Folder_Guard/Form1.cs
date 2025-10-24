@@ -7,11 +7,13 @@ namespace Folder_Guard
 {
     public partial class FormCreateStorage : Form
     {
-        public FormCreateStorage()
+        public FormCreateStorage(FormMain form)
         {
+
             InitializeComponent();
             Themes();
-            
+            mainForm = form;
+
             // Только крестик
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MinimizeBox = false;
@@ -96,8 +98,12 @@ namespace Folder_Guard
                     MessageBox.Show("Хранилище с таким именем уже существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
             }
-            var vaults = FileManager.Vault.GetVaults();
-           
+            List<string> vaults = FileManager.Vault.GetVaults();
+            mainForm.UpdateListViewStorage(vaults);
+
+
+
+
             this.Close();
         }
 

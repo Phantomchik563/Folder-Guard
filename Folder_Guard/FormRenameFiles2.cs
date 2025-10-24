@@ -1,35 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
-using System.Reflection.Emit;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Folder_Guard
 {
-    public partial class FormCode : Form
+    public partial class FormRenameFiles : Form
     {
-        public string SelectedItemName { get; set; }
-        public FormCode(FormMain form)
+        public FormRenameFiles()
         {
             InitializeComponent();
             Themes();
-            mainForm = form;
-
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
-            this.StartPosition = FormStartPosition.CenterParent;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-        }
-        private FormMain mainForm;
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonAddStorage_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         void Themes()
@@ -70,31 +56,9 @@ namespace Folder_Guard
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonAddStorage_Click(object sender, EventArgs e)
         {
-            int shifrovka = FileManager.Vault.GetAccessToVault(SelectedItemName, textBoxCode.Text);
-
-            switch (shifrovka)
-            {
-                case 1:
-                    MessageBox.Show("Неверный пароль!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
-                case 2:
-                    MessageBox.Show("Отсутствие Metafile хранилища!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
-                case 0:
-                    {
-                        List<string> vaultFiles = FileManager.Vault.GetVaultFiles(SelectedItemName);
-                        mainForm.UpdateListViewStorageFiles(vaultFiles);
-
-
-                    }
-                    break;
-            }
-
             this.Close();
         }
-
     }
 }
-

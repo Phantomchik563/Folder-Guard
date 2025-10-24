@@ -45,11 +45,11 @@ namespace Folder_Guard
             this.buttonUnCode = new System.Windows.Forms.Button();
             this.listViewStorage = new System.Windows.Forms.ListView();
             this.panelFiles = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonTest = new System.Windows.Forms.Button();
@@ -112,6 +112,7 @@ namespace Folder_Guard
             this.listViewStorageFiles.TabIndex = 20;
             this.listViewStorageFiles.UseCompatibleStateImageBehavior = false;
             this.listViewStorageFiles.View = System.Windows.Forms.View.List;
+            this.listViewStorageFiles.SelectedIndexChanged += new System.EventHandler(this.listViewStorageFiles_SelectedIndexChanged);
             // 
             // timer1
             // 
@@ -126,7 +127,7 @@ namespace Folder_Guard
             this.buttonCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCode.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCode.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonCode.Location = new System.Drawing.Point(-1, 51);
+            this.buttonCode.Location = new System.Drawing.Point(-1, 0);
             this.buttonCode.Name = "buttonCode";
             this.buttonCode.Size = new System.Drawing.Size(287, 45);
             this.buttonCode.TabIndex = 1;
@@ -145,7 +146,7 @@ namespace Folder_Guard
             this.buttonAddStorage.Name = "buttonAddStorage";
             this.buttonAddStorage.Size = new System.Drawing.Size(287, 45);
             this.buttonAddStorage.TabIndex = 13;
-            this.buttonAddStorage.Text = "Добавить файл";
+            this.buttonAddStorage.Text = "Импортировать файл";
             this.buttonAddStorage.UseVisualStyleBackColor = false;
             this.buttonAddStorage.Click += new System.EventHandler(this.AddStorage_Click);
             // 
@@ -156,7 +157,7 @@ namespace Folder_Guard
             this.buttonDelStorage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDelStorage.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDelStorage.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonDelStorage.Location = new System.Drawing.Point(-1, 154);
+            this.buttonDelStorage.Location = new System.Drawing.Point(-1, 201);
             this.buttonDelStorage.Name = "buttonDelStorage";
             this.buttonDelStorage.Size = new System.Drawing.Size(287, 45);
             this.buttonDelStorage.TabIndex = 14;
@@ -186,11 +187,11 @@ namespace Folder_Guard
             this.buttonUnCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUnCode.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonUnCode.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonUnCode.Location = new System.Drawing.Point(-1, 204);
+            this.buttonUnCode.Location = new System.Drawing.Point(-2, 153);
             this.buttonUnCode.Name = "buttonUnCode";
             this.buttonUnCode.Size = new System.Drawing.Size(287, 42);
             this.buttonUnCode.TabIndex = 16;
-            this.buttonUnCode.Text = "Расшифровать файл";
+            this.buttonUnCode.Text = "Экспортировать файл";
             this.buttonUnCode.UseVisualStyleBackColor = false;
             // 
             // listViewStorage
@@ -210,11 +211,11 @@ namespace Folder_Guard
             // 
             this.panelFiles.BackColor = System.Drawing.Color.Transparent;
             this.panelFiles.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelFiles.Controls.Add(this.button6);
             this.panelFiles.Controls.Add(this.button5);
             this.panelFiles.Controls.Add(this.button4);
             this.panelFiles.Controls.Add(this.button3);
             this.panelFiles.Controls.Add(this.button2);
-            this.panelFiles.Controls.Add(this.button1);
             this.panelFiles.Controls.Add(this.listViewStorage);
             this.panelFiles.Controls.Add(this.buttonUnCode);
             this.panelFiles.Controls.Add(this.buttonCreateStorage);
@@ -228,6 +229,22 @@ namespace Folder_Guard
             this.panelFiles.Size = new System.Drawing.Size(287, 640);
             this.panelFiles.TabIndex = 12;
             this.panelFiles.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFiles_Paint);
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.DimGray;
+            this.button6.Enabled = false;
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button6.Location = new System.Drawing.Point(-1, 51);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(287, 45);
+            this.button6.TabIndex = 31;
+            this.button6.Text = "Переименовать файл";
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button5
             // 
@@ -289,17 +306,6 @@ namespace Folder_Guard
             this.button2.TabIndex = 27;
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackgroundImage = global::Folder_Guard.Properties.Resources.png_klev_club_i1mb_p_krug_so_strelkoi_png_6;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Location = new System.Drawing.Point(244, 298);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(26, 26);
-            this.button1.TabIndex = 25;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox2
             // 
@@ -391,7 +397,7 @@ namespace Folder_Guard
 
         private void ButtonCreateStoragebutton_Click(object sender, EventArgs e)
         {
-            using (var form = new FormCreateStorage())
+            using (var form = new FormRenameStorage())
             {
                 form.StartPosition = FormStartPosition.CenterParent;
                 form.ShowDialog();
@@ -418,13 +424,13 @@ namespace Folder_Guard
         private Panel panelFiles;
         private PictureBox pictureBox1;
         private Button buttonTest;
-        private Button button1;
         private ToolTip toolTip1;
         private PictureBox pictureBox2;
         private Button button5;
         private Button button4;
         private Button button3;
         private Button button2;
+        private Button button6;
     }
 }
 

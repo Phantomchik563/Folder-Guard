@@ -14,7 +14,7 @@ namespace Folder_Guard
 {
     public partial class FormMain : Form
     {
-        
+
         private Timer fadeTimer;
         private Control[] uiElements;
 
@@ -96,18 +96,18 @@ namespace Folder_Guard
 
         private void buttonCode_Click(object sender, EventArgs e)
         {
-            
-            using (var form = new FormCode())
+
+            using (var form = new FormCode(this))
             {
                 if (listViewStorage.SelectedItems.Count > 0)
                 {
-                    
+
                     form.StartPosition = FormStartPosition.CenterParent;
                     var selectedItem = listViewStorage.SelectedItems[0];
                     form.SelectedItemName = selectedItem.Text;
                     DialogResult dialogResult = form.ShowDialog(this);
                 }
-                
+
 
             }
         }
@@ -117,7 +117,7 @@ namespace Folder_Guard
         // =========================
         private void buttonCreateStoragebutton_Click(object sender, EventArgs e)
         {
-            
+
         }
 
 
@@ -139,6 +139,15 @@ namespace Folder_Guard
             }
         }
 
+        public void UpdateListViewStorageFiles(List<string> items)
+        {
+            listViewStorageFiles.Items.Clear();
+            foreach (var item in items)
+            {
+                ListViewItem listItem = new ListViewItem(item);
+                listViewStorageFiles.Items.Add(listItem);
+            }
+        }
         // =========================
         // Пример вызова метода из другого модуля
         // =========================
@@ -160,7 +169,7 @@ namespace Folder_Guard
         }
 
 
-        
+
 
 
         void Themes()
@@ -171,7 +180,7 @@ namespace Folder_Guard
                     {
                         this.BackColor = Color.FromArgb(250, 250, 250);
 
-                        
+
 
 
                         pictureBox1.BackColor = Color.FromArgb(245, 245, 245);
@@ -190,6 +199,8 @@ namespace Folder_Guard
                         button4.ForeColor = Color.FromArgb(33, 33, 33);
                         button5.BackColor = Color.FromArgb(255, 255, 255);
                         button5.ForeColor = Color.FromArgb(33, 33, 33);
+                        button6.BackColor = Color.FromArgb(255, 255, 255);
+                        button6.ForeColor = Color.FromArgb(33, 33, 33);
 
                         buttonAddStorage.BackColor = Color.FromArgb(255, 255, 255);
                         buttonAddStorage.ForeColor = Color.FromArgb(33, 33, 33);
@@ -205,7 +216,7 @@ namespace Folder_Guard
                         listViewStorage.ForeColor = Color.FromArgb(33, 33, 33);
                         listViewStorageFiles.BackColor = Color.FromArgb(255, 255, 255);
                         listViewStorageFiles.ForeColor = Color.FromArgb(33, 33, 33);
-                        
+
                         label2.BackColor = Color.FromArgb(255, 255, 255);
                         label2.ForeColor = Color.FromArgb(33, 33, 33);
                         panelFiles.BackColor = Color.FromArgb(240, 240, 240);
@@ -215,12 +226,12 @@ namespace Folder_Guard
 
                 case 1: // Тёмная тема
                     {
-                        
+
 
                         this.BackColor = Color.FromArgb(33, 33, 33);
                         pictureBox1.BackColor = Color.FromArgb(40, 40, 40); ; //(40, 40, 40)
                         buttonCreateStorage.BackColor = Color.FromArgb(33, 33, 33);
-                        button1.BackColor = Color.FromArgb(255, 255, 255);//Временная кнопка
+
                         buttonCreateStorage.ForeColor = Color.FromArgb(255, 255, 255);
                         buttonCode.BackColor = Color.FromArgb(33, 33, 33);
                         buttonCode.ForeColor = Color.FromArgb(255, 255, 255);
@@ -246,6 +257,8 @@ namespace Folder_Guard
                         button4.ForeColor = Color.FromArgb(255, 255, 255);
                         button5.BackColor = Color.FromArgb(33, 33, 33);
                         button5.ForeColor = Color.FromArgb(255, 255, 255);
+                        button6.BackColor = Color.FromArgb(33, 33, 33);
+                        button6.ForeColor = Color.FromArgb(255, 255, 255);
 
                         label2.BackColor = Color.FromArgb(33, 33, 33);
                         label2.ForeColor = Color.FromArgb(255, 255, 255);
@@ -270,30 +283,47 @@ namespace Folder_Guard
 
         private void buttonTest_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void toolTip1_Popup(object sender, PopupEventArgs e)
         {
-            
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
 
         }
+
+
 
         private void button2_Click(object sender, EventArgs e)
         {
-            using (var form = new FormCreateStorage())
+            using (var form = new FormCreateStorage(this))
             {
                 form.ShowDialog(this); // 👈 Обязательно передаём "this" (главную форму)
             }
         }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+            using (var form = new FormRenameFiles())
+            {
+                form.ShowDialog(this); // 👈 Обязательно передаём "this" (главную форму)
+            }
+        }
+
+        private void listViewStorageFiles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listViewStorageFiles.SelectedItems.Count > 0)
+            {
+                {
+                    button6.Enabled = true;
+                }
+            }
+            else { button6.Enabled = false; }
+        }
 
 
-        //Коды ошибок ля модуля Encryption
+
+        //Коды ошибок для шифровки модуля Encryption
         //switch (Переменная)
         //    {
         //        case 1:
@@ -304,6 +334,28 @@ namespace Folder_Guard
         //            break;
         //        case 3:
         //            MessageBox.Show("Неизвестная ошибка.","Ошибка",MessageBoxButtons.OK,MessageBoxIcon.Eror);
+        //            break;
+        //    }                                                                                                                 
+        //    this.Close();
+
+
+        //Коды ошибок для расшифровки модуля Encryption
+        //switch (Переменная)
+        //    {
+        //        case 1:
+        //            MessageBox.Show("HMAC не совпал (Неверный пароль, поврежденный файл)!","Ошибка",MessageBoxButtons.OK,MessageBoxIcon.Error);
+        //            break;
+        //        case 2:
+        //            MessageBox.Show("Ошибка во время дешифрования!","Ошибка",MessageBoxButtons.OK,MessageBoxIcon.Error);
+        //            break;
+        //        case 3:
+        //            MessageBox.Show("Ошибка чтения или записи!","Ошибка",MessageBoxButtons.OK,MessageBoxIcon.Eror);
+        //            break;
+        //        case 4:
+        //            MessageBox.Show("Неизвестная ошибка!","Ошибка",MessageBoxButtons.OK,MessageBoxIcon.Eror);
+        //            break;
+        //        case 5:
+        //            MessageBox.Show("Ошибка в структуре файла!","Ошибка",MessageBoxButtons.OK,MessageBoxIcon.Eror);
         //            break;
         //    }                                                                                                                 
         //    this.Close();

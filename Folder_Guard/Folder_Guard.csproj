@@ -79,6 +79,18 @@
     <Compile Include="FormCode.Designer.cs">
       <DependentUpon>FormCode.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormRenameFiles2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRenameFiles2.Designer.cs">
+      <DependentUpon>FormRenameFiles2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormRenameStorage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRenameStorage.Designer.cs">
+      <DependentUpon>FormRenameStorage.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormUnCode.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +122,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormCode.resx">
       <DependentUpon>FormCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRenameFiles2.resx">
+      <DependentUpon>FormRenameFiles2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRenameStorage.resx">
+      <DependentUpon>FormRenameStorage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormUnCode.resx">
       <DependentUpon>FormUnCode.cs</DependentUpon>
