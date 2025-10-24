@@ -80,7 +80,7 @@ namespace Folder_Guard
             toolTip1.ShowAlways = true;     // Показывать даже если форма неактивна
 
             toolTip1.SetToolTip(buttonCreateStorage, "Переименовать хранилище");
-            toolTip1.SetToolTip(button2, "Добавить хранилище");
+            toolTip1.SetToolTip(button2, "Создать хранилище");
             toolTip1.SetToolTip(button3, "Удалить хранилище");
             toolTip1.SetToolTip(button4, "Импортировать хранилище");
             toolTip1.SetToolTip(button5, "Экспортировать хранилище");
