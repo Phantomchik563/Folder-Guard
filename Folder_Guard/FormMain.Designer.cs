@@ -64,7 +64,7 @@ namespace Folder_Guard
             this.buttonHelp.BackgroundImage = global::Folder_Guard.Properties.Resources.question;
             this.buttonHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonHelp.FlatAppearance.BorderSize = 0;
-            this.buttonHelp.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonHelp.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonHelp.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonHelp.Location = new System.Drawing.Point(851, 3);
@@ -80,7 +80,7 @@ namespace Folder_Guard
             this.buttonSetting.BackgroundImage = global::Folder_Guard.Properties.Resources.button_setting;
             this.buttonSetting.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonSetting.FlatAppearance.BorderSize = 0;
-            this.buttonSetting.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSetting.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSetting.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonSetting.Location = new System.Drawing.Point(784, 3);
@@ -115,7 +115,7 @@ namespace Folder_Guard
             this.buttonCode.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonCode.Enabled = false;
             this.buttonCode.FlatAppearance.BorderSize = 0;
-            this.buttonCode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCode.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCode.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonCode.Location = new System.Drawing.Point(63, 3);
@@ -131,7 +131,7 @@ namespace Folder_Guard
             this.buttonAddStorage.BackgroundImage = global::Folder_Guard.Properties.Resources.file_add;
             this.buttonAddStorage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonAddStorage.FlatAppearance.BorderSize = 0;
-            this.buttonAddStorage.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonAddStorage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddStorage.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAddStorage.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonAddStorage.Location = new System.Drawing.Point(63, 66);
@@ -147,7 +147,7 @@ namespace Folder_Guard
             this.buttonDelStorage.BackgroundImage = global::Folder_Guard.Properties.Resources.file_delete;
             this.buttonDelStorage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonDelStorage.FlatAppearance.BorderSize = 0;
-            this.buttonDelStorage.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonDelStorage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDelStorage.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDelStorage.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonDelStorage.Location = new System.Drawing.Point(156, 66);
@@ -178,7 +178,7 @@ namespace Folder_Guard
             this.buttonUnCode.BackgroundImage = global::Folder_Guard.Properties.Resources.file_deshifrovat;
             this.buttonUnCode.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonUnCode.FlatAppearance.BorderSize = 0;
-            this.buttonUnCode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonUnCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUnCode.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonUnCode.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonUnCode.Location = new System.Drawing.Point(63, 130);
@@ -230,7 +230,7 @@ namespace Folder_Guard
             this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button6.Enabled = false;
             this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button6.Location = new System.Drawing.Point(156, 5);
