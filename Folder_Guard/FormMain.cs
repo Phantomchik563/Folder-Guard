@@ -84,6 +84,14 @@ namespace Folder_Guard
             toolTip1.SetToolTip(button3, "Удалить хранилище");
             toolTip1.SetToolTip(button4, "Импортировать хранилище");
             toolTip1.SetToolTip(button5, "Экспортировать хранилище");
+
+            toolTip1.SetToolTip(buttonCode, "Открыть хранилище");
+            toolTip1.SetToolTip(button6, "Переименовать файл");
+            toolTip1.SetToolTip(buttonDelStorage, "Удалить файл");
+            toolTip1.SetToolTip(buttonAddStorage, "Импортировать хранилище");
+            toolTip1.SetToolTip(buttonUnCode, "Экспортировать хранилище");
+            toolTip1.SetToolTip(buttonSetting, "Настройки");
+            toolTip1.SetToolTip(buttonHelp, "Помощь");
         }
 
         // =========================
@@ -217,8 +225,7 @@ namespace Folder_Guard
                         listViewStorageFiles.BackColor = Color.FromArgb(255, 255, 255);
                         listViewStorageFiles.ForeColor = Color.FromArgb(33, 33, 33);
 
-                        label2.BackColor = Color.FromArgb(255, 255, 255);
-                        label2.ForeColor = Color.FromArgb(33, 33, 33);
+                        
                         panelFiles.BackColor = Color.FromArgb(240, 240, 240);
 
                         break;
@@ -260,8 +267,7 @@ namespace Folder_Guard
                         button6.BackColor = Color.FromArgb(33, 33, 33);
                         button6.ForeColor = Color.FromArgb(255, 255, 255);
 
-                        label2.BackColor = Color.FromArgb(33, 33, 33);
-                        label2.ForeColor = Color.FromArgb(255, 255, 255);
+                        
                         panelFiles.BackColor = Color.FromArgb(40, 40, 40);
 
                         break;

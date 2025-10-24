@@ -208,5 +208,41 @@
   <ItemGroup>
     <None Include="Resources\add.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_deshifrovat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_ecsport.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_import.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_rename.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pngtree-vector-question-icon-png-image_540596.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\foni-papik-pro-8hq8-p-kartinki-shesterenka-na-prozrachnom-fone-27.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\question.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

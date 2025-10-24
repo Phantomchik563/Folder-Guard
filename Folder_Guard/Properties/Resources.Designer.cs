@@ -73,6 +73,16 @@ namespace Folder_Guard.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap button_setting {
+            get {
+                object obj = ResourceManager.GetObject("button_setting", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap dark_background_image {
             get {
                 object obj = ResourceManager.GetObject("dark_background_image", resourceCulture);
@@ -86,6 +96,66 @@ namespace Folder_Guard.Properties {
         internal static System.Drawing.Bitmap dark_square {
             get {
                 object obj = ResourceManager.GetObject("dark_square", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap file_add {
+            get {
+                object obj = ResourceManager.GetObject("file_add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap file_delete {
+            get {
+                object obj = ResourceManager.GetObject("file_delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap file_deshifrovat {
+            get {
+                object obj = ResourceManager.GetObject("file_deshifrovat", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap file_ecsport {
+            get {
+                object obj = ResourceManager.GetObject("file_ecsport", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap file_import {
+            get {
+                object obj = ResourceManager.GetObject("file_import", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap file_ren {
+            get {
+                object obj = ResourceManager.GetObject("file_ren", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -106,6 +176,26 @@ namespace Folder_Guard.Properties {
         internal static System.Drawing.Bitmap foni_papik_pro_6wv0_p_kartinki_papka_na_prozrachnom_fone_1 {
             get {
                 object obj = ResourceManager.GetObject("foni_papik_pro_6wv0_p_kartinki_papka_na_prozrachnom_fone_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap help {
+            get {
+                object obj = ResourceManager.GetObject("help", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap images {
+            get {
+                object obj = ResourceManager.GetObject("images", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,6 +253,16 @@ namespace Folder_Guard.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logo_open {
+            get {
+                object obj = ResourceManager.GetObject("logo_open", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logo_rename {
             get {
                 object obj = ResourceManager.GetObject("logo_rename", resourceCulture);
@@ -176,6 +276,16 @@ namespace Folder_Guard.Properties {
         internal static System.Drawing.Bitmap png_klev_club_i1mb_p_krug_so_strelkoi_png_6 {
             get {
                 object obj = ResourceManager.GetObject("png_klev_club_i1mb_p_krug_so_strelkoi_png_6", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap question {
+            get {
+                object obj = ResourceManager.GetObject("question", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
