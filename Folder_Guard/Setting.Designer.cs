@@ -138,11 +138,11 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(245, 84);
+            this.label4.Location = new System.Drawing.Point(131, 84);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(273, 15);
+            this.label4.Size = new System.Drawing.Size(390, 15);
             this.label4.TabIndex = 28;
-            this.label4.Text = "*Много итераций снижает производительность.";
+            this.label4.Text = "*Большое количество итераций может снизить производительность.";
             // 
             // FormSetting
             // 

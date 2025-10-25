@@ -100,11 +100,21 @@ namespace FileManager
             }
             else return 2;
         }
-        public static int ImportToVault(string vaultName, string filePath, int iterationCount) // 
+        public static List<string> GetMeta(string vaultName) // Выдает массив с данными метафайла
         {
-            
+            using (BinaryReader reader = new BinaryReader(File.Open(@"Vaults\\" + vaultName + @"\\meta.dat", FileMode.Open)))
+            {
+                string salt = reader.ReadString();
+                int iterationCount = reader.ReadInt32();
+                string version = reader.ReadString();
+                string hmac = reader.ReadString();
 
-            return 0;
+                List<string> outMetaInfo = new List<string>();
+                outMetaInfo.Add(salt);
+                outMetaInfo.Add(iterationCount.ToString());
+                outMetaInfo.Add(version);
+                return outMetaInfo;
+            }
         }
     }
     

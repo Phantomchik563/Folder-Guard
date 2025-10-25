@@ -67,9 +67,9 @@ namespace Folder_Guard
             this.buttonHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonHelp.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonHelp.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonHelp.Location = new System.Drawing.Point(851, 3);
+            this.buttonHelp.Location = new System.Drawing.Point(858, 7);
             this.buttonHelp.Name = "buttonHelp";
-            this.buttonHelp.Size = new System.Drawing.Size(44, 44);
+            this.buttonHelp.Size = new System.Drawing.Size(36, 36);
             this.buttonHelp.TabIndex = 16;
             this.buttonHelp.UseVisualStyleBackColor = false;
             this.buttonHelp.Click += new System.EventHandler(this.buttonHelp_Click);
@@ -83,9 +83,9 @@ namespace Folder_Guard
             this.buttonSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSetting.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSetting.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonSetting.Location = new System.Drawing.Point(784, 3);
+            this.buttonSetting.Location = new System.Drawing.Point(812, 7);
             this.buttonSetting.Name = "buttonSetting";
-            this.buttonSetting.Size = new System.Drawing.Size(44, 44);
+            this.buttonSetting.Size = new System.Drawing.Size(36, 36);
             this.buttonSetting.TabIndex = 22;
             this.buttonSetting.UseVisualStyleBackColor = false;
             this.buttonSetting.Click += new System.EventHandler(this.buttonSetting_Click);
@@ -95,9 +95,9 @@ namespace Folder_Guard
             this.listViewStorageFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listViewStorageFiles.HideSelection = false;
             this.listViewStorageFiles.LabelWrap = false;
-            this.listViewStorageFiles.Location = new System.Drawing.Point(311, 145);
+            this.listViewStorageFiles.Location = new System.Drawing.Point(293, 56);
             this.listViewStorageFiles.Name = "listViewStorageFiles";
-            this.listViewStorageFiles.Size = new System.Drawing.Size(591, 533);
+            this.listViewStorageFiles.Size = new System.Drawing.Size(609, 622);
             this.listViewStorageFiles.TabIndex = 20;
             this.listViewStorageFiles.UseCompatibleStateImageBehavior = false;
             this.listViewStorageFiles.View = System.Windows.Forms.View.List;
@@ -118,9 +118,9 @@ namespace Folder_Guard
             this.buttonCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCode.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCode.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonCode.Location = new System.Drawing.Point(63, 3);
+            this.buttonCode.Location = new System.Drawing.Point(6, 5);
             this.buttonCode.Name = "buttonCode";
-            this.buttonCode.Size = new System.Drawing.Size(63, 45);
+            this.buttonCode.Size = new System.Drawing.Size(274, 45);
             this.buttonCode.TabIndex = 1;
             this.buttonCode.UseVisualStyleBackColor = false;
             this.buttonCode.Click += new System.EventHandler(this.buttonCode_Click);
@@ -134,12 +134,12 @@ namespace Folder_Guard
             this.buttonAddStorage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddStorage.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAddStorage.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonAddStorage.Location = new System.Drawing.Point(63, 66);
+            this.buttonAddStorage.Location = new System.Drawing.Point(6, 60);
             this.buttonAddStorage.Name = "buttonAddStorage";
             this.buttonAddStorage.Size = new System.Drawing.Size(63, 44);
             this.buttonAddStorage.TabIndex = 13;
             this.buttonAddStorage.UseVisualStyleBackColor = false;
-            this.buttonAddStorage.Click += new System.EventHandler(this.AddStorage_Click);
+            this.buttonAddStorage.Click += new System.EventHandler(this.buttonAddStorage_Click);
             // 
             // buttonDelStorage
             // 
@@ -150,9 +150,9 @@ namespace Folder_Guard
             this.buttonDelStorage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDelStorage.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDelStorage.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonDelStorage.Location = new System.Drawing.Point(156, 66);
+            this.buttonDelStorage.Location = new System.Drawing.Point(217, 61);
             this.buttonDelStorage.Name = "buttonDelStorage";
-            this.buttonDelStorage.Size = new System.Drawing.Size(63, 45);
+            this.buttonDelStorage.Size = new System.Drawing.Size(63, 44);
             this.buttonDelStorage.TabIndex = 14;
             this.buttonDelStorage.UseVisualStyleBackColor = false;
             // 
@@ -165,7 +165,7 @@ namespace Folder_Guard
             this.buttonCreateStorage.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonCreateStorage.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonCreateStorage.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonCreateStorage.Location = new System.Drawing.Point(6, 181);
+            this.buttonCreateStorage.Location = new System.Drawing.Point(127, 181);
             this.buttonCreateStorage.Name = "buttonCreateStorage";
             this.buttonCreateStorage.Size = new System.Drawing.Size(26, 26);
             this.buttonCreateStorage.TabIndex = 15;
@@ -181,9 +181,9 @@ namespace Folder_Guard
             this.buttonUnCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUnCode.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonUnCode.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonUnCode.Location = new System.Drawing.Point(63, 130);
+            this.buttonUnCode.Location = new System.Drawing.Point(75, 60);
             this.buttonUnCode.Name = "buttonUnCode";
-            this.buttonUnCode.Size = new System.Drawing.Size(63, 42);
+            this.buttonUnCode.Size = new System.Drawing.Size(63, 44);
             this.buttonUnCode.TabIndex = 16;
             this.buttonUnCode.UseVisualStyleBackColor = false;
             // 
@@ -199,6 +199,7 @@ namespace Folder_Guard
             this.listViewStorage.TabIndex = 19;
             this.listViewStorage.UseCompatibleStateImageBehavior = false;
             this.listViewStorage.View = System.Windows.Forms.View.List;
+            this.listViewStorage.SelectedIndexChanged += new System.EventHandler(this.listViewStorage_SelectedIndexChanged);
             // 
             // panelFiles
             // 
@@ -233,9 +234,9 @@ namespace Folder_Guard
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button6.Location = new System.Drawing.Point(156, 5);
+            this.button6.Location = new System.Drawing.Point(148, 61);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(63, 43);
+            this.button6.Size = new System.Drawing.Size(63, 44);
             this.button6.TabIndex = 31;
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
@@ -279,7 +280,7 @@ namespace Folder_Guard
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.Location = new System.Drawing.Point(129, 181);
+            this.button3.Location = new System.Drawing.Point(64, 181);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(26, 26);
             this.button3.TabIndex = 28;
@@ -294,7 +295,7 @@ namespace Folder_Guard
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(63, 181);
+            this.button2.Location = new System.Drawing.Point(6, 181);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(26, 26);
             this.button2.TabIndex = 27;
@@ -325,7 +326,7 @@ namespace Folder_Guard
             this.buttonTest.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonTest.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonTest.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonTest.Location = new System.Drawing.Point(595, 68);
+            this.buttonTest.Location = new System.Drawing.Point(631, 5);
             this.buttonTest.Name = "buttonTest";
             this.buttonTest.Size = new System.Drawing.Size(112, 41);
             this.buttonTest.TabIndex = 25;
@@ -380,11 +381,6 @@ namespace Folder_Guard
                 form.StartPosition = FormStartPosition.CenterParent;
                 form.ShowDialog();
             }
-        }
-
-        private void AddStorage_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void ButtonCreateStoragebutton_Click(object sender, EventArgs e)

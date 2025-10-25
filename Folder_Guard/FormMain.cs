@@ -14,6 +14,8 @@ namespace Folder_Guard
 {
     public partial class FormMain : Form
     {
+        public string password = null;
+        public string openedVault = null;
 
         private Timer fadeTimer;
         private Control[] uiElements;
@@ -97,11 +99,6 @@ namespace Folder_Guard
         // =========================
         // Кнопка "Открыть хранилище"
         // =========================
-
-
-
-
-
         private void buttonCode_Click(object sender, EventArgs e)
         {
 
@@ -109,14 +106,13 @@ namespace Folder_Guard
             {
                 if (listViewStorage.SelectedItems.Count > 0)
                 {
-
                     form.StartPosition = FormStartPosition.CenterParent;
                     var selectedItem = listViewStorage.SelectedItems[0];
                     form.SelectedItemName = selectedItem.Text;
                     DialogResult dialogResult = form.ShowDialog(this);
+                    if (openedVault == listViewStorage.SelectedItems[0].Text) 
+                        checkAccessesToVault(listViewStorage.SelectedItems[0].Text);
                 }
-
-
             }
         }
 
@@ -173,7 +169,6 @@ namespace Folder_Guard
             {
                 buttonCode.Enabled = false;
             }
-
         }
 
 
@@ -327,22 +322,84 @@ namespace Folder_Guard
             else { button6.Enabled = false; }
         }
 
+        private void listViewStorage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listViewStorage.SelectedItems.Count > 0)
+            {
+                checkAccessesToVault(listViewStorage.SelectedItems[0].Text);
+            }
+        }
+        private void checkAccessesToVault(string vault) // Проверка доступов к хранилищу и включение/выключение кнопок в зависимости от доступа
+        {
+            if (vault == openedVault) // Если хранилище ОТКРЫТО
+            {
+                buttonCode.Enabled = false;
+                //Допиши изменение картинки
+                buttonAddStorage.Enabled = true;
+                //Допиши изменение картинки
+                buttonUnCode.Enabled = true;
+                //Допиши изменение картинки
+                button6.Enabled = true;
+                //Допиши изменение картинки
+                buttonDelStorage.Enabled = true;
+                //Допиши изменение картинки
+
+                button3.Enabled = true;
+                //Допиши изменение картинки
+                button5.Enabled = true;
+                //Допиши изменение картинки
+                buttonCreateStorage.Enabled = true;
+                //Допиши изменение картинки
+            }
+            else // Если хранилище ЗАКРЫТО
+            {
+                buttonCode.Enabled = true;
+                //Допиши изменение картинки
+                buttonAddStorage.Enabled = false;
+                //Допиши изменение картинки
+                buttonUnCode.Enabled = false;
+                //Допиши изменение картинки
+                button6.Enabled = false;
+                //Допиши изменение картинки
+                buttonDelStorage.Enabled = false;
+                //Допиши изменение картинки
+
+                button3.Enabled = false;
+                //Допиши изменение картинки
+                button5.Enabled = false;
+                //Допиши изменение картинки
+                buttonCreateStorage.Enabled = false;
+                //Допиши изменение картинки
+                openedVault = null;
+                password = null;
+            }
+        }
+
+        private void buttonAddStorage_Click(object sender, EventArgs e)
+        {
+            string path = "";//открой проводник и запиши путь в переменную path
+
+            List<string> meta = FileManager.Vault.GetMeta(openedVault);
+            int encrCode = EncryptionModule.Encryption.EncryptFile(path, @"Vaults\" + openedVault, meta[0], int.Parse(meta[1]), password);
+            switch (encrCode)
+            {
+                case 1:
+                    MessageBox.Show("Ошибка чтения или записи файла!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+                case 2:
+                    MessageBox.Show("Ошибка шифрования.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+                case 3:
+                    MessageBox.Show("Неизвестная ошибка.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+            }
+            this.Close();
+        }
+
 
 
         //Коды ошибок для шифровки модуля Encryption
-        //switch (Переменная)
-        //    {
-        //        case 1:
-        //            MessageBox.Show("Ошибка чтения или записи файла!","Ошибка",MessageBoxButtons.OK,MessageBoxIcon.Error);
-        //            break;
-        //        case 2:
-        //            MessageBox.Show("Ошибка шифрования.","Ошибка",MessageBoxButtons.OK,MessageBoxIcon.Error);
-        //            break;
-        //        case 3:
-        //            MessageBox.Show("Неизвестная ошибка.","Ошибка",MessageBoxButtons.OK,MessageBoxIcon.Eror);
-        //            break;
-        //    }                                                                                                                 
-        //    this.Close();
+
 
 
         //Коды ошибок для расшифровки модуля Encryption

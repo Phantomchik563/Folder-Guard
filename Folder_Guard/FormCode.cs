@@ -72,7 +72,9 @@ namespace Folder_Guard
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int shifrovka = FileManager.Vault.GetAccessToVault(SelectedItemName, textBoxCode.Text);
+            string password = textBoxCode.Text;
+            string vault = SelectedItemName;
+            int shifrovka = FileManager.Vault.GetAccessToVault(vault, password);
 
             switch (shifrovka)
             {
@@ -80,14 +82,14 @@ namespace Folder_Guard
                     MessageBox.Show("Неверный пароль!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
                 case 2:
-                    MessageBox.Show("Отсутствие Metafile хранилища!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Отсутствие файла метаданных хранилища!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
                 case 0:
                     {
                         List<string> vaultFiles = FileManager.Vault.GetVaultFiles(SelectedItemName);
                         mainForm.UpdateListViewStorageFiles(vaultFiles);
-
-
+                        mainForm.password = password;
+                        mainForm.openedVault = vault;
                     }
                     break;
             }
