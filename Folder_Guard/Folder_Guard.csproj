@@ -244,5 +244,47 @@
   <ItemGroup>
     <None Include="Resources\question.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_rename_alt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_rename alt1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_rename. alt2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_rename alt3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_rename alt1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_add alt1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_delete alt1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_deshifrovat alt1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_ecsport alt1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_import alt1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_add alt1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_ecsport alt1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_import alt1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_open alt1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
