@@ -111,7 +111,7 @@ namespace Folder_Guard
             // buttonCode
             // 
             this.buttonCode.BackColor = System.Drawing.Color.DimGray;
-            this.buttonCode.BackgroundImage = global::Folder_Guard.Properties.Resources.logo_rename_alt3;
+            this.buttonCode.BackgroundImage = global::Folder_Guard.Properties.Resources.logo_open;
             this.buttonCode.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonCode.Enabled = false;
             this.buttonCode.FlatAppearance.BorderSize = 0;
@@ -227,7 +227,7 @@ namespace Folder_Guard
             // button6
             // 
             this.button6.BackColor = System.Drawing.Color.DimGray;
-            this.button6.BackgroundImage = global::Folder_Guard.Properties.Resources.file_rename_alt1;
+            this.button6.BackgroundImage = global::Folder_Guard.Properties.Resources.file_ren;
             this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button6.Enabled = false;
             this.button6.FlatAppearance.BorderSize = 0;
