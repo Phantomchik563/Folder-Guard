@@ -303,6 +303,16 @@ namespace Folder_Guard.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logo_delte_alt1 {
+            get {
+                object obj = ResourceManager.GetObject("logo_delte_alt1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logo_ecsport {
             get {
                 object obj = ResourceManager.GetObject("logo_ecsport", resourceCulture);

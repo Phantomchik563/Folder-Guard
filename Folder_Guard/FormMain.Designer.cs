@@ -244,7 +244,7 @@ namespace Folder_Guard
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.DimGray;
-            this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
+            this.button5.BackgroundImage = global::Folder_Guard.Properties.Resources.logo_ecsport;
             this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;

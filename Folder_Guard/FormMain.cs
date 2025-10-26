@@ -29,6 +29,25 @@ namespace Folder_Guard
             Themes();
             UpdateListViewStorage(FileManager.Vault.GetVaults());
             // Список элементов, которые будут плавно появляться
+
+            buttonCode.Enabled = false;
+            buttonCode.BackgroundImage = Properties.Resources.logo_open_alt1;
+            buttonAddStorage.Enabled = false;
+            buttonAddStorage.BackgroundImage = Properties.Resources.file_add_alt1;
+            buttonUnCode.Enabled = false;
+            buttonUnCode.BackgroundImage = Properties.Resources.file_deshifrovat_alt1;
+            button6.Enabled = false;
+            button6.BackgroundImage = Properties.Resources.file_rename_alt1;
+            buttonDelStorage.Enabled = false;
+            buttonDelStorage.BackgroundImage = Properties.Resources.file_delete_alt1;
+
+            button3.Enabled = false;
+            button3.BackgroundImage = Properties.Resources.logo_delte_alt1;
+            button5.Enabled = false;
+            button5.BackgroundImage = Properties.Resources.logo_ecsport_alt1;
+            buttonCreateStorage.Enabled = false;
+            buttonCreateStorage.BackgroundImage = Properties.Resources.logo_rename_alt3;
+
             uiElements = new Control[]
             {
                 buttonCreateStorage,
@@ -90,8 +109,8 @@ namespace Folder_Guard
             toolTip1.SetToolTip(buttonCode, "Открыть хранилище");
             toolTip1.SetToolTip(button6, "Переименовать файл");
             toolTip1.SetToolTip(buttonDelStorage, "Удалить файл");
-            toolTip1.SetToolTip(buttonAddStorage, "Импортировать хранилище");
-            toolTip1.SetToolTip(buttonUnCode, "Экспортировать хранилище");
+            toolTip1.SetToolTip(buttonAddStorage, "Импортировать файл");
+            toolTip1.SetToolTip(buttonUnCode, "Экспортировать файл");
             toolTip1.SetToolTip(buttonSetting, "Настройки");
             toolTip1.SetToolTip(buttonHelp, "Помощь");
         }
@@ -334,42 +353,42 @@ namespace Folder_Guard
             if (vault == openedVault) // Если хранилище ОТКРЫТО
             {
                 buttonCode.Enabled = false;
-                //Допиши изменение картинки
+                buttonCode.BackgroundImage = Properties.Resources.logo_open_alt1;
                 buttonAddStorage.Enabled = true;
-                //Допиши изменение картинки
+                buttonAddStorage.BackgroundImage = Properties.Resources.file_add;
                 buttonUnCode.Enabled = true;
-                //Допиши изменение картинки
+                buttonUnCode.BackgroundImage = Properties.Resources.file_deshifrovat;
                 button6.Enabled = true;
-                //Допиши изменение картинки
+                button6.BackgroundImage = Properties.Resources.file_ren;
                 buttonDelStorage.Enabled = true;
-                //Допиши изменение картинки
+                buttonDelStorage.BackgroundImage = Properties.Resources.file_delete;
 
                 button3.Enabled = true;
-                //Допиши изменение картинки
+                button3.BackgroundImage = Properties.Resources.logo_delte;
                 button5.Enabled = true;
-                //Допиши изменение картинки
+                button5.BackgroundImage = Properties.Resources.logo_ecsport;
                 buttonCreateStorage.Enabled = true;
-                //Допиши изменение картинки
+                buttonCreateStorage.BackgroundImage = Properties.Resources.logo_rename;
             }
             else // Если хранилище ЗАКРЫТО
             {
                 buttonCode.Enabled = true;
-                //Допиши изменение картинки
+                buttonCode.BackgroundImage = Properties.Resources.logo_open;
                 buttonAddStorage.Enabled = false;
-                //Допиши изменение картинки
+                buttonAddStorage.BackgroundImage = Properties.Resources.file_add_alt1;
                 buttonUnCode.Enabled = false;
-                //Допиши изменение картинки
+                buttonUnCode.BackgroundImage = Properties.Resources.file_deshifrovat_alt1;
                 button6.Enabled = false;
-                //Допиши изменение картинки
+                button6.BackgroundImage = Properties.Resources.file_rename_alt1;
                 buttonDelStorage.Enabled = false;
-                //Допиши изменение картинки
+                buttonDelStorage.BackgroundImage = Properties.Resources.file_delete_alt1;
 
                 button3.Enabled = false;
-                //Допиши изменение картинки
+                button3.BackgroundImage = Properties.Resources.logo_delte_alt1;
                 button5.Enabled = false;
-                //Допиши изменение картинки
+                button5.BackgroundImage = Properties.Resources.logo_ecsport_alt1;
                 buttonCreateStorage.Enabled = false;
-                //Допиши изменение картинки
+                buttonCreateStorage.BackgroundImage = Properties.Resources.logo_rename_alt3;
                 openedVault = null;
                 password = null;
             }
@@ -377,8 +396,27 @@ namespace Folder_Guard
 
         private void buttonAddStorage_Click(object sender, EventArgs e)
         {
+
+            
+
+
             string path = "";//открой проводник и запиши путь в переменную path
 
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Title = "Выберите файл для добавления";
+                ofd.InitialDirectory = @"C:\"; // Можно указать стартовую папку
+                ofd.Filter = "Все файлы (*.*)|*.*"; // Можно ограничить типы файлов
+
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    // Сохраняем путь в переменную
+                    selectedFilePath = path;
+
+
+                }
+            }
+            UpdateListViewStorageFiles(FileManager.Vault.GetVaultFiles(openedVault));
             List<string> meta = FileManager.Vault.GetMeta(openedVault);
             int encrCode = EncryptionModule.Encryption.EncryptFile(path, @"Vaults\" + openedVault, meta[0], int.Parse(meta[1]), password);
             switch (encrCode)
