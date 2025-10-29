@@ -116,6 +116,10 @@ namespace FileManager
                 return outMetaInfo;
             }
         }
+        public static void VaultExport(string vaultName, string outputPath)
+        {
+
+        }
     }
     
 }

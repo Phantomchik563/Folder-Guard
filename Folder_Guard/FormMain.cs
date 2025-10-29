@@ -396,10 +396,6 @@ namespace Folder_Guard
 
         private void buttonAddStorage_Click(object sender, EventArgs e)
         {
-
-            
-
-
             string path = "";//Путь файла
             string pathFile = ""; // Имя файла
             using (OpenFileDialog ofd = new OpenFileDialog())
@@ -413,26 +409,25 @@ namespace Folder_Guard
                     // Сохраняем выбранный путь
                     path = ofd.FileName;
                     pathFile = Path.GetFileName(ofd.FileName);
-                    // Можно вывести путь для проверки
-                    MessageBox.Show("Вы выбрали файл:\n" + path, "Файл выбран");
+                    string[] pathParts = path.Split('\\');
+                    UpdateListViewStorageFiles(FileManager.Vault.GetVaultFiles(openedVault));
+                    List<string> meta = FileManager.Vault.GetMeta(openedVault);
+                    int encrCode = EncryptionModule.Encryption.EncryptFile(path, @"Vaults\" + openedVault + '\\' + pathParts[pathParts.Length - 1] + ".sf", meta[0], int.Parse(meta[1]), password);
+                    switch (encrCode)
+                    {
+                        case 1:
+                            MessageBox.Show("Ошибка чтения или записи файла!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        case 2:
+                            MessageBox.Show("Ошибка шифрования.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        case 3:
+                            MessageBox.Show("Неизвестная ошибка.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                    }
                 }
             }
             UpdateListViewStorageFiles(FileManager.Vault.GetVaultFiles(openedVault));
-            List<string> meta = FileManager.Vault.GetMeta(openedVault);
-            int encrCode = EncryptionModule.Encryption.EncryptFile(path, @"Vaults\" + openedVault, meta[0], int.Parse(meta[1]), password);
-            switch (encrCode)
-            {
-                case 1:
-                    MessageBox.Show("Ошибка чтения или записи файла!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
-                case 2:
-                    MessageBox.Show("Ошибка шифрования.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
-                case 3:
-                    MessageBox.Show("Неизвестная ошибка.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
-            }
-            this.Close();
         }
 
 
