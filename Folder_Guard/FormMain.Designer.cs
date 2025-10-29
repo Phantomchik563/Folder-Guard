@@ -162,12 +162,12 @@ namespace Folder_Guard
             this.buttonCreateStorage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonCreateStorage.BackgroundImage")));
             this.buttonCreateStorage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonCreateStorage.FlatAppearance.BorderSize = 0;
-            this.buttonCreateStorage.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonCreateStorage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCreateStorage.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonCreateStorage.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonCreateStorage.Location = new System.Drawing.Point(127, 181);
+            this.buttonCreateStorage.Location = new System.Drawing.Point(127, 179);
             this.buttonCreateStorage.Name = "buttonCreateStorage";
-            this.buttonCreateStorage.Size = new System.Drawing.Size(26, 26);
+            this.buttonCreateStorage.Size = new System.Drawing.Size(26, 28);
             this.buttonCreateStorage.TabIndex = 15;
             this.buttonCreateStorage.UseVisualStyleBackColor = false;
             this.buttonCreateStorage.Click += new System.EventHandler(this.ButtonCreateStoragebutton_Click);
@@ -247,12 +247,12 @@ namespace Folder_Guard
             this.button5.BackgroundImage = global::Folder_Guard.Properties.Resources.logo_ecsport;
             this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button5.Location = new System.Drawing.Point(254, 181);
+            this.button5.Location = new System.Drawing.Point(254, 179);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(26, 26);
+            this.button5.Size = new System.Drawing.Size(26, 28);
             this.button5.TabIndex = 30;
             this.button5.UseVisualStyleBackColor = false;
             // 
@@ -262,12 +262,12 @@ namespace Folder_Guard
             this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
             this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button4.Location = new System.Drawing.Point(193, 181);
+            this.button4.Location = new System.Drawing.Point(193, 179);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(26, 26);
+            this.button4.Size = new System.Drawing.Size(26, 28);
             this.button4.TabIndex = 29;
             this.button4.UseVisualStyleBackColor = false;
             // 
@@ -277,12 +277,12 @@ namespace Folder_Guard
             this.button3.BackgroundImage = global::Folder_Guard.Properties.Resources.logo_delte;
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.Location = new System.Drawing.Point(64, 181);
+            this.button3.Location = new System.Drawing.Point(64, 179);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(26, 26);
+            this.button3.Size = new System.Drawing.Size(26, 28);
             this.button3.TabIndex = 28;
             this.button3.UseVisualStyleBackColor = false;
             // 
@@ -292,12 +292,12 @@ namespace Folder_Guard
             this.button2.BackgroundImage = global::Folder_Guard.Properties.Resources.add;
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(6, 181);
+            this.button2.Location = new System.Drawing.Point(6, 179);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(26, 26);
+            this.button2.Size = new System.Drawing.Size(26, 28);
             this.button2.TabIndex = 27;
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -305,9 +305,9 @@ namespace Folder_Guard
             // pictureBox2
             // 
             this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Location = new System.Drawing.Point(-1, 178);
+            this.pictureBox2.Location = new System.Drawing.Point(-1, 176);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(287, 32);
+            this.pictureBox2.Size = new System.Drawing.Size(287, 34);
             this.pictureBox2.TabIndex = 26;
             this.pictureBox2.TabStop = false;
             // 

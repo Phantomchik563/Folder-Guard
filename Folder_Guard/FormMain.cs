@@ -400,8 +400,8 @@ namespace Folder_Guard
             
 
 
-            string path = "";//открой проводник и запиши путь в переменную path
-
+            string path = "";//Путь файла
+            string pathFile = ""; // Имя файла
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
                 ofd.Title = "Выберите файл для добавления";
@@ -410,10 +410,11 @@ namespace Folder_Guard
 
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
-                    // Сохраняем путь в переменную
-                    selectedFilePath = path;
-
-
+                    // Сохраняем выбранный путь
+                    path = ofd.FileName;
+                    pathFile = Path.GetFileName(ofd.FileName);
+                    // Можно вывести путь для проверки
+                    MessageBox.Show("Вы выбрали файл:\n" + path, "Файл выбран");
                 }
             }
             UpdateListViewStorageFiles(FileManager.Vault.GetVaultFiles(openedVault));
