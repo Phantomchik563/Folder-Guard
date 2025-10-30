@@ -113,6 +113,7 @@ namespace Folder_Guard
             toolTip1.SetToolTip(buttonUnCode, "Экспортировать файл");
             toolTip1.SetToolTip(buttonSetting, "Настройки");
             toolTip1.SetToolTip(buttonHelp, "Помощь");
+            toolTip1.SetToolTip(button1, "О программе");
         }
 
         // =========================
@@ -212,7 +213,8 @@ namespace Folder_Guard
                         buttonCode.BackColor = Color.FromArgb(255, 255, 255);
                         buttonCode.ForeColor = Color.FromArgb(33, 33, 33);
 
-
+                        button1.BackColor = Color.FromArgb(255, 255, 255);
+                        button1.ForeColor = Color.FromArgb(33, 33, 33);
                         button2.BackColor = Color.FromArgb(255, 255, 255);
                         button2.ForeColor = Color.FromArgb(33, 33, 33);
                         button3.BackColor = Color.FromArgb(255, 255, 255);
@@ -270,6 +272,9 @@ namespace Folder_Guard
                         listViewStorage.ForeColor = Color.FromArgb(255, 255, 255);
                         listViewStorageFiles.BackColor = Color.FromArgb(33, 33, 33);
                         listViewStorageFiles.ForeColor = Color.FromArgb(255, 255, 255);
+
+                        button1.BackColor = Color.FromArgb(33, 33, 33);
+                        button1.ForeColor = Color.FromArgb(255, 255, 255);
                         button2.BackColor = Color.FromArgb(33, 33, 33);
                         button2.ForeColor = Color.FromArgb(255, 255, 255);
                         button3.BackColor = Color.FromArgb(33, 33, 33);
@@ -428,6 +433,250 @@ namespace Folder_Guard
                 }
             }
             UpdateListViewStorageFiles(FileManager.Vault.GetVaultFiles(openedVault));
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (var form = new FormAbout())
+            {
+                form.StartPosition = FormStartPosition.CenterParent;
+                form.ShowDialog();
+            }
+        }
+
+        private void buttonUnCode_Click(object sender, EventArgs e) //Расшифровка файла
+        {
+            string outPath = "";      // Путь к выбранной папке
+            string outPathFile = "";  // Имя файла (можно позже задать своё)
+
+            using (FolderBrowserDialog fbd = new FolderBrowserDialog())
+            {
+                fbd.Description = "Выберите папку, куда расшифровать файл";
+                fbd.ShowNewFolderButton = true;
+
+                if (fbd.ShowDialog() == DialogResult.OK)
+                {
+                    // Путь к папке
+                    outPath = fbd.SelectedPath;
+
+                    // Пример: можно задать имя файла вручную или взять из другой переменной
+                    // (например, если ты расшифровываешь "secret.enc", то создаёшь "secret.txt")
+                    outPathFile = Path.Combine(outPath, "Расшифрованный_файл.txt");
+
+                    MessageBox.Show(
+                        $"Папка: {outPath}\nИмя файла: {Path.GetFileName(outPathFile)}",
+                        "Путь для расшифровки:"
+                    );
+                }
+            }
+        }
+
+        private void buttonDelStorage_Click(object sender, EventArgs e)
+        {
+            // Проверяем, выбран ли элемент в listViewStorageFiles
+            if (listViewStorageFiles.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Выберите файл для удаления.", "Удаление файла", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Берем путь к файлу 
+            string filePath = "";
+
+            // Если путь не задан — сообщаем
+            if (string.IsNullOrEmpty(filePath) || !System.IO.File.Exists(filePath))
+            {
+                MessageBox.Show("Файл не найден или путь не указан.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Спрашиваем подтверждение
+            DialogResult result = MessageBox.Show(
+                $"Вы действительно хотите удалить файл:\n{Path.GetFileName(filePath)}?",
+                "Подтверждение удаления",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Warning
+            );
+
+            // Если пользователь подтвердил — удаляем
+            if (result == DialogResult.OK)
+            {
+                try
+                {
+                    System.IO.File.Delete(filePath);
+
+                    // Удаляем элемент из списка
+                    listViewStorageFiles.Items.Remove(listViewStorageFiles.SelectedItems[0]);
+
+                    MessageBox.Show("Файл успешно удалён!", "Готово", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при удалении файла:\n{ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (listViewStorage.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Выберите хранилище для удаления.", "Удаление хранилища",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Получаем выбранный элемент
+            var selectedItem = listViewStorage.SelectedItems[0];
+            string storageName = selectedItem.Text;
+
+            // ⚙️ Если путь к хранилищу хранится в Tag — берём его тоже путь найди
+            string storagePath = "";//selectedItem.Tag?.ToString();
+
+            // Спрашиваем подтверждение
+            DialogResult result = MessageBox.Show(
+                $"Вы действительно хотите удалить хранилище:\n«{storageName}»?",
+                "Подтверждение удаления",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Warning
+            );
+
+            if (result == DialogResult.OK)
+            {
+                try
+                {
+                    // 🔹 Удаляем физически (если путь есть)
+                    if (!string.IsNullOrEmpty(storagePath) && Directory.Exists(storagePath))
+                    {
+                        Directory.Delete(storagePath, true); // true — удалить со всем содержимым
+                    }
+
+                    // 🔹 Удаляем из списка
+                    listViewStorage.Items.Remove(selectedItem);
+
+                    MessageBox.Show("Хранилище успешно удалено!", "Готово",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при удалении хранилища:\n{ex.Message}", "Ошибка",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Title = "Выберите хранилище для импорта";
+                ofd.Filter = "Файлы хранилищ (*.vault;*.zip)|*.vault;*.zip|Все файлы (*.*)|*.*";
+                ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        // 📁 Путь к выбранному файлу
+                        string selectedFile = ofd.FileName;
+                        string fileName = Path.GetFileName(selectedFile);
+
+                        // 📦 Папка, куда будут импортироваться хранилища
+                        string vaultsDirectory = Path.Combine(Application.StartupPath, "Vaults");
+
+                        // Если папки нет — создаём
+                        if (!Directory.Exists(vaultsDirectory))
+                            Directory.CreateDirectory(vaultsDirectory);
+
+                        // 📂 Куда копируем
+                        string destinationPath = Path.Combine(vaultsDirectory, fileName);
+
+                        // Проверяем, нет ли уже такого файла
+                        if (System.IO.File.Exists(destinationPath))
+                        {
+                            DialogResult overwrite = MessageBox.Show(
+                                $"Хранилище с именем «{fileName}» уже существует.\nЗаменить его?",
+                                "Подтверждение импорта",
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Question);
+
+                            if (overwrite == DialogResult.No)
+                                return;
+
+                            System.IO.File.Delete(destinationPath);
+                        }
+
+                        // 🚀 Копируем файл
+                        System.IO.File.Copy(selectedFile, destinationPath, true);
+
+                        // ✅ Добавляем в listViewStorage
+                        ListViewItem item = new ListViewItem(fileName);
+                        item.Tag = destinationPath;
+                        listViewStorage.Items.Add(item);
+
+                        MessageBox.Show($"Хранилище «{fileName}» успешно импортировано!",
+                            "Импорт завершён", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Ошибка при импорте хранилища:\n{ex.Message}",
+                            "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            // Проверяем, выбрано ли хранилище
+            if (listViewStorage.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Пожалуйста, выберите хранилище для экспорта.",
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Получаем выбранный элемент
+            var selectedItem = listViewStorage.SelectedItems[0];
+            string fileName = selectedItem.Text;
+
+            // Определяем, где хранится оригинал (найди верный путь)
+            string vaultsDirectory = Path.Combine(Application.StartupPath, "Vaults");
+            string sourcePath = Path.Combine(vaultsDirectory, fileName);
+
+            // Проверяем, существует ли файл
+            if (!System.IO.File.Exists(sourcePath))
+            {
+                MessageBox.Show("Файл хранилища не найден. Возможно, он был удалён или перемещён.",
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Диалог для выбора пути сохранения
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Title = "Выберите, куда сохранить хранилище";
+                sfd.FileName = fileName; // имя по умолчанию
+                sfd.Filter = "Файлы хранилищ (*.vault;*.zip)|*.vault;*.zip|Все файлы (*.*)|*.*";
+                sfd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        // Копируем файл в выбранное место
+                        System.IO.File.Copy(sourcePath, sfd.FileName, true);
+
+                        MessageBox.Show($"Хранилище «{fileName}» успешно экспортировано!",
+                            "Экспорт завершён", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Ошибка при экспорте хранилища:\n{ex.Message}",
+                            "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
 
 

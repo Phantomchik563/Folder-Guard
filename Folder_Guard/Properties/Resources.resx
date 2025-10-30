@@ -232,4 +232,10 @@
   <data name="logo_delte_alt1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo_delte alt1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="FolderGuard_logo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FolderGuard_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logo_about" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logo_about.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
