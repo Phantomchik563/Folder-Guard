@@ -14,6 +14,7 @@ namespace Folder_Guard
 {
     public partial class FormMain : Form
     {
+
         public string password = null;
         public string openedVault = null;
 
@@ -28,8 +29,10 @@ namespace Folder_Guard
             InitializeComponent();
             Themes();
             UpdateListViewStorage(FileManager.Vault.GetVaults());
-            // Список элементов, которые будут плавно появляться
 
+            
+
+            // Список элементов, которые будут плавно появлятьс
             buttonCode.Enabled = false;
             buttonCode.BackgroundImage = Properties.Resources.logo_open_alt1;
             buttonAddStorage.Enabled = false;
@@ -68,6 +71,8 @@ namespace Folder_Guard
 
 
         }
+
+        
 
         private void FormMain_Load(object sender, EventArgs e)
         {
