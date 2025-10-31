@@ -49,7 +49,7 @@
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox2.Location = new System.Drawing.Point(17, 150);
+            this.textBox2.Location = new System.Drawing.Point(17, 112);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(232, 26);
             this.textBox2.TabIndex = 1;
@@ -75,7 +75,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.ForeColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(13, 126);
+            this.label3.Location = new System.Drawing.Point(13, 88);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(236, 21);
             this.label3.TabIndex = 3;
@@ -89,7 +89,7 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.Location = new System.Drawing.Point(17, 204);
+            this.button3.Location = new System.Drawing.Point(17, 153);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(90, 30);
             this.button3.TabIndex = 14;
@@ -104,7 +104,7 @@
             this.buttonDelStorage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDelStorage.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonDelStorage.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonDelStorage.Location = new System.Drawing.Point(159, 204);
+            this.buttonDelStorage.Location = new System.Drawing.Point(159, 153);
             this.buttonDelStorage.Name = "buttonDelStorage";
             this.buttonDelStorage.Size = new System.Drawing.Size(90, 30);
             this.buttonDelStorage.TabIndex = 15;
@@ -116,7 +116,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(264, 243);
+            this.ClientSize = new System.Drawing.Size(264, 191);
             this.Controls.Add(this.buttonDelStorage);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label3);
