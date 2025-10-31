@@ -243,6 +243,16 @@ namespace Folder_Guard.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FolderGuard_logo11 {
+            get {
+                object obj = ResourceManager.GetObject("FolderGuard_logo11", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap foni_papik_pro_6wv0_p_kartinki_papka_na_prozrachnom_fone_1 {
             get {
                 object obj = ResourceManager.GetObject("foni_papik_pro_6wv0_p_kartinki_papka_na_prozrachnom_fone_1", resourceCulture);
