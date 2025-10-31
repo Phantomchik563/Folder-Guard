@@ -311,10 +311,7 @@ namespace Folder_Guard
 
         }
 
-        private void buttonTest_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void toolTip1_Popup(object sender, PopupEventArgs e)
         {

@@ -119,9 +119,9 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(404, 252);
+            this.button2.Location = new System.Drawing.Point(404, 265);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(109, 43);
+            this.button2.Size = new System.Drawing.Size(109, 30);
             this.button2.TabIndex = 27;
             this.button2.Text = "Применить";
             this.button2.UseVisualStyleBackColor = false;

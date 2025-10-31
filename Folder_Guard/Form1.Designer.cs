@@ -91,7 +91,7 @@
             this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button3.Location = new System.Drawing.Point(17, 204);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(89, 31);
+            this.button3.Size = new System.Drawing.Size(90, 30);
             this.button3.TabIndex = 14;
             this.button3.Text = "Отмена";
             this.button3.UseVisualStyleBackColor = false;
@@ -104,9 +104,9 @@
             this.buttonDelStorage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDelStorage.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonDelStorage.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonDelStorage.Location = new System.Drawing.Point(159, 203);
+            this.buttonDelStorage.Location = new System.Drawing.Point(159, 204);
             this.buttonDelStorage.Name = "buttonDelStorage";
-            this.buttonDelStorage.Size = new System.Drawing.Size(90, 32);
+            this.buttonDelStorage.Size = new System.Drawing.Size(90, 30);
             this.buttonDelStorage.TabIndex = 15;
             this.buttonDelStorage.Text = "Ввести";
             this.buttonDelStorage.UseVisualStyleBackColor = false;
@@ -116,7 +116,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(264, 269);
+            this.ClientSize = new System.Drawing.Size(264, 243);
             this.Controls.Add(this.buttonDelStorage);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label3);

@@ -64,7 +64,7 @@
             this.buttonAddStorage.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonAddStorage.Location = new System.Drawing.Point(16, 153);
             this.buttonAddStorage.Name = "buttonAddStorage";
-            this.buttonAddStorage.Size = new System.Drawing.Size(84, 29);
+            this.buttonAddStorage.Size = new System.Drawing.Size(90, 30);
             this.buttonAddStorage.TabIndex = 16;
             this.buttonAddStorage.Text = "Отмена";
             this.buttonAddStorage.UseVisualStyleBackColor = false;
@@ -77,9 +77,9 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Niagara Solid", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(147, 153);
+            this.button1.Location = new System.Drawing.Point(141, 153);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(84, 29);
+            this.button1.Size = new System.Drawing.Size(90, 30);
             this.button1.TabIndex = 17;
             this.button1.Text = "Ввести";
             this.button1.UseVisualStyleBackColor = false;

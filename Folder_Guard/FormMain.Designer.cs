@@ -51,7 +51,6 @@ namespace Folder_Guard
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.buttonTest = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.panelFiles.SuspendLayout();
@@ -326,20 +325,6 @@ namespace Folder_Guard
             this.pictureBox1.TabIndex = 23;
             this.pictureBox1.TabStop = false;
             // 
-            // buttonTest
-            // 
-            this.buttonTest.BackColor = System.Drawing.Color.Red;
-            this.buttonTest.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonTest.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonTest.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonTest.Location = new System.Drawing.Point(631, 5);
-            this.buttonTest.Name = "buttonTest";
-            this.buttonTest.Size = new System.Drawing.Size(112, 41);
-            this.buttonTest.TabIndex = 25;
-            this.buttonTest.Text = "Тест";
-            this.buttonTest.UseVisualStyleBackColor = false;
-            this.buttonTest.Click += new System.EventHandler(this.buttonTest_Click);
-            // 
             // toolTip1
             // 
             this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
@@ -367,7 +352,6 @@ namespace Folder_Guard
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(906, 691);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.buttonTest);
             this.Controls.Add(this.listViewStorageFiles);
             this.Controls.Add(this.buttonSetting);
             this.Controls.Add(this.buttonHelp);
@@ -434,7 +418,6 @@ namespace Folder_Guard
         private ListView listViewStorage;
         private Panel panelFiles;
         private PictureBox pictureBox1;
-        private Button buttonTest;
         private ToolTip toolTip1;
         private PictureBox pictureBox2;
         private Button button5;

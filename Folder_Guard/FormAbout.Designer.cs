@@ -59,9 +59,9 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.Location = new System.Drawing.Point(309, 186);
+            this.button3.Location = new System.Drawing.Point(290, 186);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(71, 29);
+            this.button3.Size = new System.Drawing.Size(90, 30);
             this.button3.TabIndex = 25;
             this.button3.Text = "Ок";
             this.button3.UseVisualStyleBackColor = false;
