@@ -38,20 +38,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Niagara Solid", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label1.Location = new System.Drawing.Point(12, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(194, 19);
+            this.label1.Size = new System.Drawing.Size(233, 21);
             this.label1.TabIndex = 2;
             this.label1.Text = "Введите новое название файла";
             // 
             // textBoxCode
             // 
-            this.textBoxCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxCode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxCode.Location = new System.Drawing.Point(16, 61);
             this.textBoxCode.Name = "textBoxCode";
-            this.textBoxCode.Size = new System.Drawing.Size(190, 26);
+            this.textBoxCode.Size = new System.Drawing.Size(224, 29);
             this.textBoxCode.TabIndex = 3;
             this.textBoxCode.UseSystemPasswordChar = true;
             // 
@@ -60,11 +60,11 @@
             this.buttonAddStorage.BackColor = System.Drawing.Color.DimGray;
             this.buttonAddStorage.FlatAppearance.BorderSize = 0;
             this.buttonAddStorage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAddStorage.Font = new System.Drawing.Font("Niagara Solid", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddStorage.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAddStorage.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonAddStorage.Location = new System.Drawing.Point(16, 101);
             this.buttonAddStorage.Name = "buttonAddStorage";
-            this.buttonAddStorage.Size = new System.Drawing.Size(70, 30);
+            this.buttonAddStorage.Size = new System.Drawing.Size(80, 30);
             this.buttonAddStorage.TabIndex = 17;
             this.buttonAddStorage.Text = "Отмена";
             this.buttonAddStorage.UseVisualStyleBackColor = false;
@@ -75,11 +75,11 @@
             this.button1.BackColor = System.Drawing.Color.DimGray;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Niagara Solid", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(136, 101);
+            this.button1.Location = new System.Drawing.Point(160, 101);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(70, 30);
+            this.button1.Size = new System.Drawing.Size(80, 30);
             this.button1.TabIndex = 18;
             this.button1.Text = "Ввести";
             this.button1.UseVisualStyleBackColor = false;
@@ -89,7 +89,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(215, 139);
+            this.ClientSize = new System.Drawing.Size(252, 139);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonAddStorage);
             this.Controls.Add(this.textBoxCode);
