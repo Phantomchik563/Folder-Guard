@@ -38,20 +38,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Niagara Solid", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Niagara Solid", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(12, 23);
+            this.label1.Location = new System.Drawing.Point(12, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(273, 23);
+            this.label1.Size = new System.Drawing.Size(194, 19);
             this.label1.TabIndex = 2;
             this.label1.Text = "Введите новое название файла";
             // 
             // textBoxCode
             // 
-            this.textBoxCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxCode.Location = new System.Drawing.Point(16, 65);
             this.textBoxCode.Name = "textBoxCode";
-            this.textBoxCode.Size = new System.Drawing.Size(269, 29);
+            this.textBoxCode.Size = new System.Drawing.Size(190, 26);
             this.textBoxCode.TabIndex = 3;
             this.textBoxCode.UseSystemPasswordChar = true;
             // 
@@ -60,11 +60,11 @@
             this.buttonAddStorage.BackColor = System.Drawing.Color.DimGray;
             this.buttonAddStorage.FlatAppearance.BorderSize = 0;
             this.buttonAddStorage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAddStorage.Font = new System.Drawing.Font("Niagara Solid", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddStorage.Font = new System.Drawing.Font("Niagara Solid", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAddStorage.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonAddStorage.Location = new System.Drawing.Point(16, 121);
+            this.buttonAddStorage.Location = new System.Drawing.Point(16, 123);
             this.buttonAddStorage.Name = "buttonAddStorage";
-            this.buttonAddStorage.Size = new System.Drawing.Size(101, 29);
+            this.buttonAddStorage.Size = new System.Drawing.Size(74, 31);
             this.buttonAddStorage.TabIndex = 17;
             this.buttonAddStorage.Text = "Отмена";
             this.buttonAddStorage.UseVisualStyleBackColor = false;
@@ -75,11 +75,11 @@
             this.button1.BackColor = System.Drawing.Color.DimGray;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Niagara Solid", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("Niagara Solid", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(184, 123);
+            this.button1.Location = new System.Drawing.Point(132, 123);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(101, 29);
+            this.button1.Size = new System.Drawing.Size(74, 31);
             this.button1.TabIndex = 18;
             this.button1.Text = "Ввести";
             this.button1.UseVisualStyleBackColor = false;
@@ -89,7 +89,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(302, 164);
+            this.ClientSize = new System.Drawing.Size(215, 164);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonAddStorage);
             this.Controls.Add(this.textBoxCode);
