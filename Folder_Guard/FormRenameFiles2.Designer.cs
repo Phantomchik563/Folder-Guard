@@ -83,6 +83,7 @@
             this.button1.TabIndex = 18;
             this.button1.Text = "Ввести";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FormRenameFiles
             // 
@@ -93,8 +94,9 @@
             this.Controls.Add(this.buttonAddStorage);
             this.Controls.Add(this.textBoxCode);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "FormRenameFiles";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FolderGuard";

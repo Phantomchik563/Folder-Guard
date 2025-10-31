@@ -53,6 +53,7 @@ namespace Folder_Guard
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonTest = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.panelFiles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -155,6 +156,7 @@ namespace Folder_Guard
             this.buttonDelStorage.Size = new System.Drawing.Size(63, 44);
             this.buttonDelStorage.TabIndex = 14;
             this.buttonDelStorage.UseVisualStyleBackColor = false;
+            this.buttonDelStorage.Click += new System.EventHandler(this.buttonDelStorage_Click);
             // 
             // buttonCreateStorage
             // 
@@ -186,6 +188,7 @@ namespace Folder_Guard
             this.buttonUnCode.Size = new System.Drawing.Size(63, 44);
             this.buttonUnCode.TabIndex = 16;
             this.buttonUnCode.UseVisualStyleBackColor = false;
+            this.buttonUnCode.Click += new System.EventHandler(this.buttonUnCode_Click);
             // 
             // listViewStorage
             // 
@@ -255,6 +258,7 @@ namespace Folder_Guard
             this.button5.Size = new System.Drawing.Size(26, 28);
             this.button5.TabIndex = 30;
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
@@ -270,6 +274,7 @@ namespace Folder_Guard
             this.button4.Size = new System.Drawing.Size(26, 28);
             this.button4.TabIndex = 29;
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -285,6 +290,7 @@ namespace Folder_Guard
             this.button3.Size = new System.Drawing.Size(26, 28);
             this.button3.TabIndex = 28;
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -338,20 +344,38 @@ namespace Folder_Guard
             // 
             this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.DimGray;
+            this.button1.BackgroundImage = global::Folder_Guard.Properties.Resources.logo_about;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button1.Location = new System.Drawing.Point(767, 7);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(36, 36);
+            this.button1.TabIndex = 26;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(906, 691);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonTest);
             this.Controls.Add(this.listViewStorageFiles);
             this.Controls.Add(this.buttonSetting);
             this.Controls.Add(this.buttonHelp);
             this.Controls.Add(this.panelFiles);
             this.Controls.Add(this.pictureBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FolderGuard";
@@ -418,6 +442,7 @@ namespace Folder_Guard
         private Button button3;
         private Button button2;
         private Button button6;
+        private Button button1;
     }
 }
 
