@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -116,10 +117,66 @@ namespace FileManager
                 return outMetaInfo;
             }
         }
-        public static void VaultExport(string vaultName, string outputPath)
+        public static int VaultDelete(string vaultName) // Удаление хранилища со всем содержимым
         {
-
+            if (Directory.Exists(@"Vaults\" + vaultName))
+            {
+                Directory.Delete(@"Vaults\" + vaultName);
+                return 0;
+            }
+            else return 1;
+        }
+        public static int VaultRename(string vaultName, string newVaultName) // Переименование хранилища
+        {
+            if (Directory.Exists(@"Vaults\" + vaultName))
+            {
+                Directory.Move(@"Vaults\" + vaultName, @"Vaults\" + newVaultName);
+                return 0;
+            }
+            else return 1;
+        }
+        public static int VaultExport(string vaultName, string outputPath) // Экспорт хранилища в формате .zip
+        {
+            if (Directory.Exists(@"Vaults\" + vaultName))
+            {
+                ZipFile.CreateFromDirectory(@"Vaults\" + vaultName, outputPath);
+                return 0;
+            }
+            else return 1;
+        }
+        public static int VaultImport(string inputPath) // Импорт хранилища из .zip файла
+        {
+            if (File.Exists(inputPath) && inputPath.EndsWith(".zip"))
+            {
+                string[] pathParts = inputPath.Split('\\');
+                string name = pathParts[pathParts.Length - 1].Substring(0, pathParts[pathParts.Length - 1].Length - 4);
+                ZipFile.ExtractToDirectory(inputPath, @"Vaults\" + name);
+                return 0;
+            }
+            else return 1;
         }
     }
-    
+    public static class VaultFile
+    {
+        public static int FileRename(string vaultName, string fileName, string newName) // Переименоване файла в хранилище
+        {
+            if (File.Exists(@"Vaults\" + vaultName + '\\' + fileName))
+            {
+                string[] filenameParts = fileName.Split('.');
+                string outName = newName + filenameParts[filenameParts.Length - 2] + filenameParts[filenameParts.Length - 1];
+                File.Move(@"Vaults\" + vaultName + '\\' + fileName, @"Vaults\" + vaultName + '\\' + outName);
+                return 0;
+            }
+            else return 1;
+        }
+        public static int FileDelete(string vaultName, string fileName) // Удаление файла из хранилища
+        {
+            if (File.Exists(@"Vaults\" + vaultName + '\\' + fileName))
+            {
+                File.Delete(@"Vaults\" + vaultName + '\\' + fileName);
+                return 0;
+            }
+            else return 1;
+        }
+    }
 }
