@@ -19,7 +19,7 @@ namespace Folder_Guard
             InitializeComponent();
             Themes();
             string ver = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            label1.Text = "Folder Guard  v" + ver;
+            label1.Text = "Folder Guard  v" + ver.Substring(0, ver.Length - 2);
         }
 
         void Themes()
