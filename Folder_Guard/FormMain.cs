@@ -330,7 +330,6 @@ namespace Folder_Guard
 
         private void button6_Click(object sender, EventArgs e)
         {
-
             using (var form = new FormRenameFiles())
             {
                 form.ShowDialog(this); // 👈 Обязательно передаём "this" (главную форму)
@@ -532,9 +531,6 @@ namespace Folder_Guard
             var selectedItem = listViewStorage.SelectedItems[0];
             string storageName = selectedItem.Text;
 
-            // ⚙️ Если путь к хранилищу хранится в Tag — берём его тоже путь найди
-            string storagePath = "";//selectedItem.Tag?.ToString();
-
             // Спрашиваем подтверждение
             DialogResult result = MessageBox.Show(
                 $"Вы действительно хотите удалить хранилище:\n«{storageName}»?",
@@ -545,24 +541,14 @@ namespace Folder_Guard
 
             if (result == DialogResult.OK)
             {
-                try
+                int del = FileManager.Vault.VaultDelete(storageName);
+                switch (del)
                 {
-                    // 🔹 Удаляем физически (если путь есть)
-                    if (!string.IsNullOrEmpty(storagePath) && Directory.Exists(storagePath))
+                    case 1:
                     {
-                        Directory.Delete(storagePath, true); // true — удалить со всем содержимым
+                        MessageBox.Show("Вы пытаетесь удалить несуществующее хранилище", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
                     }
-
-                    // 🔹 Удаляем из списка
-                    listViewStorage.Items.Remove(selectedItem);
-
-                    MessageBox.Show("Хранилище успешно удалено!", "Готово",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Ошибка при удалении хранилища:\n{ex.Message}", "Ошибка",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

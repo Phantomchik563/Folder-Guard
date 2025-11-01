@@ -323,9 +323,6 @@
     <None Include="Resources\FolderGuard_logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Img\FolderGuard.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\FolderGuard.ico" />
   </ItemGroup>
   <ItemGroup>

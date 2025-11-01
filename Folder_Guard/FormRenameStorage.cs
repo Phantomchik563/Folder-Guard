@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FileManager;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,10 +13,12 @@ namespace Folder_Guard
 {
     public partial class FormRenameStorage : Form
     {
-        public FormRenameStorage()
+        private FormMain mainForm;
+        public FormRenameStorage(FormMain form)
         {
             InitializeComponent();
             Themes();
+            mainForm = form;
         }
 
         void Themes()
@@ -59,6 +62,34 @@ namespace Folder_Guard
         private void buttonAddStorage_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (textBoxCode.Text != "" || textBoxCode.Text != null)
+            {
+                int res = FileManager.Vault.VaultRename(mainForm.openedVault, textBoxCode.Text);
+                switch (res)
+                {
+                    case 1:
+                        MessageBox.Show("Недопустимые символы в названии хранилища", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    case 2:
+                        MessageBox.Show("Недопустимое название хранилища", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    case 3:
+                        MessageBox.Show("\"~$\" в начале имени хранилища недопустимо", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    case 4:
+                        MessageBox.Show("Вы пытаетесь переименовать отсутствующее хранилище", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    case 0:
+                    {
+                        this.Close();
+                        break;
+                    }
+                }
+            }
         }
     }
 
