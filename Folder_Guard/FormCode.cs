@@ -86,10 +86,9 @@ namespace Folder_Guard
                     break;
                 case 0:
                     {
-                        List<string> vaultFiles = FileManager.Vault.GetVaultFiles(SelectedItemName);
-                        mainForm.UpdateListViewStorageFiles(vaultFiles);
                         mainForm.password = password;
                         mainForm.openedVault = vault;
+                        mainForm.UpdateListViewStorageFiles(vault);
                     }
                     break;
             }

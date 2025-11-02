@@ -85,6 +85,7 @@ namespace Folder_Guard
                         break;
                     case 0:
                     {
+                        mainForm.openedVault = textBoxCode.Text;
                         this.Close();
                         break;
                     }

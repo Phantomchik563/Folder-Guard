@@ -106,34 +106,30 @@ namespace Folder_Guard
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show("Применить изменения?","Подтверждение",MessageBoxButtons.OKCancel,MessageBoxIcon.Question);
-
-            if (result == DialogResult.OK)
+            if (int.TryParse(textBox1.Text, out int iterations))
             {
-                Application.Exit();
-                Application.Restart();
+                var result = MessageBox.Show("Применить изменения?", "Подтверждение", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                if (result == DialogResult.OK)
+                {
+                    Application.Exit();
+                    Application.Restart();
+                }
+            }
+            else
+            {
 
             }
-
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
-
             try
             {
                 Properties.Settings.Default.Iteration = int.Parse(textBox1.Text);
                 Properties.Settings.Default.Save();
             }
             catch (Exception ex) { }
-
-
-
-            
-            
-
-
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -145,6 +141,16 @@ namespace Folder_Guard
             else
             {
                 button2.Enabled= false;
+            }
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Enter &&
+                e.KeyChar != (char)Keys.Back && e.KeyChar != (char)Keys.Delete &&
+                e.KeyChar != (char)Keys.Tab)
+            {
+                e.Handled = true; // Отменяем ввод символа
             }
         }
     }

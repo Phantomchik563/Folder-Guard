@@ -5,6 +5,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 using static System.Net.WebRequestMethods;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -17,18 +18,16 @@ namespace Folder_Guard
 
         public string password = null;
         public string openedVault = null;
+        public string selectedFile = null;
 
         private Timer fadeTimer;
         private Control[] uiElements;
-
-        // Выбранный файл
-        private string selectedFilePath = "";
 
         public FormMain()
         {
             InitializeComponent();
             Themes();
-            UpdateListViewStorage(FileManager.Vault.GetVaults());
+            UpdateListViewStorage();
 
             
 
@@ -155,11 +154,11 @@ namespace Folder_Guard
         // =========================
         // Метод для обновления listViewStorage
         // =========================
-        public void UpdateListViewStorage(List<string> items)
+        public void UpdateListViewStorage()
         {
             // Очищаем текущие элементы
             listViewStorage.Items.Clear();
-
+            List<string> items = FileManager.Vault.GetVaults();
             // Добавляем новые элементы
             foreach (var item in items)
             {
@@ -168,8 +167,9 @@ namespace Folder_Guard
             }
         }
 
-        public void UpdateListViewStorageFiles(List<string> items)
+        public void UpdateListViewStorageFiles(string vault)
         {
+            List<string> items = FileManager.Vault.GetVaultFiles(vault);
             listViewStorageFiles.Items.Clear();
             foreach (var item in items)
             {
@@ -330,21 +330,35 @@ namespace Folder_Guard
 
         private void button6_Click(object sender, EventArgs e)
         {
-            using (var form = new FormRenameFiles())
+            selectedFile = listViewStorageFiles.SelectedItems[0].Text;
+            using (var form = new FormRenameFiles(this))
             {
                 form.ShowDialog(this); // 👈 Обязательно передаём "this" (главную форму)
             }
+            UpdateListViewStorageFiles(openedVault);
+            UpdateListViewStorage();
         }
 
         private void listViewStorageFiles_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewStorageFiles.SelectedItems.Count > 0)
             {
-                {
-                    button6.Enabled = true;
-                }
+                button6.Enabled = true;
+                button6.BackgroundImage = Properties.Resources.file_ren;
+                buttonUnCode.Enabled = true;
+                buttonUnCode.BackgroundImage = Properties.Resources.file_deshifrovat;
+                buttonDelStorage.Enabled = true;
+                buttonDelStorage.BackgroundImage = Properties.Resources.file_delete;
             }
-            else { button6.Enabled = false; }
+            else
+            {
+                button6.Enabled = false;
+                button6.BackgroundImage = Properties.Resources.file_rename_alt1;
+                buttonUnCode.Enabled = false;
+                buttonUnCode.BackgroundImage = Properties.Resources.file_deshifrovat_alt1;
+                buttonDelStorage.Enabled = false;
+                buttonDelStorage.BackgroundImage = Properties.Resources.file_delete_alt1;
+            }
         }
 
         private void listViewStorage_SelectedIndexChanged(object sender, EventArgs e)
@@ -352,6 +366,7 @@ namespace Folder_Guard
             if (listViewStorage.SelectedItems.Count > 0)
             {
                 checkAccessesToVault(listViewStorage.SelectedItems[0].Text);
+                if (listViewStorage.SelectedItems[0].Text != openedVault) listViewStorageFiles.Items.Clear();
             }
         }
         private void checkAccessesToVault(string vault) // Проверка доступов к хранилищу и включение/выключение кнопок в зависимости от доступа
@@ -362,12 +377,12 @@ namespace Folder_Guard
                 buttonCode.BackgroundImage = Properties.Resources.logo_open_alt1;
                 buttonAddStorage.Enabled = true;
                 buttonAddStorage.BackgroundImage = Properties.Resources.file_add;
-                buttonUnCode.Enabled = true;
-                buttonUnCode.BackgroundImage = Properties.Resources.file_deshifrovat;
-                button6.Enabled = true;
-                button6.BackgroundImage = Properties.Resources.file_ren;
-                buttonDelStorage.Enabled = true;
-                buttonDelStorage.BackgroundImage = Properties.Resources.file_delete;
+                //buttonUnCode.Enabled = true;
+                //buttonUnCode.BackgroundImage = Properties.Resources.file_deshifrovat;
+                //button6.Enabled = true;
+                //button6.BackgroundImage = Properties.Resources.file_ren;
+                //buttonDelStorage.Enabled = true;
+                //buttonDelStorage.BackgroundImage = Properties.Resources.file_delete;
 
                 button3.Enabled = true;
                 button3.BackgroundImage = Properties.Resources.logo_delte;
@@ -416,7 +431,7 @@ namespace Folder_Guard
                     path = ofd.FileName;
                     pathFile = Path.GetFileName(ofd.FileName);
                     string[] pathParts = path.Split('\\');
-                    UpdateListViewStorageFiles(FileManager.Vault.GetVaultFiles(openedVault));
+                    UpdateListViewStorageFiles(openedVault);
                     List<string> meta = FileManager.Vault.GetMeta(openedVault);
                     int encrCode = EncryptionModule.Encryption.EncryptFile(path, @"Vaults\" + openedVault + '\\' + pathParts[pathParts.Length - 1] + ".sf", meta[0], int.Parse(meta[1]), password);
                     switch (encrCode)
@@ -433,7 +448,7 @@ namespace Folder_Guard
                     }
                 }
             }
-            UpdateListViewStorageFiles(FileManager.Vault.GetVaultFiles(openedVault));
+            UpdateListViewStorageFiles(openedVault);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -448,27 +463,25 @@ namespace Folder_Guard
         private void buttonUnCode_Click(object sender, EventArgs e) //Расшифровка файла
         {
             string outPath = "";      // Путь к выбранной папке
-            string outPathFile = "";  // Имя файла (можно позже задать своё)
-
-            using (FolderBrowserDialog fbd = new FolderBrowserDialog())
+            if (listViewStorageFiles.SelectedItems.Count > 0)
             {
-                fbd.Description = "Выберите папку, куда расшифровать файл";
-                fbd.ShowNewFolderButton = true;
-
-                if (fbd.ShowDialog() == DialogResult.OK)
+                string fileName = listViewStorageFiles.SelectedItems[0].Text;
+                using (FolderBrowserDialog fbd = new FolderBrowserDialog())
                 {
-                    // Путь к папке
-                    outPath = fbd.SelectedPath;
+                    fbd.Description = "Выберите папку, куда расшифровать файл";
+                    fbd.ShowNewFolderButton = true;
 
-                    // Пример: можно задать имя файла вручную или взять из другой переменной
-                    // (например, если ты расшифровываешь "secret.enc", то создаёшь "secret.txt")
-                    outPathFile = Path.Combine(outPath, "Расшифрованный_файл.txt");
+                    if (fbd.ShowDialog() == DialogResult.OK)
+                    {
+                        // Путь к папке
+                        outPath = fbd.SelectedPath;
 
-                    MessageBox.Show(
-                        $"Папка: {outPath}\nИмя файла: {Path.GetFileName(outPathFile)}",
-                        "Путь для расшифровки:"
-                    );
+                        List<string> meta = FileManager.Vault.GetMeta(openedVault);
+                        string file = @"Vault\" + openedVault + '\\' + fileName;
+                        EncryptionModule.Encryption.Decode(meta[0], outPath, outPath, int.Parse(meta[1]), password); // Скорее всего ошибка в этом методе
+                    }
                 }
+                UpdateListViewStorageFiles(openedVault);
             }
         }
 
@@ -482,18 +495,11 @@ namespace Folder_Guard
             }
 
             // Берем путь к файлу 
-            string filePath = "";
-
-            // Если путь не задан — сообщаем
-            if (string.IsNullOrEmpty(filePath) || !System.IO.File.Exists(filePath))
-            {
-                MessageBox.Show("Файл не найден или путь не указан.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            string file = listViewStorageFiles.SelectedItems[0].Text;
 
             // Спрашиваем подтверждение
             DialogResult result = MessageBox.Show(
-                $"Вы действительно хотите удалить файл:\n{Path.GetFileName(filePath)}?",
+                $"Вы действительно хотите удалить файл {file}?",
                 "Подтверждение удаления",
                 MessageBoxButtons.OKCancel,
                 MessageBoxIcon.Warning
@@ -502,20 +508,9 @@ namespace Folder_Guard
             // Если пользователь подтвердил — удаляем
             if (result == DialogResult.OK)
             {
-                try
-                {
-                    System.IO.File.Delete(filePath);
-
-                    // Удаляем элемент из списка
-                    listViewStorageFiles.Items.Remove(listViewStorageFiles.SelectedItems[0]);
-
-                    MessageBox.Show("Файл успешно удалён!", "Готово", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Ошибка при удалении файла:\n{ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                FileManager.VaultFile.FileDelete (openedVault, file);
             }
+            UpdateListViewStorageFiles(openedVault);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -549,7 +544,13 @@ namespace Folder_Guard
                         MessageBox.Show("Вы пытаетесь удалить несуществующее хранилище", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         break;
                     }
+                    case 0:
+                    {
+                        MessageBox.Show($"Хранилище «{storageName}» успешно удалено", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    }
                 }
+                UpdateListViewStorage();
             }
         }
 
@@ -563,55 +564,27 @@ namespace Folder_Guard
 
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
-                    try
+                    // 📁 Путь к выбранному файлу
+                    string selectedFile = ofd.FileName;
+                    string fileName = Path.GetFileName(selectedFile);
+
+                    int importRes = FileManager.Vault.VaultImport(selectedFile);
+                    switch (importRes)
                     {
-                        // 📁 Путь к выбранному файлу
-                        string selectedFile = ofd.FileName;
-                        string fileName = Path.GetFileName(selectedFile);
-
-                        // 📦 Папка, куда будут импортироваться хранилища
-                        string vaultsDirectory = Path.Combine(Application.StartupPath, "Vaults");
-
-                        // Если папки нет — создаём
-                        if (!Directory.Exists(vaultsDirectory))
-                            Directory.CreateDirectory(vaultsDirectory);
-
-                        // 📂 Куда копируем
-                        string destinationPath = Path.Combine(vaultsDirectory, fileName);
-
-                        // Проверяем, нет ли уже такого файла
-                        if (System.IO.File.Exists(destinationPath))
+                        case 0:
                         {
-                            DialogResult overwrite = MessageBox.Show(
-                                $"Хранилище с именем «{fileName}» уже существует.\nЗаменить его?",
-                                "Подтверждение импорта",
-                                MessageBoxButtons.YesNo,
-                                MessageBoxIcon.Question);
-
-                            if (overwrite == DialogResult.No)
-                                return;
-
-                            System.IO.File.Delete(destinationPath);
+                            MessageBox.Show($"Хранилище «{fileName}» успешно импортировано!", "Импорт завершён", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            break;
                         }
-
-                        // 🚀 Копируем файл
-                        System.IO.File.Copy(selectedFile, destinationPath, true);
-
-                        // ✅ Добавляем в listViewStorage
-                        ListViewItem item = new ListViewItem(fileName);
-                        item.Tag = destinationPath;
-                        listViewStorage.Items.Add(item);
-
-                        MessageBox.Show($"Хранилище «{fileName}» успешно импортировано!",
-                            "Импорт завершён", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Ошибка при импорте хранилища:\n{ex.Message}",
-                            "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        case 1:
+                        {
+                            MessageBox.Show($"Вы пытаетесь импортировать несуществующее хранилище", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
                     }
                 }
             }
+            UpdateListViewStorage();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -628,43 +601,34 @@ namespace Folder_Guard
             var selectedItem = listViewStorage.SelectedItems[0];
             string fileName = selectedItem.Text;
 
-            // Определяем, где хранится оригинал (найди верный путь)
-            string vaultsDirectory = Path.Combine(Application.StartupPath, "Vaults");
-            string sourcePath = Path.Combine(vaultsDirectory, fileName);
-
-            // Проверяем, существует ли файл
-            if (!System.IO.File.Exists(sourcePath))
-            {
-                MessageBox.Show("Файл хранилища не найден. Возможно, он был удалён или перемещён.",
-                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
             // Диалог для выбора пути сохранения
             using (SaveFileDialog sfd = new SaveFileDialog())
             {
-                sfd.Title = "Выберите, куда сохранить хранилище";
+                sfd.Title = "Выберите, куда экспортировать хранилище";
                 sfd.FileName = fileName; // имя по умолчанию
                 sfd.Filter = "Файлы хранилищ (*.vault;*.zip)|*.vault;*.zip|Все файлы (*.*)|*.*";
                 sfd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
-                    try
+                    int exportRes = FileManager.Vault.VaultExport(fileName, sfd.FileName);
+                    switch (exportRes)
                     {
-                        // Копируем файл в выбранное место
-                        System.IO.File.Copy(sourcePath, sfd.FileName, true);
+                        case 0:
+                        {
+                            MessageBox.Show($"Хранилище «{fileName}» успешно экспортировано!", "Экспорт завершён", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            break;
+                        }
+                        case 1: 
+                        {
+                            MessageBox.Show($"Вы пытаетесь экспортировать несуществующее хранилище", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                    }
 
-                        MessageBox.Show($"Хранилище «{fileName}» успешно экспортировано!",
-                            "Экспорт завершён", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Ошибка при экспорте хранилища:\n{ex.Message}",
-                            "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
                 }
             }
+            UpdateListViewStorage();
         }
 
 

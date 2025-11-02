@@ -13,12 +13,14 @@ namespace Folder_Guard
 {
     public partial class FormRenameFiles : Form
     {
-        public FormRenameFiles()
+        
+        public FormRenameFiles(FormMain form)
         {
             InitializeComponent();
             Themes();
+            mainForm = form;
         }
-
+        private FormMain mainForm;
         void Themes()
         {
             switch (Properties.Settings.Default.Theme)
@@ -64,70 +66,36 @@ namespace Folder_Guard
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Проверяем, выбран ли файл (Дроч с передачей инфы в listViewStorageFiles)
-            //if (listViewStorageFiles.SelectedItems.Count == 0)
-            //{
-            //    MessageBox.Show("Выберите файл для переименования.",
-            //        "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
-
-            // Проверяем, введено ли новое имя
             string newFileName = textBoxCode.Text.Trim();
             if (string.IsNullOrWhiteSpace(newFileName))
             {
-                MessageBox.Show("Введите новое имя файла.",
-                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Имя не может быть пустым или состоять только из символов-разделителей", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            // Берём выбранный файл (Дроч с передачей инфы в listViewStorageFiles)
-            //var selectedItem = listViewStorageFiles.SelectedItems[0];
-            //string oldFileName = selectedItem.Text;
-
-            // Путь к хранилищу
-            //string storageDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Vaults");
-            //string oldPath = Path.Combine(storageDir, oldFileName);
-
-            //// Проверяем существование файла
-            //if (!File.Exists(oldPath))
-            //{
-            //    MessageBox.Show("Файл не найден: " + oldFileName,
-            //        "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
-
-            //// Определяем расширение и сохраняем его
-            //string extension = Path.GetExtension(oldFileName);
-            //string newPath = Path.Combine(storageDir, newFileName + extension);
-
-            //// Проверяем, не существует ли уже файл с таким именем
-            //if (File.Exists(newPath))
-            //{
-            //    MessageBox.Show("Файл с таким именем уже существует.",
-            //        "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
-
-            //try
-            //{
-            //    // Переименование (с сохранением расширения)
-            //    File.Move(oldPath, newPath);
-
-            //    // Обновляем отображение в ListView
-            //    selectedItem.Text = newFileName + extension;
-
-            //    MessageBox.Show("Файл успешно переименован!",
-            //        "Готово", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            //    // Очищаем поле
-            //    textBoxCode.Clear();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Ошибка при переименовании:\n" + ex.Message,
-            //        "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+            else
+            {
+                int renameRes = FileManager.VaultFile.FileRename(mainForm.openedVault, mainForm.selectedFile, newFileName);
+                switch (renameRes)
+                {
+                    case 1:
+                        MessageBox.Show("Недопустимые символы в имени файла", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    case 2:
+                        MessageBox.Show("Недопустимое имя файла", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    case 3:
+                        MessageBox.Show("\"~$\" в начале имени файла недопустимо", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    case 4:
+                        MessageBox.Show("Вы пытаетесь переименовать отсутствующий файл", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    case 0:
+                        {
+                            this.Close();
+                            break;
+                        }
+                }
+            }
         }
     }
 }

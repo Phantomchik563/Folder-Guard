@@ -98,12 +98,7 @@ namespace Folder_Guard
                     MessageBox.Show("Хранилище с таким именем уже существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
             }
-            List<string> vaults = FileManager.Vault.GetVaults();
-            mainForm.UpdateListViewStorage(vaults);
-
-
-
-
+            mainForm.UpdateListViewStorage();
             this.Close();
         }
 

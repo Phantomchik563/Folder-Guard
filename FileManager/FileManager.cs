@@ -137,7 +137,7 @@ namespace FileManager
                 outMetaInfo.Add(salt);
                 outMetaInfo.Add(iterationCount.ToString());
                 outMetaInfo.Add(version);
-                return outMetaInfo;
+                return outMetaInfo; // соль, количество итераций, версия
             }
         }
 
@@ -201,7 +201,7 @@ namespace FileManager
                 else if (exCode == 3) return 3; //         ~$ в начале имени |
 
                 string[] filenameParts = fileName.Split('.');
-                string outName = newName + filenameParts[filenameParts.Length - 2] + filenameParts[filenameParts.Length - 1];
+                string outName = newName + '.' + filenameParts[filenameParts.Length - 2] + '.' + filenameParts[filenameParts.Length - 1];
                 File.Move(@"Vaults\" + vaultName + '\\' + fileName, @"Vaults\" + vaultName + '\\' + outName);
                 return 0;
             }
