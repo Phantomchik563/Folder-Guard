@@ -393,13 +393,11 @@ namespace Folder_Guard
 
         private void ButtonCreateStoragebutton_Click(object sender, EventArgs e)
         {
-            using (var form = new FormRenameStorage(this))
-            {
-                form.StartPosition = FormStartPosition.CenterParent;
-                form.ShowDialog();
-            }
-            UpdateListViewStorageFiles(openedVault);
-            UpdateListViewStorage();
+            //using (var form = new FormRenameStorage())
+            //{
+            //    form.StartPosition = FormStartPosition.CenterParent;
+            //    form.ShowDialog();
+            //}
         }
 
         private void ButtonCode_Click(object sender, EventArgs e)

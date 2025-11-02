@@ -55,7 +55,6 @@ namespace Folder_Guard
             this.textBoxCode.Name = "textBoxCode";
             this.textBoxCode.Size = new System.Drawing.Size(304, 29);
             this.textBoxCode.TabIndex = 1;
-            this.textBoxCode.UseSystemPasswordChar = true;
             this.textBoxCode.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // buttonAddStorage
