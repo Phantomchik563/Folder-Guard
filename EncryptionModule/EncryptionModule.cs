@@ -89,10 +89,6 @@ namespace EncryptionModule
                     hmacKey = pbkdf2.GetBytes(32); // HMAC-ключ
                 }
 
-                System.Windows.Forms.MessageBox.Show("inputPath: " + inputPath);
-                System.Windows.Forms.MessageBox.Show("File.Exists: " + File.Exists(inputPath));
-                System.Windows.Forms.MessageBox.Show("Full path: " + Path.GetFullPath(inputPath));
-
                 byte[] fileBytes = File.ReadAllBytes(inputPath);
                 byte[] storedHmac = new byte[32];
                 if (fileBytes.Length < 48) //Проверка длины файла: IV, имя, HMAC
