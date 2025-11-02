@@ -135,7 +135,7 @@ namespace EncryptionModule
                         using (FileStream fsOutput = new FileStream(Path.Combine(outputPath, originalFileName), FileMode.Create, FileAccess.Write))
                         {
                             cryptoStream.CopyTo(fsOutput);
-                            cryptoStream.FlushFinalBlock();
+                            //cryptoStream.FlushFinalBlock();
                         }
                     }
                 }

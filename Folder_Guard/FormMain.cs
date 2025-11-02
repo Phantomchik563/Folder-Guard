@@ -477,8 +477,36 @@ namespace Folder_Guard
                         outPath = fbd.SelectedPath;
 
                         List<string> meta = FileManager.Vault.GetMeta(openedVault);
-                        string file = @"Vault\" + openedVault + '\\' + fileName;
-                        EncryptionModule.Encryption.Decode(meta[0], outPath, outPath, int.Parse(meta[1]), password); // Скорее всего ошибка в этом методе
+                        string file = "Vaults\\" + openedVault + '\\' + fileName;
+                        int exportRes = EncryptionModule.Encryption.Decode(meta[0], file, outPath, int.Parse(meta[1]), password); // Скорее всего ошибка в этом методе
+                        switch (exportRes)
+                        {
+                            case 1:
+                                {
+                                    MessageBox.Show("Несовпадение HMAC кода.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    break;
+                                }
+                            case 2:
+                                {
+                                    MessageBox.Show("Ошибка дешифрования.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    break;
+                                }
+                            case 3:
+                                {
+                                    MessageBox.Show("Ошибка чтения/записи.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    break;
+                                }
+                            case 4:
+                                {
+                                    MessageBox.Show("Неизвестная ошибка.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    break;
+                                }
+                            case 5:
+                                {
+                                    MessageBox.Show("Ошибка в структуре файла.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    break;
+                                }
+                        }
                     }
                 }
                 UpdateListViewStorageFiles(openedVault);
