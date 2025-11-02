@@ -89,7 +89,6 @@ namespace EncryptionModule
                     hmacKey = pbkdf2.GetBytes(32); // HMAC-ключ
                 }
 
-                Console.OutputEncoding = System.Text.Encoding.UTF8;
                 System.Windows.Forms.MessageBox.Show("inputPath: " + inputPath);
                 System.Windows.Forms.MessageBox.Show("File.Exists: " + File.Exists(inputPath));
                 System.Windows.Forms.MessageBox.Show("Full path: " + Path.GetFullPath(inputPath));
