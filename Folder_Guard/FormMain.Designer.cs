@@ -398,8 +398,6 @@ namespace Folder_Guard
                 form.StartPosition = FormStartPosition.CenterParent;
                 form.ShowDialog();
             }
-            UpdateListViewStorageFiles(openedVault);
-            UpdateListViewStorage();
         }
 
         private void ButtonCode_Click(object sender, EventArgs e)

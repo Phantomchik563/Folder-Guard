@@ -587,7 +587,7 @@ namespace Folder_Guard
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
                 ofd.Title = "Выберите хранилище для импорта";
-                ofd.Filter = "Файлы хранилищ (*.vault;*.zip)|*.vault;*.zip|Все файлы (*.*)|*.*";
+                ofd.Filter = "Файлы хранилищ (.zip)|.zip|Все файлы (*.*)|*.*";
                 ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
                 if (ofd.ShowDialog() == DialogResult.OK)
@@ -634,7 +634,7 @@ namespace Folder_Guard
             {
                 sfd.Title = "Выберите, куда экспортировать хранилище";
                 sfd.FileName = fileName; // имя по умолчанию
-                sfd.Filter = "Файлы хранилищ (*.vault;*.zip)|*.vault;*.zip|Все файлы (*.*)|*.*";
+                sfd.Filter = "Файлы хранилищ (.zip)|.zip|Все файлы (*.*)|*.*";
                 sfd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
                 if (sfd.ShowDialog() == DialogResult.OK)
