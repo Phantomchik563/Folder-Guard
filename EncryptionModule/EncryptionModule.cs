@@ -6,7 +6,7 @@ namespace EncryptionModule
 {
     public class Encryption
     {
-        public int EncryptFile(string inputPath, string outputPath, string metaSalt, int metaIterations, string password)
+        public static int EncryptFile(string inputPath, string outputPath, string metaSalt, int metaIterations, string password)
         {
             try
             {
@@ -90,10 +90,10 @@ namespace EncryptionModule
                 }
 
                 Console.OutputEncoding = System.Text.Encoding.UTF8;
-                Console.WriteLine("inputPath: " + inputPath);
-                Console.WriteLine("File.Exists: " + File.Exists(inputPath));
-                Console.WriteLine("Full path: " + Path.GetFullPath(inputPath));
-                
+                System.Windows.Forms.MessageBox.Show("inputPath: " + inputPath);
+                System.Windows.Forms.MessageBox.Show("File.Exists: " + File.Exists(inputPath));
+                System.Windows.Forms.MessageBox.Show("Full path: " + Path.GetFullPath(inputPath));
+
                 byte[] fileBytes = File.ReadAllBytes(inputPath);
                 byte[] storedHmac = new byte[32];
                 if (fileBytes.Length < 48) //Проверка длины файла: IV, имя, HMAC
