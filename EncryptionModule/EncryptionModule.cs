@@ -6,7 +6,7 @@ namespace EncryptionModule
 {
     public class Encryption
     {
-        public static int EncryptFile(string inputPath, string outputPath, string metaSalt, int metaIterations, string password)
+        public int EncryptFile(string inputPath, string outputPath, string metaSalt, int metaIterations, string password)
         {
             try
             {
@@ -89,7 +89,11 @@ namespace EncryptionModule
                     hmacKey = pbkdf2.GetBytes(32); // HMAC-ключ
                 }
 
-
+                Console.OutputEncoding = System.Text.Encoding.UTF8;
+                Console.WriteLine("inputPath: " + inputPath);
+                Console.WriteLine("File.Exists: " + File.Exists(inputPath));
+                Console.WriteLine("Full path: " + Path.GetFullPath(inputPath));
+                
                 byte[] fileBytes = File.ReadAllBytes(inputPath);
                 byte[] storedHmac = new byte[32];
                 if (fileBytes.Length < 48) //Проверка длины файла: IV, имя, HMAC
@@ -111,7 +115,7 @@ namespace EncryptionModule
 
                 using (MemoryStream ms = new MemoryStream(encryptedData))
                 {
-                    int nameLength = ms.ReadByte(); //Считать lдлину имени файла
+                    int nameLength = ms.ReadByte(); //Считать длину имени файла
                     if (nameLength <= 0 || nameLength > 255)
                         return 5; // Ошибка структуры файла
                     byte[] nameBytes = new byte[nameLength];
