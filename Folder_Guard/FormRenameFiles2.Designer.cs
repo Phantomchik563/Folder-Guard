@@ -53,7 +53,6 @@
             this.textBoxCode.Name = "textBoxCode";
             this.textBoxCode.Size = new System.Drawing.Size(224, 29);
             this.textBoxCode.TabIndex = 3;
-            this.textBoxCode.UseSystemPasswordChar = true;
             // 
             // buttonAddStorage
             // 
