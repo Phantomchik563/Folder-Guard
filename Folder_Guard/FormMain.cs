@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Reflection.Emit;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
@@ -15,7 +16,6 @@ namespace Folder_Guard
 {
     public partial class FormMain : Form
     {
-
         public string password = null;
         public string openedVault = null;
         public string selectedFile = null;
@@ -28,7 +28,7 @@ namespace Folder_Guard
             InitializeComponent();
             Themes();
             UpdateListViewStorage();
-
+            
             
 
             // Список элементов, которые будут плавно появлятьс
@@ -67,8 +67,14 @@ namespace Folder_Guard
             this.Load += FormMain_Load;
 
 
-
-
+            if (Properties.Settings.Default.justUpdated)
+            {
+                string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+                version = version.Substring(0, version.Length - 2);
+                MessageBox.Show($"Версия {version}:\n\n - Добавлена функция обновления\n - Исправления ошибок", "Что нового", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Properties.Settings.Default.justUpdated = false;
+                Properties.Settings.Default.Save();
+            }
         }
 
         
