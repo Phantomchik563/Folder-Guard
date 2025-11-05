@@ -185,22 +185,22 @@ namespace Folder_Guard
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (listViewStorage.SelectedItems.Count > 0)
-            {
+            //if (listViewStorage.SelectedItems.Count > 0)
+            //{
 
-                buttonCode.Enabled = true;
-            }
-            else
-            {
-                buttonCode.Enabled = false;
-            }
+            //    buttonCode.Enabled = true;
+            //}
+            //else
+            //{
+            //    buttonCode.Enabled = false;
+            //}
         }
 
 
 
 
 
-        void Themes()
+        public void Themes()
         {
             switch (Properties.Settings.Default.Theme)
             {

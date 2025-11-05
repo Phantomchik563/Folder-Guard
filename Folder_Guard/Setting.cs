@@ -16,7 +16,7 @@ namespace Folder_Guard
     {
         int ThemeSetting = Properties.Settings.Default.Theme;
         int Iterations = Properties.Settings.Default.Iteration;
-        public FormSetting()
+        public FormSetting(FormMain form)
         {
             InitializeComponent();
             Themes();
@@ -24,9 +24,10 @@ namespace Folder_Guard
             textBox1.Text = Properties.Settings.Default.Iteration.ToString();
 
             comboBox1.SelectedIndex = Properties.Settings.Default.Theme;
+            mainForm = form;
 
         }
-
+        private FormMain mainForm;
 
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) // Триггер на выбор тем
@@ -106,19 +107,23 @@ namespace Folder_Guard
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(textBox1.Text, out int iterations))
+            if (int.TryParse(textBox1.Text, out int iterations) && int.Parse(textBox1.Text) > 0)
             {
                 var result = MessageBox.Show("Применить изменения?", "Подтверждение", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
                 if (result == DialogResult.OK)
                 {
-                    Application.Exit();
-                    Application.Restart();
+                    Themes();
+                    mainForm.Themes();
+                    Properties.Settings.Default.Save();
+                    Iterations = Properties.Settings.Default.Iteration;
+                    ThemeSetting = Properties.Settings.Default.Theme;
+                    timer1_Tick(sender, e);
                 }
             }
-            else
+            if(int.Parse(textBox1.Text) < 1)
             {
-
+                MessageBox.Show("Количество итераций не может быть равно нулю", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

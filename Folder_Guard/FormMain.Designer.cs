@@ -374,7 +374,7 @@ namespace Folder_Guard
         private void buttonSetting_Click(object sender, EventArgs e)
         {
             //Шаблон для подключения формы
-            using (var form = new FormSetting())
+            using (var form = new FormSetting(this))
             {
                 form.StartPosition = FormStartPosition.CenterParent;
                 form.ShowDialog();

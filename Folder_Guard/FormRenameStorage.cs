@@ -86,6 +86,7 @@ namespace Folder_Guard
                     case 0:
                     {
                         mainForm.openedVault = textBoxCode.Text;
+                        mainForm.UpdateListViewStorage();
                         this.Close();
                         break;
                     }
