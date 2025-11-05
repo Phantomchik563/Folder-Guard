@@ -88,18 +88,33 @@ namespace Folder_Guard
 
         private void buttonDelStorage_Click(object sender, EventArgs e)
         {
-            int results = FileManager.Vault.CreateVault(textBox1.Text, textBox2.Text, Properties.Settings.Default.Iteration); // Textbox1 - Название хранилища  Textbox2 - Пароль от хранилища  
-            switch (results)
+            if(textBox2.Text.Length >= 4)
             {
-                case 1:
-                    MessageBox.Show("Недопустимые символы в названии хранилища!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
-                case 2:
-                    MessageBox.Show("Хранилище с таким именем уже существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
+                int results = FileManager.Vault.CreateVault(textBox1.Text, textBox2.Text, Properties.Settings.Default.Iteration); // Textbox1 - Название хранилища  Textbox2 - Пароль от хранилища  
+                switch (results)
+                {
+                    case 1:
+                        MessageBox.Show("Недопустимые символы в названии хранилища", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    case 2:
+                        MessageBox.Show("Недопустимое название хранилища", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    case 3:
+                        MessageBox.Show("\"~$\" в начале имени хранилища недопустимо", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    case 4:
+                        MessageBox.Show("Хранилище с таким именем уже существует", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    case 0:
+                        this.Close();
+                        break;
+                }
+                mainForm.UpdateListViewStorage();
             }
-            mainForm.UpdateListViewStorage();
-            this.Close();
+            else
+            {
+                MessageBox.Show("Пароль не может быть меньше 4 символов", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)

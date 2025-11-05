@@ -52,6 +52,7 @@ namespace Folder_Guard
             // 
             this.textBoxCode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxCode.Location = new System.Drawing.Point(16, 60);
+            this.textBoxCode.MaxLength = 255;
             this.textBoxCode.Name = "textBoxCode";
             this.textBoxCode.Size = new System.Drawing.Size(304, 29);
             this.textBoxCode.TabIndex = 1;

@@ -50,6 +50,7 @@
             // 
             this.textBoxCode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxCode.Location = new System.Drawing.Point(16, 61);
+            this.textBoxCode.MaxLength = 240;
             this.textBoxCode.Name = "textBoxCode";
             this.textBoxCode.Size = new System.Drawing.Size(224, 29);
             this.textBoxCode.TabIndex = 3;
