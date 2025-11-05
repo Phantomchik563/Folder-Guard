@@ -85,9 +85,14 @@ namespace Folder_Guard
 
                 if (serverVersion > localVersion)
                 {
+                    string serverVer = serverVersion.ToString();
+                    serverVer = serverVer.Substring(0, serverVer.Length - 2);
+                    string localVer = localVersion.ToString();
+                    localVer = localVer.Substring(0, localVer.Length - 2);
+
                     var result = MessageBox.Show
                     (
-                        $"Доступна версия {serverVersion} (у вас {localVersion}).\n\nЗагрузить обновление?",
+                        $"Доступна версия {serverVer} (у вас {localVer}).\n\nЗагрузить обновление?",
                         "Доступно обновление",
                         MessageBoxButtons.YesNo,
                         MessageBoxIcon.Question
