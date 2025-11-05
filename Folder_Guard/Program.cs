@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -48,25 +49,67 @@ namespace Folder_Guard
             }
             return false;
         }
+        static void CreateSimpleUpdateBat(string zipPath, string appPath, string currentExe)
+        {
+            string batContent = $@"
+@echo off
+chcp 65001 > nul
+
+echo Ожидаем закрытия приложения...
+:wait
+tasklist | find ""{Path.GetFileName(currentExe)}"" > nul
+if %errorlevel% == 0 (
+    timeout /t 1 /nobreak > nul
+    goto wait
+)
+
+echo Распаковываем обновление...
+powershell -command ""Expand-Archive -Path '{zipPath}' -DestinationPath '{appPath}' -Force""
+
+echo Запускаем новую версию...
+start """" ""{Path.Combine(appPath, Path.GetFileName(currentExe))}""
+
+echo Удаляем временные файлы...
+del ""{zipPath}"" > nul 2>&1
+del ""%~f0"" > nul 2>&1
+";
+
+            File.WriteAllText("update.bat", batContent, Encoding.GetEncoding(866));
+        }
 
         static async void Update()
         {
             try
             {
-                string tempPath = Path.GetTempFileName() + ".zip";
+                string tempPath = "updateTmp" + ".zip";
                 string appPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                string currentExe = Assembly.GetExecutingAssembly().Location;
 
-                var response = await httpClient.GetAsync("https://folder-guard.24hdm.ru/Program/Download/Update/Update.zip");
-                var contentStream = await response.Content.ReadAsStreamAsync();
-                var fileStream = File.Create(tempPath);
+                using (var response = await httpClient.GetAsync("https://folder-guard.24hdm.ru/Program/Download/Update/Update.zip"))
+                using (var contentStream = await response.Content.ReadAsStreamAsync())
+                using (var fileStream = File.Create(tempPath))
+                {
+                    await contentStream.CopyToAsync(fileStream);
+                }
+                //DeleteOldFiles(appPath);
+                //ZipFile.ExtractToDirectory(tempPath, appPath);
+                //ExtractWithOverwrite(tempPath, appPath);
+                //File.Delete(tempPath);
 
-                await contentStream.CopyToAsync(fileStream);
+                // Создаем BAT файл для замены EXE
+                CreateSimpleUpdateBat(tempPath, appPath, currentExe);
 
-                ZipFile.ExtractToDirectory(tempPath, appPath);
-                File.Delete(tempPath);
+                // Запускаем BAT и закрываем приложение
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = "update.bat",
+                    WindowStyle = ProcessWindowStyle.Hidden
+                });
 
-                Application.Restart();
-                Environment.Exit(0);
+                Application.Exit();
+
+                //Application.Restart();
+                //Environment.Exit(0);
             }
             catch (Exception ex)
             {
