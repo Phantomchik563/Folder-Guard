@@ -74,7 +74,7 @@ del ""{zipPath}"" > nul 2>&1
 del ""%~f0"" > nul 2>&1
 ";
 
-            File.WriteAllText("update.bat", batContent, Encoding.GetEncoding(866));
+            File.WriteAllText("update.bat", batContent, new UTF8Encoding(false));
         }
 
         static async void Update()
