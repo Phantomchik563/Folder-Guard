@@ -71,7 +71,7 @@ namespace Folder_Guard
             {
                 string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
                 version = version.Substring(0, version.Length - 2);
-                MessageBox.Show($"Версия {version}:\n\n - Исправления критических ошибок", "Что нового", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Версия {version}:\n\n - Исправления критических ошибок\n - Обновлена пользовательская инструкция", "Что нового", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Properties.Settings.Default.justUpdated = false;
                 Properties.Settings.Default.Save();
             }

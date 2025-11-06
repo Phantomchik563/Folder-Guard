@@ -30,6 +30,6 @@ using System.Runtime.InteropServices;
 //      Номер сборки
 //      Редакция
 //
-[assembly: AssemblyVersion("0.5.2")]
-[assembly: AssemblyFileVersion("0.5.2")]
+[assembly: AssemblyVersion("0.5.3")]
+[assembly: AssemblyFileVersion("0.5.3")]
 [assembly: NeutralResourcesLanguage("ru-RU")]
