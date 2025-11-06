@@ -145,6 +145,19 @@ namespace FileManager
         {
             if (Directory.Exists(@"Vaults\" + vaultName))
             {
+                string[] files = Directory.GetFiles(@"Vaults\" + vaultName);
+
+                foreach (string file in files)
+                {
+                    try
+                    {
+                        File.Delete(file);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Ошибка при удалении файла {file}: {ex.Message}");
+                    }
+                }
                 Directory.Delete(@"Vaults\" + vaultName);
                 return 0;
             }

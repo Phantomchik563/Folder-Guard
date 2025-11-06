@@ -565,7 +565,7 @@ namespace Folder_Guard
                 $"Вы действительно хотите удалить хранилище:\n«{storageName}»?",
                 "Подтверждение удаления",
                 MessageBoxButtons.OKCancel,
-                MessageBoxIcon.Warning
+                MessageBoxIcon.Exclamation
             );
 
             if (result == DialogResult.OK)
@@ -580,11 +580,12 @@ namespace Folder_Guard
                     }
                     case 0:
                     {
-                        MessageBox.Show($"Хранилище «{storageName}» успешно удалено", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($"Хранилище «{storageName}» успешно удалено", "Хранилище удалено", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         break;
                     }
                 }
                 UpdateListViewStorage();
+                listViewStorageFiles.Clear();
             }
         }
 

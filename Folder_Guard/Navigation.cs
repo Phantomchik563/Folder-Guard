@@ -48,10 +48,10 @@ namespace Folder_Guard
                         label5.ForeColor = Color.FromArgb(33, 33, 33);
                         label9.BackColor = Color.FromArgb(255, 255, 255);
                         label9.ForeColor = Color.FromArgb(33, 33, 33);
-                        label6.BackColor = Color.FromArgb(245, 245, 245);
-                        label6.ForeColor = Color.FromArgb(33, 33, 33);
+                        label2.BackColor = Color.FromArgb(245, 245, 245);
+                        label2.ForeColor = Color.FromArgb(33, 33, 33);
                         pictureBox1.BackColor = Color.FromArgb(245, 245, 245);
-                        pictureBox2.BackColor = Color.FromArgb(245, 245, 245);
+                        pictureBox3.BackColor = Color.FromArgb(245, 245, 245);
 
 
                         break;
@@ -67,15 +67,20 @@ namespace Folder_Guard
                         label5.ForeColor = Color.FromArgb(255, 255, 255);
                         label9.BackColor = Color.FromArgb(33, 33, 33);
                         label9.ForeColor = Color.FromArgb(255, 255, 255);
-                        label6.BackColor = Color.FromArgb(40, 40, 40);
-                        label6.ForeColor = Color.FromArgb(255, 255, 255);
+                        label2.BackColor = Color.FromArgb(40, 40, 40);
+                        label2.ForeColor = Color.FromArgb(255, 255, 255);
                         pictureBox1.BackColor = Color.FromArgb(40, 40, 40);
-                        pictureBox2.BackColor = Color.FromArgb(40, 40, 40);
+                        pictureBox3.BackColor = Color.FromArgb(40, 40, 40);
 
 
                         break;
                     }
             }
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
